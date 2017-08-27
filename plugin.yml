@@ -1,0 +1,13 @@
+name: KnockFFA
+version: 1.0
+author: TwinsterHD
+main: KnockbackFFA.Main.de.KnockFFA
+commands:
+  angel:
+  build:
+  fly:
+  setdeathborder:
+  setfrieden:
+  setspawnknock:
+  spectate:
+  setholo:

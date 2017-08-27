@@ -1,0 +1,124 @@
+package KnockbackFFA.Listener.de;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Sound;
+import org.bukkit.World;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerLevelChangeEvent;
+
+import KnockbackFFA.Main.de.KnockFFA;
+import me.BukkitCoreSystem.API.de.CoinsAPI;
+
+public class LISTENER_Killstreak implements Listener{
+  @EventHandler
+  public void onLevelChange(PlayerLevelChangeEvent e){
+    Player p = e.getPlayer();
+    try{
+      if (e.getNewLevel() == 3){
+        for (Player all : Bukkit.getOnlinePlayers()){
+          all.sendTitle("§a3er Killstreak", "§fvon " + p.getDisplayName());
+          p.sendMessage(KnockFFA.sy + "§7Du hast 3 Coins erhalten");
+          CoinsAPI.addCoins(p.getPlayer(), 3);
+          all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
+        }
+        Bukkit.broadcastMessage(
+          KnockFFA.main.pr + "§7Der Spieler §e" + p.getDisplayName() + " §7hat eine §a3er Killstreak!");
+      }else if (e.getNewLevel() == 6){
+        for (Player all : Bukkit.getOnlinePlayers())
+        {
+          all.sendTitle("§66er Killstreak", "§fvon " + p.getDisplayName());
+          p.sendMessage(KnockFFA.sy + "§7Du hast 3 Coins erhalten");
+          CoinsAPI.addCoins(p.getPlayer(), 3);
+          all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
+        }
+        Bukkit.broadcastMessage(
+          KnockFFA.main.pr + "§7Der Spieler §e" + p.getDisplayName() + " §7hat eine §66er Killstreak!");
+      }else if (e.getNewLevel() == 9){
+        for (Player all : Bukkit.getOnlinePlayers())
+        {
+          all.sendTitle("§c9er Killstreak", "§fvon " + p.getDisplayName());
+          p.sendMessage(KnockFFA.sy + "§7Du hast 3 Coins erhalten");
+          CoinsAPI.addCoins(p.getPlayer(), 3);
+          all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
+        }
+        Bukkit.broadcastMessage(
+          KnockFFA.main.pr + "§7Der Spieler §e" + p.getDisplayName() + " §7hat eine §c9er Killstreak!");
+      }else if (e.getNewLevel() == 12){
+        for (Player all : Bukkit.getOnlinePlayers())
+        {
+          all.sendTitle("§412er Killstreak", "§fvon " + p.getDisplayName());
+          p.sendMessage(KnockFFA.sy + "§7Du hast 3 Coins erhalten");
+          CoinsAPI.addCoins(p.getPlayer(), 3);
+          all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
+        }
+        Bukkit.broadcastMessage(
+          KnockFFA.main.pr + "§7Der Spieler §e" + p.getDisplayName() + " §7hat eine §412er Killstreak!");
+        }else if (e.getNewLevel() == 15){
+        for (Player all : Bukkit.getOnlinePlayers())
+        {
+          all.sendTitle("§415er Killstreak", "§fvon " + p.getDisplayName());
+          p.sendMessage(KnockFFA.sy + "§7Du hast 3 Coins erhalten");
+          CoinsAPI.addCoins(p.getPlayer(), 3);
+          all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
+        }
+        Bukkit.broadcastMessage(
+          KnockFFA.main.pr + "§7Der Spieler §e" + p.getDisplayName() + " §7hat eine §415er Killstreak!");
+      }else if (e.getNewLevel() == 18){
+        for (Player all : Bukkit.getOnlinePlayers())
+        {
+          all.sendTitle("§518er Killstreak", "§fvon " + p.getDisplayName());
+          all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
+          p.sendMessage(KnockFFA.sy + "§7Du hast 3 Coins erhalten");
+          CoinsAPI.addCoins(p.getPlayer(), 3);
+        }
+        Bukkit.broadcastMessage(
+          KnockFFA.main.pr + "§7Der Spieler §e" + p.getDisplayName() + " §7hat eine §518er Killstreak!");
+      }else if (e.getNewLevel() == 21){
+        for (Player all : Bukkit.getOnlinePlayers())
+        {
+          all.sendTitle("§521er Killstreak", "§fvon " + p.getDisplayName());
+          all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
+          p.sendMessage(KnockFFA.sy + "§7Du hast 3 Coins erhalten");
+          CoinsAPI.addCoins(p.getPlayer(), 3);
+        }
+        Bukkit.broadcastMessage(
+          KnockFFA.main.pr + "§7Der Spieler §e" + p.getDisplayName() + " §7hat eine §521er Killstreak!");
+      }else if (e.getNewLevel() == 24){
+        for (Player all : Bukkit.getOnlinePlayers())
+        {
+          all.sendTitle("§124er Killstreak", "§fvon " + p.getDisplayName());
+          all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
+          p.sendMessage(KnockFFA.sy + "§7Du hast 3 Coins erhalten");
+          CoinsAPI.addCoins(p.getPlayer(), 3);
+        }
+        Bukkit.broadcastMessage(
+          KnockFFA.main.pr + "§7Der Spieler §e" + p.getDisplayName() + " §7hat eine §124er Killstreak!");
+      }else if (e.getNewLevel() == 27){
+        for (Player all : Bukkit.getOnlinePlayers())
+        {
+          all.sendTitle("§b27er Killstreak", "§fvon " + p.getDisplayName());
+          all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
+          p.sendMessage(KnockFFA.sy + "§7Du hast 3 Coins erhalten");
+          CoinsAPI.addCoins(p.getPlayer(), 3);
+        }
+        Bukkit.broadcastMessage(
+          KnockFFA.main.pr + "§7Der Spieler §e" + p.getDisplayName() + " §7hat eine §b27er Killstreak!");
+      }else if (e.getNewLevel() == 30){
+        for (Player all : Bukkit.getOnlinePlayers())
+        {
+          all.sendTitle("§030er Killstreak", "§fvon " + p.getDisplayName());
+          p.sendMessage(KnockFFA.sy + "§7Du hast 3 Coins erhalten");
+          all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
+          CoinsAPI.addCoins(p.getPlayer(), 3);
+        }
+        Bukkit.broadcastMessage(
+          KnockFFA.main.pr + "§7Der Spieler §e" + p.getDisplayName() + " §7hat eine §030er Killstreak!");
+      }
+    }catch (Exception e1){
+      e1.getMessage();
+    }
+  }
+}
