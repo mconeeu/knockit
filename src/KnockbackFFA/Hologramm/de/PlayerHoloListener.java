@@ -1,5 +1,6 @@
 package KnockbackFFA.Hologramm.de;
 
+import me.BukkitCoreSystem.API.de.CoinsAPI;
 import me.BukkitCoreSystem.API.de.StatsAPI;
 import net.minecraft.server.v1_8_R3.WorldServer;
 import org.bukkit.Bukkit;
@@ -17,7 +18,7 @@ public class PlayerHoloListener implements Listener{
         double z = KnockFFA.main.getConfig().getDouble("holo" + ".Z");
         final Location loc = new Location(Bukkit.getWorld("world"), x, y, z);
 
-        final String[] Text = { "§7» §aKnockFFA", "§7Stats von §2§l" + p.getName(), "§r", "§7Platz: §a§l" + StatsAPI.getUserRanking(p.getName()), "§7Kills: §a§l" + StatsAPI.getKills(p.getUniqueId().toString(), p.getName()), "§7Tode: §a§l" + StatsAPI.getDeaths(p.getUniqueId().toString(), p.getName()), "§r", "§7Wins: §a§l" + StatsAPI.getWins(p.getUniqueId().toString(), p.getName()), "§7Lose: §a§l" + StatsAPI.getLoses(p.getUniqueId().toString(), p.getName())};
+        final String[] Text = { "§7» §aKnockFFA", "§7Stats von §2§l" + p.getName(), "§r", "§7Platz: §a§l" + StatsAPI.getUserRanking(p.getName()), "§7Kills: §a§l" + StatsAPI.getKills(p.getUniqueId().toString(), p.getName()), "§7Tode: §a§l" + StatsAPI.getDeaths(p.getUniqueId().toString(), p.getName()), "§7Coins: §a§l" + CoinsAPI.getCoins(p)};
         final PlayerHolograms holo = new PlayerHolograms(Text, loc);
         holo.showPlayer(p);
     }
