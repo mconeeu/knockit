@@ -18,7 +18,13 @@ public class PlayerHoloListener implements Listener{
         double z = KnockFFA.main.getConfig().getDouble("holo" + ".Z");
         final Location loc = new Location(Bukkit.getWorld("world"), x, y, z);
 
-        final String[] Text = { "§7» §aKnockFFA", "§7Stats von §2§l" + p.getName(), "§r", "§7Platz: §a§l" + StatsAPI.getUserRanking(p.getName()), "§7Kills: §a§l" + StatsAPI.getKills(p.getUniqueId().toString(), p.getName()), "§7Tode: §a§l" + StatsAPI.getDeaths(p.getUniqueId().toString(), p.getName()), "§7Coins: §a§l" + CoinsAPI.getCoins(p)};
+        final String[] Text = { "§7» §e§lKnockFFA", 
+				        		"§7Stats von §f" + p.getName(), 
+				        		"§r", 
+				        		"§7Platz: §f" + StatsAPI.getUserRanking(p.getName()), 
+				        		"§7Kills: §f" + StatsAPI.getKills(p.getUniqueId().toString(), p.getName()), 
+				        		"§7Tode: §f" + StatsAPI.getDeaths(p.getUniqueId().toString(), p.getName()), 
+				        		"§7Coins: §f" + CoinsAPI.getCoins(p)};
         final PlayerHolograms holo = new PlayerHolograms(Text, loc);
         holo.showPlayer(p);
     }

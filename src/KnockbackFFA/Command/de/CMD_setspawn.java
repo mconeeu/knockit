@@ -20,7 +20,7 @@ public class CMD_setspawn implements CommandExecutor{
         API_Location.setLocation("spawn", p);
         p.sendMessage(KnockFFA.main.pr + "§7Du hast den §eSpawn §7gesetzt");
       }catch (Exception e){
-        p.sendMessage(KnockFFA.main.pr + "§cBei der Speicherung einer Location (Spawn- Lobby) ist etwas schief gelaufen! Kontaktiere den §bDeveloper §c- §bxXTwinsterHDXx");
+        p.sendMessage(KnockFFA.main.pr + "§cBei der Speicherung einer Location (Spawn- Lobby) ist etwas schief gelaufen! Kontaktiere den §bDeveloper §c- §bTwinsterHD");
       }
     }else{
       p.sendMessage(KnockFFA.main.noPermission);

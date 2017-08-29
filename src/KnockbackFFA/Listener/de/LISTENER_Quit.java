@@ -19,7 +19,7 @@ public class LISTENER_Quit
   {
     Player p = e.getPlayer();
     
-    e.setQuitMessage(KnockFFA.pr + "§7§ " + p.getDisplayName() + " §7hat das Spiel verlassen");
+    e.setQuitMessage(KnockFFA.pr + "§7 " + p.getDisplayName() + " §7hat das Spiel verlassen");
     for(Player p1 : Bukkit.getOnlinePlayers()){
   		PlayerHoloListener.Holo(p1);
   	  }

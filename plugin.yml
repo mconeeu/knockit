@@ -8,6 +8,6 @@ commands:
   fly:
   setdeathborder:
   setfrieden:
-  setspawnknock:
+  set:
   spectate:
   setholo:

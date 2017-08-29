@@ -13,7 +13,7 @@ public class CMD_Holo implements CommandExecutor{
 	    Player p = (Player)sender;
 	    if(cmd.getName().equalsIgnoreCase("setholo")){
 	    	if(p.hasPermission("system.admin")){
-	    		p.sendMessage(KnockFFA.pr + "§7Du hast das §aHologramm §7gesetzt");
+	    		p.sendMessage(KnockFFA.pr + "§7Du hast das §eHologramm §7gesetzt");
 	    		API_Location.setLocation("holo", p);
 	    	}
 	    }

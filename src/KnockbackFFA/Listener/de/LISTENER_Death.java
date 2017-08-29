@@ -24,7 +24,7 @@ public class LISTENER_Death implements Listener{
       e.getDrops().clear();
       if (k != null){
         k.sendMessage(KnockFFA.main.pr + "§7Du hast " + p.getDisplayName() + " §7getötet");
-        k.sendMessage(KnockFFA.sy + "§7Du hast §a1 §7Coin erhalten");
+        k.sendMessage(KnockFFA.sy + "§7Du hast §f1 §7Coin erhalten");
         StatsAPI.addKills(k.getPlayer().getUniqueId().toString(), k.getName(), 1);
         CoinsAPI.addCoins(k.getPlayer(), 1);
         KnockFFA.playSound(k.getLocation(), Sound.LEVEL_UP);
@@ -42,7 +42,7 @@ public class LISTENER_Death implements Listener{
 		    	}
 		 }else{
 			 CoinsAPI.removeCoins(p.getPlayer(), 1); 
-			 p.sendMessage(KnockFFA.sy + "§7Dir wurde §a1 §7Coin abgezogen");
+			 p.sendMessage(KnockFFA.sy + "§7Dir wurde §f1 §7Coin abgezogen");
 			 for(Player p1 : Bukkit.getOnlinePlayers()){
 		    		PlayerHoloListener.Holo(p1);
 		    	}

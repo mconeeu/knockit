@@ -57,7 +57,7 @@ public class KnockFFA
   private static KnockFFA plugin;
   public static Plugin plugin2;
   public static KnockFFA main;
-  public static String pr = "§8[§aKnockFFA§8] §8» ";
+  public static String pr = "§8[§7§l!§8] §eKnockFFA §8» ";
   public static String sy = "§8[§7§l!§8] §fServer §8» §7 ";
   public static String noPermission = "§cKeine Permissions";
   public API_Stuff utils;
@@ -69,11 +69,11 @@ public class KnockFFA
     this.utils = new API_Stuff();
     this.ingame = new ArrayList();
     
-    Bukkit.getConsoleSender().sendMessage(this.pr + "§7------- §2KnockBackFFA §7-------");
-	Bukkit.getConsoleSender().sendMessage(this.pr  + "§7Plugin Name: §2" + this.getDescription().getName());
-	Bukkit.getConsoleSender().sendMessage(this.pr  + "§7Author: §2" + this.getDescription().getAuthors());
-	Bukkit.getConsoleSender().sendMessage(this.pr  + "§7Version: §2" + this.getDescription().getVersion());
-	Bukkit.getConsoleSender().sendMessage(this.pr  + "§7------- §2KnockBackFFA §7-------");
+    Bukkit.getConsoleSender().sendMessage(this.pr + "§7------- §eKnockbackFFA §7-------");
+	Bukkit.getConsoleSender().sendMessage(this.pr  + "§7Plugin Name: §e" + this.getDescription().getName());
+	Bukkit.getConsoleSender().sendMessage(this.pr  + "§7Author: §e" + this.getDescription().getAuthors());
+	Bukkit.getConsoleSender().sendMessage(this.pr  + "§7Version: §e" + this.getDescription().getVersion());
+	Bukkit.getConsoleSender().sendMessage(this.pr  + "§7------- §eKnockbackFFA §7-------");
     
     PluginManager pm = Bukkit.getPluginManager();
     pm.registerEvents(new EVENT_Vanish(), this);
@@ -97,7 +97,7 @@ public class KnockFFA
     getCommand("fly").setExecutor(new CMD_fly());
     getCommand("setdeathborder").setExecutor(new CMD_setdeathborder());
     getCommand("setfrieden").setExecutor(new CMD_setfrieden());
-    getCommand("setspawnknock").setExecutor(new CMD_setspawn());
+    getCommand("set").setExecutor(new CMD_setspawn());
     getCommand("spectate").setExecutor(new CMD_spectate());
     getCommand("setholo").setExecutor(new CMD_Holo());
     for (Player all : Bukkit.getOnlinePlayers()) {
