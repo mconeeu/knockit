@@ -59,7 +59,8 @@ public class KnockFFA
   public API_Stuff utils;
   public ArrayList<Player> ingame;
   
-  public void onEnable(){
+  @SuppressWarnings("unchecked")
+public void onEnable(){
     plugin = this;
     main = this;
     this.utils = new API_Stuff();
