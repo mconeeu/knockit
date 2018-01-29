@@ -1,0 +1,25 @@
+name: MCONE-KnockIt
+version: 2.0.0-SNAPSHOT
+authors: [Domink Lippl, Rufus Maiwald]
+main: eu.mcone.knockit.KnockIT
+depend: [MCONE-BukkitCoreSystem,MCONE-Gameapi]
+
+commands:
+  angel:
+    permission: knockit.angel
+  setspawn:
+    permission: knockit.set.spawn
+  holo:
+    permission: system.bukkit.holo
+
+permissions:
+  knockit:
+    description: Root Permission
+    children:
+      knockit.set:
+        description: Use the fishing rod
+        children:
+          knockit.set.spawn:
+            description: Allows the player to set the spawn
+      knockit.angel:
+        description: Set wether Fishing Hook is used or not
