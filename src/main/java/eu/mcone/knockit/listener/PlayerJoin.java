@@ -1,15 +1,18 @@
+/*
+ * Copyright (c) 2017 - 2018 Dominik L., Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * You are not allowed to decompile the code
+ */
+
 package eu.mcone.knockit.listener;
 
-import eu.mcone.bukkitcoresystem.CoreSystem;
-import eu.mcone.bukkitcoresystem.player.CorePlayer;
-import eu.mcone.bukkitcoresystem.util.ItemFactory;
-import eu.mcone.bukkitcoresystem.util.LocationFactory;
+import eu.mcone.coresystem.bukkit.CoreSystem;
+import eu.mcone.coresystem.bukkit.player.CorePlayer;
+import eu.mcone.coresystem.bukkit.util.LocationFactory;
 import eu.mcone.knockit.KnockIT;
+import eu.mcone.knockit.util.Item;
 import eu.mcone.knockit.util.Objective;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -29,13 +32,7 @@ public class PlayerJoin implements Listener {
         p.setLevel(0);
         p.setGameMode(GameMode.SURVIVAL);
 
-        p.getInventory().setItem(0, ItemFactory.createEnchantedItem(Material.STICK, Enchantment.KNOCKBACK, 1, 0, 1, "§8» §6Knockback-Stick", true));
-        if (KnockIT.config.getBooleanConfigValue("Item-Angel")) {
-            p.getInventory().setItem(1, ItemFactory.createItem(Material.FISHING_ROD, 0, 1, "§8» §7Enterhaken (Rechtsklick)", true));
-        }
-        if (KnockIT.config.getBooleanConfigValue("Item-MLG")) {
-            p.getInventory().setItem(8, ItemFactory.createItem(Material.QUARTZ_BLOCK, 0, 3, "§8§ §cBlock-MLG", false));
-        }
+        Item.setItems(p);
 
         Location spawn = LocationFactory.getConfigLocation(KnockIT.config, "Location-Spawn");
         if (spawn != null) {

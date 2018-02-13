@@ -1,15 +1,20 @@
+/*
+ * Copyright (c) 2017 - 2018 Dominik L., Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * You are not allowed to decompile the code
+ */
+
 package eu.mcone.knockit.util;
 
-import eu.mcone.bukkitcoresystem.api.CoinsAPI;
-import eu.mcone.bukkitcoresystem.player.CorePlayer;
+import eu.mcone.coresystem.bukkit.api.CoinsAPI;
+import eu.mcone.coresystem.bukkit.player.CorePlayer;
 import eu.mcone.knockit.KnockIT;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Team;
 
-import static eu.mcone.bukkitcoresystem.CoreSystem.statsKnockit;
-import static eu.mcone.bukkitcoresystem.CoreSystem.statsSkypvp;
+import static eu.mcone.coresystem.bukkit.CoreSystem.statsKnockit;
+import static eu.mcone.coresystem.bukkit.CoreSystem.statsSkypvp;
 
-public class Objective extends eu.mcone.bukkitcoresystem.scoreboard.Objective {
+public class Objective extends eu.mcone.coresystem.bukkit.scoreboard.Objective {
 
     public Objective(CorePlayer p) {
         super(p, DisplaySlot.SIDEBAR, "Main", "KnockIT");

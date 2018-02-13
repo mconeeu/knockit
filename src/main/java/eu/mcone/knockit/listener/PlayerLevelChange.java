@@ -1,6 +1,11 @@
+/*
+ * Copyright (c) 2017 - 2018 Dominik L., Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * You are not allowed to decompile the code
+ */
+
 package eu.mcone.knockit.listener;
 
-import eu.mcone.bukkitcoresystem.api.CoinsAPI;
+import eu.mcone.coresystem.bukkit.api.CoinsAPI;
 import eu.mcone.knockit.KnockIT;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
