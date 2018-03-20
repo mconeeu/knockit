@@ -16,7 +16,6 @@ public class PlayerQuit implements Listener {
     @EventHandler
     public void on(PlayerQuitEvent e) {
         Player p = e.getPlayer();
-
         e.setQuitMessage(KnockIT.config.getConfigValue("System-Prefix") + "§7 " + p.getDisplayName() + " §7hat das Spiel verlassen");
     }
 

@@ -36,7 +36,7 @@ public class PlayerDeath implements Listener {
             CoinsAPI.addCoins(k.getUniqueId(), 3);
             KnockIT.playSound(k.getLocation(), Sound.LEVEL_UP);
 
-            p.sendMessage(KnockIT.config.getConfigValue("System-Prefix") + "§7Du wurdest von §c" + k.getDisplayName() + " §7getötet §8[§c-2 Coins§8]");
+            p.sendMessage(KnockIT.config.getConfigValue("System-Prefix") + "§7Du wurdest von §c" + k.getDisplayName() + " §7getötet §8[§c-1 Coins§8]");
             statsSkypvp.addDeaths(p.getUniqueId(), 1);
 
             int coins2 = CoinsAPI.getCoins(p.getUniqueId()) - 1;

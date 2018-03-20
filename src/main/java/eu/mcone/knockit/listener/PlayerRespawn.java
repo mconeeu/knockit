@@ -5,7 +5,7 @@
 
 package eu.mcone.knockit.listener;
 
-import eu.mcone.bukkitcoresystem.util.LocationFactory;
+import eu.mcone.coresystem.bukkit.util.LocationFactory;
 import eu.mcone.knockit.KnockIT;
 import eu.mcone.knockit.util.Item;
 import org.bukkit.Bukkit;

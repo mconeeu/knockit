@@ -6,9 +6,9 @@
 package eu.mcone.knockit;
 
 import eu.mcone.coresystem.bukkit.CoreSystem;
-import eu.mcone.coresystem.bukkit.command.HoloCMD;
 import eu.mcone.coresystem.bukkit.hologram.HologramManager;
 import eu.mcone.coresystem.bukkit.player.CorePlayer;
+import eu.mcone.coresystem.bukkit.util.BuildSystem;
 import eu.mcone.coresystem.lib.mysql.MySQL_Config;
 import eu.mcone.gameapi.api.StateAPI;
 import eu.mcone.knockit.command.*;
@@ -27,7 +27,7 @@ public class KnockIT extends JavaPlugin {
 
     private static KnockIT instance;
     public static MySQL_Config config;
-    private HologramManager holo;
+    private HologramManager hologramManager;
 
     private static String MainPrefix = "§8[§2KnockIt§8] ";
 
@@ -47,7 +47,10 @@ public class KnockIT extends JavaPlugin {
         registerMySQLConfig();
 
         Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aHologram-Manager wird gestartet");
-        holo = new HologramManager(CoreSystem.mysql1, "KnockIt");
+        hologramManager = new HologramManager(CoreSystem.mysql1, "KnockIt");
+
+        Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aBuild-System witd initiiert");
+        new BuildSystem(false, BuildSystem.BuildEvent.BLOCK_BREAK, BuildSystem.BuildEvent.BLOCK_PLACE);
 
         Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aEvents und Befehle werden registriert...");
         registerCommands();
@@ -57,7 +60,7 @@ public class KnockIT extends JavaPlugin {
         StateAPI.setState(StateAPI.State.WAITING);
 
         for (CorePlayer p : CoreSystem.getOnlineCorePlayers()) {
-            p.getScoreboard().setNewObjective(new Objective(p));
+            p.getScoreboard().setNewObjective(new Objective());
             p.bukkit().getInventory().clear();
             Item.setItems(p.bukkit());
         }
@@ -70,11 +73,9 @@ public class KnockIT extends JavaPlugin {
     private void registerCommands() {
         getCommand("angel").setExecutor(new AngelCMD());
         getCommand("setspawn").setExecutor(new SetspawnCMD());
-        getCommand("holo").setExecutor(new HoloCMD(holo));
     }
 
     private void registerEvents() {
-        getPluginManager().registerEvents(new BlockBreak(), this);
         getPluginManager().registerEvents(new BlockPlace(), this);
         getPluginManager().registerEvents(new EntityDamage(), this);
         getPluginManager().registerEvents(new EntityDamageByEntity(), this);
@@ -117,7 +118,8 @@ public class KnockIT extends JavaPlugin {
         return KnockIT.instance;
     }
 
-    public HologramManager getHolo() {
-        return holo;
+    public HologramManager getHologramManager() {
+        return hologramManager;
     }
+
 }

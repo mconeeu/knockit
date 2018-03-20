@@ -15,7 +15,6 @@ public class PlayerInteract implements Listener {
     @EventHandler
     public void on(PlayerInteractEvent e) {
         Player p = e.getPlayer();
-
     }
 
 }

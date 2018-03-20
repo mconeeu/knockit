@@ -41,7 +41,7 @@ public class PlayerJoin implements Listener {
             p.sendMessage(KnockIT.config.getConfigValue("System-Prefix") + "§4Der Spawn wurde noch nicht gesetzt!");
         }
 
-        cp.getScoreboard().setNewObjective(new Objective(cp));
+        cp.getScoreboard().setNewObjective(new Objective());
     }
 
 }

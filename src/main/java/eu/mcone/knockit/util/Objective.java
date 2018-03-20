@@ -16,8 +16,8 @@ import static eu.mcone.coresystem.bukkit.CoreSystem.statsSkypvp;
 
 public class Objective extends eu.mcone.coresystem.bukkit.scoreboard.Objective {
 
-    public Objective(CorePlayer p) {
-        super(p, DisplaySlot.SIDEBAR, "Main", "KnockIT");
+    public Objective() {
+        super(DisplaySlot.SIDEBAR, "Main", "KnockIT");
     }
 
     @Override
