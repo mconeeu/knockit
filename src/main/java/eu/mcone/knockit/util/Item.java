@@ -5,7 +5,7 @@
 
 package eu.mcone.knockit.util;
 
-import eu.mcone.coresystem.bukkit.util.ItemFactory;
+import eu.mcone.coresystem.bukkit.util.ItemBuilder;
 import eu.mcone.knockit.KnockIT;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -15,9 +15,9 @@ import org.bukkit.inventory.ItemStack;
 
 public enum Item {
 
-    KNOCKBACK_STICK(0, ItemFactory.createEnchantedItem(Material.STICK, Enchantment.KNOCKBACK, 1, 0, 1, "§8» §5§lKnockback-Stick", true), null),
-    FISHING_ROD(1, ItemFactory.createItem(Material.FISHING_ROD, 0, 1, "§8» §f§lEnterhaken", true), "Item-Angel"),
-    MLG_BLOCK(8, ItemFactory.createItem(Material.QUARTZ_BLOCK, 0, 3, "§8» §6§lMLG-Block", false), "Item-MLG");
+    KNOCKBACK_STICK(0, new ItemBuilder(Material.STICK, 1, 0).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 1).create(), null),
+    FISHING_ROD(1, new ItemBuilder(Material.FISHING_ROD, 1, 0).displayName("§8» §f§lEnterhaken").create(), "Item-Angel"),
+    MLG_BLOCK(8, new ItemBuilder(Material.QUARTZ_BLOCK, 3, 0).displayName("§8» §6§lMLG-Block").create(), "Item-MLG");
 
     private int slot;
     private ItemStack item;

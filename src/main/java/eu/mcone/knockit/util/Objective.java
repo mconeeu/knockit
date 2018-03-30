@@ -5,16 +5,15 @@
 
 package eu.mcone.knockit.util;
 
+import eu.mcone.coresystem.bukkit.CoreSystem;
 import eu.mcone.coresystem.bukkit.api.CoinsAPI;
-import eu.mcone.coresystem.bukkit.player.CorePlayer;
+import eu.mcone.coresystem.bukkit.scoreboard.CoreObjective;
+import eu.mcone.coresystem.lib.gamemode.Gamemode;
 import eu.mcone.knockit.KnockIT;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Team;
 
-import static eu.mcone.coresystem.bukkit.CoreSystem.statsKnockit;
-import static eu.mcone.coresystem.bukkit.CoreSystem.statsSkypvp;
-
-public class Objective extends eu.mcone.coresystem.bukkit.scoreboard.Objective {
+public class Objective extends CoreObjective {
 
     public Objective() {
         super(DisplaySlot.SIDEBAR, "Main", "KnockIT");
@@ -30,11 +29,11 @@ public class Objective extends eu.mcone.coresystem.bukkit.scoreboard.Objective {
 
         Team kills = scoreboard.registerNewTeam("kills");
         kills.addEntry("§1");
-        kills.setPrefix(KnockIT.config.getConfigValue("ScoreBoard-3") + statsKnockit.getKills(player.getUuid()));
+        kills.setPrefix(KnockIT.config.getConfigValue("ScoreBoard-3") + CoreSystem.getInstance().getStatsAPI(Gamemode.KNOCKIT).getKills(player.getUuid()));
 
         Team deaths = scoreboard.registerNewTeam("deaths");
         deaths.addEntry("§3");
-        deaths.setPrefix(KnockIT.config.getConfigValue("ScoreBoard-5") + statsKnockit.getDeaths(player.getUuid()));
+        deaths.setPrefix(KnockIT.config.getConfigValue("ScoreBoard-5") + CoreSystem.getInstance().getStatsAPI(Gamemode.KNOCKIT).getDeaths(player.getUuid()));
 
         Team coins = scoreboard.registerNewTeam("coins");
         coins.addEntry("§5");
@@ -59,8 +58,8 @@ public class Objective extends eu.mcone.coresystem.bukkit.scoreboard.Objective {
     public void reload() {
         objective.setDisplayName(KnockIT.config.getLiveConfigValue("ScoreBoard-1"));
 
-        scoreboard.getTeam("kills").setPrefix(KnockIT.config.getConfigValue("ScoreBoard-3") + statsSkypvp.getKills(player.getUuid()));
-        scoreboard.getTeam("deaths").setPrefix(KnockIT.config.getConfigValue("ScoreBoard-5") + statsSkypvp.getDeaths(player.getUuid()));
+        scoreboard.getTeam("kills").setPrefix(KnockIT.config.getConfigValue("ScoreBoard-3") + CoreSystem.getInstance().getStatsAPI(Gamemode.KNOCKIT).getKills(player.getUuid()));
+        scoreboard.getTeam("deaths").setPrefix(KnockIT.config.getConfigValue("ScoreBoard-5") + CoreSystem.getInstance().getStatsAPI(Gamemode.KNOCKIT).getDeaths(player.getUuid()));
         scoreboard.getTeam("coins").setPrefix(KnockIT.config.getConfigValue("ScoreBoard-7") + CoinsAPI.getCoins(player.getUuid()));
 
         player.bukkit().setScoreboard(scoreboard);

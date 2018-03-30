@@ -5,7 +5,9 @@
 
 package eu.mcone.knockit.listener;
 
+import eu.mcone.coresystem.bukkit.CoreSystem;
 import eu.mcone.coresystem.bukkit.api.CoinsAPI;
+import eu.mcone.coresystem.lib.gamemode.Gamemode;
 import eu.mcone.gameapi.GameAPI;
 import eu.mcone.knockit.KnockIT;
 import org.bukkit.Sound;
@@ -13,8 +15,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
-
-import static eu.mcone.coresystem.bukkit.CoreSystem.statsSkypvp;
 
 public class PlayerDeath implements Listener {
 
@@ -32,12 +32,12 @@ public class PlayerDeath implements Listener {
         if (k != null) {
             k.sendMessage(KnockIT.config.getConfigValue("System-Prefix") + "§7Du hast " + p.getDisplayName() + " §7getötet §8[§a+3 Coins§8]");
             k.sendMessage(KnockIT.config.getConfigValue("System-Prefix") + "§7Du hast §f1 §7Coin erhalten");
-            statsSkypvp.addKills(k.getUniqueId(), 1);
+            CoreSystem.getInstance().getStatsAPI(Gamemode.KNOCKIT).addKills(k.getUniqueId(), 1);
             CoinsAPI.addCoins(k.getUniqueId(), 3);
             KnockIT.playSound(k.getLocation(), Sound.LEVEL_UP);
 
             p.sendMessage(KnockIT.config.getConfigValue("System-Prefix") + "§7Du wurdest von §c" + k.getDisplayName() + " §7getötet §8[§c-1 Coins§8]");
-            statsSkypvp.addDeaths(p.getUniqueId(), 1);
+            CoreSystem.getInstance().getStatsAPI(Gamemode.KNOCKIT).addDeaths(p.getUniqueId(), 1);
 
             int coins2 = CoinsAPI.getCoins(p.getUniqueId()) - 1;
             if (coins2 > -1) {
