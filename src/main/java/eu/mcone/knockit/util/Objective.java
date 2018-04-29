@@ -1,14 +1,13 @@
 /*
- * Copyright (c) 2017 - 2018 Dominik L., Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * Copyright (c) 2017 - 2018 Dominik Lippl, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
  * You are not allowed to decompile the code
  */
 
 package eu.mcone.knockit.util;
 
-import eu.mcone.coresystem.bukkit.CoreSystem;
-import eu.mcone.coresystem.bukkit.api.CoinsAPI;
-import eu.mcone.coresystem.bukkit.scoreboard.CoreObjective;
-import eu.mcone.coresystem.lib.gamemode.Gamemode;
+import eu.mcone.coresystem.api.bukkit.CoreSystem;
+import eu.mcone.coresystem.api.bukkit.scoreboard.CoreObjective;
+import eu.mcone.coresystem.api.core.gamemode.Gamemode;
 import eu.mcone.knockit.KnockIT;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Team;
@@ -37,7 +36,7 @@ public class Objective extends CoreObjective {
 
         Team coins = scoreboard.registerNewTeam("coins");
         coins.addEntry("§5");
-        coins.setPrefix(KnockIT.config.getConfigValue("ScoreBoard-7")+ CoinsAPI.getCoins(player.getUuid()));
+        coins.setPrefix(KnockIT.config.getConfigValue("ScoreBoard-7")+ CoreSystem.getInstance().getCoinsAPI().getCoins(player.getUuid()));
 
         objective.getScore("§0").setScore(10);
         objective.getScore(KnockIT.config.getConfigValue("ScoreBoard-2")).setScore(9);
@@ -60,7 +59,7 @@ public class Objective extends CoreObjective {
 
         scoreboard.getTeam("kills").setPrefix(KnockIT.config.getConfigValue("ScoreBoard-3") + CoreSystem.getInstance().getStatsAPI(Gamemode.KNOCKIT).getKills(player.getUuid()));
         scoreboard.getTeam("deaths").setPrefix(KnockIT.config.getConfigValue("ScoreBoard-5") + CoreSystem.getInstance().getStatsAPI(Gamemode.KNOCKIT).getDeaths(player.getUuid()));
-        scoreboard.getTeam("coins").setPrefix(KnockIT.config.getConfigValue("ScoreBoard-7") + CoinsAPI.getCoins(player.getUuid()));
+        scoreboard.getTeam("coins").setPrefix(KnockIT.config.getConfigValue("ScoreBoard-7") + CoreSystem.getInstance().getCoinsAPI().getCoins(player.getUuid()));
 
         player.bukkit().setScoreboard(scoreboard);
     }

@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2017 - 2018 Dominik L., Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * Copyright (c) 2017 - 2018 Dominik Lippl, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
  * You are not allowed to decompile the code
  */
 
 package eu.mcone.knockit.util;
 
-import eu.mcone.coresystem.bukkit.util.ItemBuilder;
+import eu.mcone.coresystem.api.bukkit.util.ItemBuilder;
 import eu.mcone.knockit.KnockIT;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;

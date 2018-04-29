@@ -1,20 +1,21 @@
 /*
- * Copyright (c) 2017 - 2018 Dominik L., Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * Copyright (c) 2017 - 2018 Dominik Lippl, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
  * You are not allowed to decompile the code
  */
 
 package eu.mcone.knockit;
 
-import eu.mcone.coresystem.bukkit.CoreSystem;
-import eu.mcone.coresystem.bukkit.hologram.HologramManager;
-import eu.mcone.coresystem.bukkit.player.CorePlayer;
-import eu.mcone.coresystem.bukkit.util.BuildSystem;
-import eu.mcone.coresystem.lib.mysql.MySQL_Config;
-import eu.mcone.gameapi.api.StateAPI;
-import eu.mcone.knockit.command.*;
+import eu.mcone.coresystem.api.bukkit.CoreSystem;
+import eu.mcone.coresystem.api.bukkit.hologram.HologramManager;
+import eu.mcone.coresystem.api.bukkit.player.BukkitCorePlayer;
+import eu.mcone.coresystem.api.bukkit.world.BuildSystem;
+import eu.mcone.coresystem.api.bukkit.world.LocationManager;
+import eu.mcone.coresystem.api.core.mysql.MySQL_Config;
+import eu.mcone.knockit.command.AngelCMD;
 import eu.mcone.knockit.listener.*;
 import eu.mcone.knockit.util.Item;
 import eu.mcone.knockit.util.Objective;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
@@ -25,9 +26,14 @@ import static org.bukkit.Bukkit.getPluginManager;
 
 public class KnockIT extends JavaPlugin {
 
+    @Getter
     private static KnockIT instance;
     public static MySQL_Config config;
+
+    @Getter
     private HologramManager hologramManager;
+    @Getter
+    private LocationManager locationManager;
 
     private static String MainPrefix = "§8[§2KnockIt§8] ";
 
@@ -43,23 +49,25 @@ public class KnockIT extends JavaPlugin {
         instance = this;
 
         Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aMySQL Config wird initiiert...");
-        config = new MySQL_Config(CoreSystem.mysql3, "KnockIt", 1000);
+        config = new MySQL_Config(CoreSystem.getInstance().getMySQL(3), "KnockIt", 1000);
         registerMySQLConfig();
 
         Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aHologram-Manager wird gestartet");
-        hologramManager = new HologramManager(CoreSystem.mysql1, "KnockIt");
+        hologramManager = CoreSystem.getInstance().inititaliseHologramManager("KnockIt");
 
         Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aBuild-System witd initiiert");
-        new BuildSystem(false, BuildSystem.BuildEvent.BLOCK_BREAK, BuildSystem.BuildEvent.BLOCK_PLACE);
+        CoreSystem.getInstance().initialiseBuildSystem(false, BuildSystem.BuildEvent.BLOCK_BREAK, BuildSystem.BuildEvent.BLOCK_PLACE);
+
+        Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aLocationManager witd initiiert");
+        locationManager = CoreSystem.getInstance().initialiseLocationManager("Knockit").preventSpawnCommand().downloadLocations();
 
         Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aEvents und Befehle werden registriert...");
         registerCommands();
         registerEvents();
 
         Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aVersion §f" + this.getDescription().getVersion() + "§a wurde aktiviert...");
-        StateAPI.setState(StateAPI.State.WAITING);
 
-        for (CorePlayer p : CoreSystem.getOnlineCorePlayers()) {
+        for (BukkitCorePlayer p : CoreSystem.getInstance().getOnlineCorePlayers()) {
             p.getScoreboard().setNewObjective(new Objective());
             p.bukkit().getInventory().clear();
             Item.setItems(p.bukkit());
@@ -72,7 +80,6 @@ public class KnockIT extends JavaPlugin {
 
     private void registerCommands() {
         getCommand("angel").setExecutor(new AngelCMD());
-        getCommand("setspawn").setExecutor(new SetspawnCMD());
     }
 
     private void registerEvents() {
@@ -112,14 +119,6 @@ public class KnockIT extends JavaPlugin {
         config.insertMySQLConfig("Item-Angel", true);
 
         config.store();
-    }
-
-    public static KnockIT getInstance() {
-        return KnockIT.instance;
-    }
-
-    public HologramManager getHologramManager() {
-        return hologramManager;
     }
 
 }
