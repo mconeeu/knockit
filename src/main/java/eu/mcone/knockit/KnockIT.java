@@ -10,17 +10,15 @@ import eu.mcone.coresystem.api.bukkit.hologram.HologramManager;
 import eu.mcone.coresystem.api.bukkit.player.BukkitCorePlayer;
 import eu.mcone.coresystem.api.bukkit.world.BuildSystem;
 import eu.mcone.coresystem.api.bukkit.world.LocationManager;
-import eu.mcone.coresystem.api.core.mysql.MySQL_Config;
-import eu.mcone.knockit.command.AngelCMD;
+import eu.mcone.coresystem.api.core.translation.TranslationField;
 import eu.mcone.knockit.listener.*;
 import eu.mcone.knockit.util.Item;
 import eu.mcone.knockit.util.Objective;
 import lombok.Getter;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Sound;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.HashMap;
 
 import static org.bukkit.Bukkit.getPluginManager;
 
@@ -28,29 +26,15 @@ public class KnockIT extends JavaPlugin {
 
     @Getter
     private static KnockIT instance;
-    public static MySQL_Config config;
-
+    private static String MainPrefix = "§8[§2KnockIt§8] ";
+    
     @Getter
     private HologramManager hologramManager;
     @Getter
     private LocationManager locationManager;
 
-    private static String MainPrefix = "§8[§2KnockIt§8] ";
-
-    public static void playSound(Location loc, Sound s) {
-        for (Player all : Bukkit.getOnlinePlayers()) {
-            if (all.getLocation().distance(loc) <= 0.0D) {
-                all.playSound(loc, s, 0.3F, 1.0F);
-            }
-        }
-    }
-
     public void onEnable() {
         instance = this;
-
-        Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aMySQL Config wird initiiert...");
-        config = new MySQL_Config(CoreSystem.getInstance().getMySQL(3), "KnockIt", 1000);
-        registerMySQLConfig();
 
         Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aHologram-Manager wird gestartet");
         hologramManager = CoreSystem.getInstance().inititaliseHologramManager("KnockIt");
@@ -61,8 +45,7 @@ public class KnockIT extends JavaPlugin {
         Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aLocationManager witd initiiert");
         locationManager = CoreSystem.getInstance().initialiseLocationManager("Knockit").preventSpawnCommand().downloadLocations();
 
-        Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aEvents und Befehle werden registriert...");
-        registerCommands();
+        Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aEvents werden registriert...");
         registerEvents();
 
         Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aVersion §f" + this.getDescription().getVersion() + "§a wurde aktiviert...");
@@ -78,16 +61,11 @@ public class KnockIT extends JavaPlugin {
         Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§cPlugin wurde deaktiviert!");
     }
 
-    private void registerCommands() {
-        getCommand("angel").setExecutor(new AngelCMD());
-    }
-
     private void registerEvents() {
         getPluginManager().registerEvents(new BlockPlace(), this);
         getPluginManager().registerEvents(new EntityDamage(), this);
         getPluginManager().registerEvents(new EntityDamageByEntity(), this);
         getPluginManager().registerEvents(new FoodLevelChange(), this);
-        getPluginManager().registerEvents(new InventoryClick(), this);
         getPluginManager().registerEvents(new PlayerDeath(), this);
         getPluginManager().registerEvents(new PlayerDropItem(), this);
         getPluginManager().registerEvents(new PlayerFish(), this);
@@ -101,24 +79,19 @@ public class KnockIT extends JavaPlugin {
         getPluginManager().registerEvents(new WeatherChange(), this);
     }
 
-    private void registerMySQLConfig() {
-        config.createTable();
-
-        config.insertMySQLConfig("System-Prefix", "§8[§7§l!§8] §2KnockIt §8» §7");
-        config.insertMySQLConfig("System-No-Perm", "&4Du hast keine Berechtigung für diesen Befehl");
-
-        config.insertMySQLConfig("ScoreBoard-1", "&7&l⚔ &3§l§nKnockIT");
-        config.insertMySQLConfig("ScoreBoard-2", "&8» &7Kills:");
-        config.insertMySQLConfig("ScoreBoard-4", "§3");
-        config.insertMySQLConfig("ScoreBoard-5", "&8» &7Tode:");
-        config.insertMySQLConfig("ScoreBoard-6", "§c");
-        config.insertMySQLConfig("ScoreBoard-7", "&8» &7Coins:");
-        config.insertMySQLConfig("ScoreBoard-8", "&f§lMCONE.EU");
-
-        config.insertMySQLConfig("Item-MLG", true);
-        config.insertMySQLConfig("Item-Angel", true);
-
-        config.store();
+    private void registerTranslations() {
+        CoreSystem.getInstance().getTranslationManager().insertIfNotExists(
+                new HashMap<String, TranslationField>(){{
+                    put("knockit.prefix", new TranslationField("§8[§7§l!§8] §2KnockIt §8» §7"));
+                    put("knockit.scoreboard.1", new TranslationField("&7&l⚔ &3§l§nKnockIT"));
+                    put("knockit.scoreboard.2", new TranslationField("&8» &7Kills:"));
+                    put("knockit.scoreboard.4", new TranslationField("§3"));
+                    put("knockit.scoreboard.5", new TranslationField("&8» &7Tode:"));
+                    put("knockit.scoreboard.6", new TranslationField("§c"));
+                    put("knockit.scoreboard.7", new TranslationField("&8» &7Coins:"));
+                    put("knockit.scoreboard.8", new TranslationField("&f§lMCONE.EU"));
+                }}
+        );
     }
 
 }

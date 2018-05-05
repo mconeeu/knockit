@@ -6,7 +6,6 @@
 package eu.mcone.knockit.util;
 
 import eu.mcone.coresystem.api.bukkit.util.ItemBuilder;
-import eu.mcone.knockit.KnockIT;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -33,9 +32,7 @@ public enum Item {
         Inventory i = p.getInventory();
 
         for (Item item : values()) {
-            if (item.getConfigValue() == null || KnockIT.config.getBooleanConfigValue(item.getConfigValue())) {
-                i.setItem(item.getSlot(), item.getItem());
-            }
+            i.setItem(item.getSlot(), item.getItem());
         }
     }
 

@@ -23,7 +23,7 @@ public class PlayerJoin implements Listener {
         Player p = e.getPlayer();
         BukkitCorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
 
-        e.setJoinMessage(KnockIT.config.getConfigValue("System-Prefix") + "§7§ " + p.getDisplayName() + " §7ist dem Spiel beigetreten");
+        e.setJoinMessage(CoreSystem.getInstance().getTranslationManager().get("skypvp.prefix") + "§7§ " + p.getDisplayName() + " §7ist dem Spiel beigetreten");
 
         p.getInventory().clear();
         p.setHealth(20.0D);

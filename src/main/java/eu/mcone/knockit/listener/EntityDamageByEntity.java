@@ -5,7 +5,7 @@
 
 package eu.mcone.knockit.listener;
 
-import eu.mcone.knockit.KnockIT;
+import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -25,7 +25,7 @@ public class EntityDamageByEntity implements Listener {
 
             if (p.getLocation().getY() > 80) {
                 e.setCancelled(true);
-                byEnt.sendMessage(KnockIT.config.getConfigValue("System-Prefix") + "§4Du darfst am Spawn nicht kämpfen!");
+                byEnt.sendMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§4Du darfst am Spawn nicht kämpfen!");
             } else {
                 e.setDamage(0.0D);
             }
