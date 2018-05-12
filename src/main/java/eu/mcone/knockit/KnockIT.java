@@ -43,7 +43,7 @@ public class KnockIT extends JavaPlugin {
         CoreSystem.getInstance().initialiseBuildSystem(false, BuildSystem.BuildEvent.BLOCK_BREAK, BuildSystem.BuildEvent.BLOCK_PLACE);
 
         Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aLocationManager witd initiiert");
-        locationManager = CoreSystem.getInstance().initialiseLocationManager("Knockit").preventSpawnCommand().downloadLocations();
+        locationManager = CoreSystem.getInstance().initialiseLocationManager("Knockit").preventSpawnCommand(true).downloadLocations();
 
         Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aEvents werden registriert...");
         registerEvents();
