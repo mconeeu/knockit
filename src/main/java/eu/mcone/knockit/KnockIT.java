@@ -5,6 +5,7 @@
 
 package eu.mcone.knockit;
 
+import eu.mcone.coresystem.api.bukkit.CorePlugin;
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.hologram.HologramManager;
 import eu.mcone.coresystem.api.bukkit.player.BukkitCorePlayer;
@@ -16,16 +17,18 @@ import eu.mcone.knockit.util.Item;
 import eu.mcone.knockit.util.Objective;
 import lombok.Getter;
 import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.ChatColor;
 
 import java.util.HashMap;
 
-public class KnockIT extends JavaPlugin {
+public class KnockIT extends CorePlugin {
+
+    public KnockIT() {
+        super("KnockIT", ChatColor.DARK_GREEN, "knockit.prefix");
+    }
 
     @Getter
     private static KnockIT instance;
-    private static String MainPrefix = "§8[§2KnockIt§8] ";
-    
     @Getter
     private HologramManager hologramManager;
     @Getter
@@ -33,20 +36,21 @@ public class KnockIT extends JavaPlugin {
 
     public void onEnable() {
         instance = this;
+        registerTranslations();
 
-        Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aHologram-Manager wird gestartet");
+        sendConsoleMessage("§aHologram-Manager wird gestartet");
         hologramManager = CoreSystem.getInstance().inititaliseHologramManager("KnockIt");
 
-        Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aBuild-System witd initiiert");
+        sendConsoleMessage("§aBuild-System witd initiiert");
         CoreSystem.getInstance().initialiseBuildSystem(false, BuildSystem.BuildEvent.BLOCK_BREAK, BuildSystem.BuildEvent.BLOCK_PLACE);
 
-        Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aLocationManager witd initiiert");
+        sendConsoleMessage("§aLocationManager witd initiiert");
         locationManager = CoreSystem.getInstance().initialiseLocationManager("Knockit").preventSpawnCommand(true).downloadLocations();
 
-        Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aEvents werden registriert...");
+        sendConsoleMessage("§aEvents werden registriert...");
         registerEvents();
 
-        Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§aVersion §f" + this.getDescription().getVersion() + "§a wurde aktiviert...");
+        sendConsoleMessage("§aVersion §f" + this.getDescription().getVersion() + "§a wurde aktiviert...");
 
         for (BukkitCorePlayer p : CoreSystem.getInstance().getOnlineCorePlayers()) {
             p.getScoreboard().setNewObjective(new Objective());
@@ -56,7 +60,7 @@ public class KnockIT extends JavaPlugin {
     }
 
     public void onDisable() {
-        Bukkit.getServer().getConsoleSender().sendMessage(MainPrefix + "§cPlugin wurde deaktiviert!");
+        sendConsoleMessage("§cPlugin wurde deaktiviert!");
     }
 
     private void registerEvents() {
