@@ -20,8 +20,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
 
-import static org.bukkit.Bukkit.getPluginManager;
-
 public class KnockIT extends JavaPlugin {
 
     @Getter
@@ -62,21 +60,21 @@ public class KnockIT extends JavaPlugin {
     }
 
     private void registerEvents() {
-        getPluginManager().registerEvents(new BlockPlace(), this);
-        getPluginManager().registerEvents(new EntityDamage(), this);
-        getPluginManager().registerEvents(new EntityDamageByEntity(), this);
-        getPluginManager().registerEvents(new FoodLevelChange(), this);
-        getPluginManager().registerEvents(new PlayerDeath(), this);
-        getPluginManager().registerEvents(new PlayerDropItem(), this);
-        getPluginManager().registerEvents(new PlayerFish(), this);
-        getPluginManager().registerEvents(new PlayerInteract(), this);
-        getPluginManager().registerEvents(new PlayerJoin(), this);
-        getPluginManager().registerEvents(new PlayerLevelChange(), this);
-        getPluginManager().registerEvents(new PlayerMove(), this);
-        getPluginManager().registerEvents(new PlayerQuit(), this);
-        getPluginManager().registerEvents(new PlayerRespawn(), this);
-        getPluginManager().registerEvents(new StatsChange(), this);
-        getPluginManager().registerEvents(new WeatherChange(), this);
+        Bukkit.getPluginManager().registerEvents(new BlockPlace(), this);
+        Bukkit.getPluginManager().registerEvents(new EntityDamage(), this);
+        Bukkit.getPluginManager().registerEvents(new EntityDamageByEntity(), this);
+        Bukkit.getPluginManager().registerEvents(new FoodLevelChange(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerDeath(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerDropItem(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerFish(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerInteract(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerLevelChange(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerMove(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerQuit(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerRespawn(), this);
+        Bukkit.getPluginManager().registerEvents(new StatsChange(), this);
+        Bukkit.getPluginManager().registerEvents(new WeatherChange(), this);
     }
 
     private void registerTranslations() {

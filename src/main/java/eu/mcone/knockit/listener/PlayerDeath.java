@@ -7,7 +7,7 @@ package eu.mcone.knockit.listener;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.core.gamemode.Gamemode;
-import eu.mcone.gameapi.api.GameAPI;
+import eu.mcone.gamesystem.api.GameSystemAPI;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,7 +19,7 @@ public class PlayerDeath implements Listener {
     @EventHandler
     public void on(PlayerDeathEvent e) {
         final Player p = e.getEntity();
-        final Player k = p.getKiller() != null ? p.getKiller() : GameAPI.getInstance().getDamageLogger().getKiller(p);
+        final Player k = p.getKiller() != null ? p.getKiller() : GameSystemAPI.getInstance().getDamageLogger().getKiller(p);
 
         e.setDeathMessage(null);
         e.setKeepInventory(false);
@@ -47,7 +47,7 @@ public class PlayerDeath implements Listener {
             k.setLevel(k.getLevel() + 1);
         } else {
             p.sendMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7Du bist gestorben");
-            k.getWorld().playSound(p.getLocation(), Sound.ANVIL_LAND, 1, 1);
+            p.getWorld().playSound(p.getLocation(), Sound.ANVIL_LAND, 1, 1);
         }
     }
 }

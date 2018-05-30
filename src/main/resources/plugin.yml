@@ -2,7 +2,7 @@ name: MCONE-KnockIt
 version: 2.0.0-SNAPSHOT
 authors: [Domink Lippl, Rufus Maiwald]
 main: eu.mcone.knockit.KnockIT
-depend: [MCONE-BukkitCoreSystem,MCONE-Gameapi]
+depend: [MCONE-BukkitCoreSystem,MCONE-GameSystem]
 
 commands:
   angel:
