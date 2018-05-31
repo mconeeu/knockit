@@ -6,6 +6,7 @@
 package eu.mcone.knockit.listener;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
+import eu.mcone.knockit.KnockIT;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -22,7 +23,7 @@ public class PlayerLevelChange implements Listener {
         if (e.getNewLevel() == 3) {
             for (Player all : Bukkit.getOnlinePlayers()) {
                 all.sendTitle("§a3er Killstreak", "§fvon " + p.getDisplayName());
-                p.sendMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7Du hast §a3 §7Coins erhalten");
+                KnockIT.getInstance().getMessager().send(p, "§7Du hast §a3 §7Coins erhalten");
                 CoreSystem.getInstance().getCoinsAPI().addCoins(p.getUniqueId(), 3);
                 all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
             }
@@ -30,7 +31,7 @@ public class PlayerLevelChange implements Listener {
         } else if (e.getNewLevel() == 6) {
             for (Player all : Bukkit.getOnlinePlayers()) {
                 all.sendTitle("§66er Killstreak", "§fvon " + p.getDisplayName());
-                p.sendMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7Du hast §a3 §7Coins erhalten");
+                KnockIT.getInstance().getMessager().send(p, "§7Du hast §a3 §7Coins erhalten");
                 CoreSystem.getInstance().getCoinsAPI().addCoins(p.getUniqueId(), 3);
                 all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
             }
@@ -38,7 +39,7 @@ public class PlayerLevelChange implements Listener {
         } else if (e.getNewLevel() == 9) {
             for (Player all : Bukkit.getOnlinePlayers()) {
                 all.sendTitle("§c9er Killstreak", "§fvon " + p.getDisplayName());
-                p.sendMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7Du hast §a3 §7Coins erhalten");
+                KnockIT.getInstance().getMessager().send(p, "§7Du hast §a3 §7Coins erhalten");
                 CoreSystem.getInstance().getCoinsAPI().addCoins(p.getUniqueId(), 3);
                 all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
             }
@@ -46,7 +47,7 @@ public class PlayerLevelChange implements Listener {
         } else if (e.getNewLevel() == 12) {
             for (Player all : Bukkit.getOnlinePlayers()) {
                 all.sendTitle("§412er Killstreak", "§fvon " + p.getDisplayName());
-                p.sendMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7Du hast §a3 §7Coins erhalten");
+                KnockIT.getInstance().getMessager().send(p, "§7Du hast §a3 §7Coins erhalten");
                 ;
                 CoreSystem.getInstance().getCoinsAPI().addCoins(p.getUniqueId(), 3);
                 all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
@@ -55,7 +56,7 @@ public class PlayerLevelChange implements Listener {
         } else if (e.getNewLevel() == 15) {
             for (Player all : Bukkit.getOnlinePlayers()) {
                 all.sendTitle("§415er Killstreak", "§fvon " + p.getDisplayName());
-                p.sendMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7Du hast §a3 §7Coins erhalten");
+                KnockIT.getInstance().getMessager().send(p, "§7Du hast §a3 §7Coins erhalten");
                 CoreSystem.getInstance().getCoinsAPI().addCoins(p.getUniqueId(), 3);
                 all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
             }
@@ -65,7 +66,7 @@ public class PlayerLevelChange implements Listener {
             for (Player all : Bukkit.getOnlinePlayers()) {
                 all.sendTitle("§518er Killstreak", "§fvon " + p.getDisplayName());
                 all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
-                p.sendMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7Du hast §a6 §7Coins erhalten");
+                KnockIT.getInstance().getMessager().send(p, "§7Du hast §a6 §7Coins erhalten");
                 CoreSystem.getInstance().getCoinsAPI().addCoins(p.getUniqueId(), 6);
             }
             Bukkit.broadcastMessage(
@@ -74,7 +75,7 @@ public class PlayerLevelChange implements Listener {
             for (Player all : Bukkit.getOnlinePlayers()) {
                 all.sendTitle("§521er Killstreak", "§fvon " + p.getDisplayName());
                 all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
-                p.sendMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7Du hast §a6 §7Coins erhalten");
+                KnockIT.getInstance().getMessager().send(p, "§7Du hast §a6 §7Coins erhalten");
                 CoreSystem.getInstance().getCoinsAPI().addCoins(p.getUniqueId(), 6);
             }
             Bukkit.broadcastMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7Der Spieler §e" + p.getDisplayName() + " §7hat eine §521er Killstreak!");
@@ -82,7 +83,7 @@ public class PlayerLevelChange implements Listener {
             for (Player all : Bukkit.getOnlinePlayers()) {
                 all.sendTitle("§124er Killstreak", "§fvon " + p.getDisplayName());
                 all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
-                p.sendMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7Du hast §a6 §7Coins erhalten");
+                KnockIT.getInstance().getMessager().send(p, "§7Du hast §a6 §7Coins erhalten");
                 CoreSystem.getInstance().getCoinsAPI().addCoins(p.getUniqueId(), 6);
             }
             Bukkit.broadcastMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7Der Spieler §e" + p.getDisplayName() + " §7hat eine §124er Killstreak!");
@@ -90,14 +91,14 @@ public class PlayerLevelChange implements Listener {
             for (Player all : Bukkit.getOnlinePlayers()) {
                 all.sendTitle("§b27er Killstreak", "§fvon " + p.getDisplayName());
                 all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
-                p.sendMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7Du hast §a6 §7Coins erhalten");
+                KnockIT.getInstance().getMessager().send(p, "§7Du hast §a6 §7Coins erhalten");
                 CoreSystem.getInstance().getCoinsAPI().addCoins(p.getUniqueId(), 6);
             }
             Bukkit.broadcastMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7Der Spieler §e" + p.getDisplayName() + " §7hat eine §b27er Killstreak!");
         } else if (e.getNewLevel() == 30) {
             for (Player all : Bukkit.getOnlinePlayers()) {
                 all.sendTitle("§030er Killstreak", "§fvon " + p.getDisplayName());
-                p.sendMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7Du hast §a6 §7Coins erhalten");
+                KnockIT.getInstance().getMessager().send(p, "§7Du hast §a6 §7Coins erhalten");
                 all.getLocation().getWorld().playSound(all.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
                 CoreSystem.getInstance().getCoinsAPI().addCoins(p.getUniqueId(), 6);
             }
