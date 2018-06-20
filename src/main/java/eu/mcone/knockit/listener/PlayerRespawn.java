@@ -20,7 +20,7 @@ public class PlayerRespawn implements Listener {
         Player p = e.getPlayer();
         p.setFireTicks(0);
 
-        e.setRespawnLocation(KnockIT.getInstance().getLocationManager().getLocation("spawn"));
+        e.setRespawnLocation(KnockIT.getInstance().getWorld().getLocation("spawn").bukkit());
         Bukkit.getScheduler().scheduleSyncDelayedTask(KnockIT.getInstance(), () -> Item.setItems(p));
     }
 

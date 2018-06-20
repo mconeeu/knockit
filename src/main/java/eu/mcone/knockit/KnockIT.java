@@ -10,7 +10,7 @@ import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.hologram.HologramManager;
 import eu.mcone.coresystem.api.bukkit.player.BukkitCorePlayer;
 import eu.mcone.coresystem.api.bukkit.world.BuildSystem;
-import eu.mcone.coresystem.api.bukkit.world.LocationManager;
+import eu.mcone.coresystem.api.bukkit.world.CoreWorld;
 import eu.mcone.coresystem.api.core.translation.TranslationField;
 import eu.mcone.knockit.listener.*;
 import eu.mcone.knockit.util.Item;
@@ -32,10 +32,11 @@ public class KnockIT extends CorePlugin {
     @Getter
     private HologramManager hologramManager;
     @Getter
-    private LocationManager locationManager;
+    private CoreWorld world;
 
     public void onEnable() {
         instance = this;
+        world = CoreSystem.getInstance().getWorldManager().getWorld("Knockit");
         registerTranslations();
 
         sendConsoleMessage("§aHologram-Manager wird gestartet");
@@ -43,9 +44,6 @@ public class KnockIT extends CorePlugin {
 
         sendConsoleMessage("§aBuild-System witd initiiert");
         CoreSystem.getInstance().initialiseBuildSystem(false, BuildSystem.BuildEvent.BLOCK_BREAK, BuildSystem.BuildEvent.BLOCK_PLACE);
-
-        sendConsoleMessage("§aLocationManager witd initiiert");
-        locationManager = CoreSystem.getInstance().initialiseLocationManager("Knockit").preventSpawnCommand(true).downloadLocations();
 
         sendConsoleMessage("§aEvents werden registriert...");
         registerEvents();

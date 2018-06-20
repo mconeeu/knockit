@@ -31,7 +31,7 @@ public class PlayerJoin implements Listener {
         p.setGameMode(GameMode.SURVIVAL);
 
         Item.setItems(p);
-        KnockIT.getInstance().getLocationManager().teleport(p, "spawn");
+        KnockIT.getInstance().getWorld().teleport(p, "spawn");
 
         cp.getScoreboard().setNewObjective(new Objective());
     }
