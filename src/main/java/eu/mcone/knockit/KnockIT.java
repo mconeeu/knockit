@@ -40,7 +40,7 @@ public class KnockIT extends CorePlugin {
         registerTranslations();
 
         sendConsoleMessage("§aHologram-Manager wird gestartet");
-        hologramManager = CoreSystem.getInstance().inititaliseHologramManager("KnockIt");
+        hologramManager = CoreSystem.getInstance().inititaliseHologramManager(this);
 
         sendConsoleMessage("§aBuild-System witd initiiert");
         CoreSystem.getInstance().initialiseBuildSystem(false, BuildSystem.BuildEvent.BLOCK_BREAK, BuildSystem.BuildEvent.BLOCK_PLACE);
