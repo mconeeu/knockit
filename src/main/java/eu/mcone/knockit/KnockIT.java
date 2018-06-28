@@ -9,8 +9,10 @@ import eu.mcone.coresystem.api.bukkit.CorePlugin;
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.hologram.HologramManager;
 import eu.mcone.coresystem.api.bukkit.player.BukkitCorePlayer;
+import eu.mcone.coresystem.api.bukkit.player.StatsAPI;
 import eu.mcone.coresystem.api.bukkit.world.BuildSystem;
 import eu.mcone.coresystem.api.bukkit.world.CoreWorld;
+import eu.mcone.coresystem.api.core.gamemode.Gamemode;
 import eu.mcone.coresystem.api.core.translation.TranslationField;
 import eu.mcone.knockit.listener.*;
 import eu.mcone.knockit.util.Item;
@@ -30,6 +32,8 @@ public class KnockIT extends CorePlugin {
     @Getter
     private static KnockIT instance;
     @Getter
+    private StatsAPI statsAPI;
+    @Getter
     private HologramManager hologramManager;
     @Getter
     private CoreWorld world;
@@ -38,6 +42,9 @@ public class KnockIT extends CorePlugin {
         instance = this;
         world = CoreSystem.getInstance().getWorldManager().getWorld("Knockit");
         registerTranslations();
+
+        sendConsoleMessage("§aStatsAPI wird initiiert...");
+        statsAPI = CoreSystem.getInstance().getStatsAPI(Gamemode.KNOCKIT);
 
         sendConsoleMessage("§aHologram-Manager wird gestartet");
         hologramManager = CoreSystem.getInstance().inititaliseHologramManager(this);

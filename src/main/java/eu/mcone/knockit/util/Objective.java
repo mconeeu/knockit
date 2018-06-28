@@ -27,11 +27,11 @@ public class Objective extends CoreObjective {
 
         Team kills = scoreboard.registerNewTeam("kills");
         kills.addEntry("§1");
-        kills.setPrefix(CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.3") + CoreSystem.getInstance().getStatsAPI(Gamemode.KNOCKIT).getKills(player.getUuid()));
+        kills.setPrefix(CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.3") + KnockIT.getInstance().getStatsAPI().getKills(player.getUuid()));
 
         Team deaths = scoreboard.registerNewTeam("deaths");
         deaths.addEntry("§3");
-        deaths.setPrefix(CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.5") + CoreSystem.getInstance().getStatsAPI(Gamemode.KNOCKIT).getDeaths(player.getUuid()));
+        deaths.setPrefix(CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.5") + KnockIT.getInstance().getStatsAPI().getDeaths(player.getUuid()));
 
         Team coins = scoreboard.registerNewTeam("coins");
         coins.addEntry("§5");
@@ -56,8 +56,8 @@ public class Objective extends CoreObjective {
     public void reload() {
         objective.setDisplayName(CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.1"));
 
-        scoreboard.getTeam("kills").setPrefix(CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.3") + CoreSystem.getInstance().getStatsAPI(Gamemode.KNOCKIT).getKills(player.getUuid()));
-        scoreboard.getTeam("deaths").setPrefix(CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.5") + CoreSystem.getInstance().getStatsAPI(Gamemode.KNOCKIT).getDeaths(player.getUuid()));
+        scoreboard.getTeam("kills").setPrefix(CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.3") + KnockIT.getInstance().getStatsAPI().getKills(player.getUuid()));
+        scoreboard.getTeam("deaths").setPrefix(CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.5") + KnockIT.getInstance().getStatsAPI().getDeaths(player.getUuid()));
         scoreboard.getTeam("coins").setPrefix(CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.7") + CoreSystem.getInstance().getCoinsAPI().getCoins(player.getUuid()));
 
         player.bukkit().setScoreboard(scoreboard);

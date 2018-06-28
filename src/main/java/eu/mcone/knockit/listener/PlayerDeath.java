@@ -6,7 +6,6 @@
 package eu.mcone.knockit.listener;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
-import eu.mcone.coresystem.api.core.gamemode.Gamemode;
 import eu.mcone.gamesystem.api.GameSystemAPI;
 import eu.mcone.knockit.KnockIT;
 import org.bukkit.Sound;
@@ -32,12 +31,12 @@ public class PlayerDeath implements Listener {
             KnockIT.getInstance().getMessager().send(k, "§7Du hast " + p.getDisplayName() + " §7getötet §8[§a+3 Coins§8]");
             KnockIT.getInstance().getMessager().send(k, "§7Du hast §f1 §7Coin erhalten");
 
-            CoreSystem.getInstance().getStatsAPI(Gamemode.KNOCKIT).addKills(k.getUniqueId(), 1);
+            KnockIT.getInstance().getStatsAPI().addKills(k.getUniqueId(), 1);
             CoreSystem.getInstance().getCoinsAPI().addCoins(k.getUniqueId(), 3);
             k.getWorld().playSound(k.getLocation(), Sound.LEVEL_UP, 1, 1);
 
             KnockIT.getInstance().getMessager().send(p, "§7Du wurdest von §c" + k.getDisplayName() + " §7getötet §8[§c-1 Coins§8]");
-            CoreSystem.getInstance().getStatsAPI(Gamemode.KNOCKIT).addDeaths(p.getUniqueId(), 1);
+            KnockIT.getInstance().getStatsAPI().addDeaths(p.getUniqueId(), 1);
 
             int coins2 = CoreSystem.getInstance().getCoinsAPI().getCoins(p.getUniqueId()) - 1;
             if (coins2 > -1) {
@@ -52,4 +51,5 @@ public class PlayerDeath implements Listener {
             p.getWorld().playSound(p.getLocation(), Sound.ANVIL_LAND, 1, 1);
         }
     }
+
 }
