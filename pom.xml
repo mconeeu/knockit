@@ -9,7 +9,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>eu.mcone</groupId>
+    <groupId>eu.mcone.knockit</groupId>
     <artifactId>mcone-knockit</artifactId>
     <version>2.0.0-SNAPSHOT</version>
     <build>
