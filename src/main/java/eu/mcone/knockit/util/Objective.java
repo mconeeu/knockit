@@ -7,7 +7,7 @@ package eu.mcone.knockit.util;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.scoreboard.CoreObjective;
-import eu.mcone.coresystem.api.core.gamemode.Gamemode;
+import eu.mcone.knockit.KnockIT;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Team;
 
