@@ -20,6 +20,7 @@ import eu.mcone.knockit.util.Objective;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 
 import java.util.HashMap;
 
@@ -50,7 +51,8 @@ public class KnockIT extends CorePlugin {
         hologramManager = CoreSystem.getInstance().inititaliseHologramManager(this);
 
         sendConsoleMessage("§aBuild-System witd initiiert");
-        CoreSystem.getInstance().initialiseBuildSystem(false, BuildSystem.BuildEvent.BLOCK_BREAK, BuildSystem.BuildEvent.BLOCK_PLACE);
+        CoreSystem.getInstance().initialiseBuildSystem(BuildSystem.BuildEvent.BLOCK_BREAK, BuildSystem.BuildEvent.BLOCK_PLACE)
+                .addFilter(BuildSystem.BuildEvent.BLOCK_PLACE, Material.QUARTZ_BLOCK);
 
         sendConsoleMessage("§aEvents werden registriert...");
         registerEvents();
@@ -69,7 +71,6 @@ public class KnockIT extends CorePlugin {
     }
 
     private void registerEvents() {
-        Bukkit.getPluginManager().registerEvents(new BlockPlace(), this);
         Bukkit.getPluginManager().registerEvents(new EntityDamage(), this);
         Bukkit.getPluginManager().registerEvents(new EntityDamageByEntity(), this);
         Bukkit.getPluginManager().registerEvents(new FoodLevelChange(), this);
