@@ -7,7 +7,7 @@ package eu.mcone.knockit.listener;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.event.StatsChangeEvent;
-import eu.mcone.coresystem.api.bukkit.player.BukkitCorePlayer;
+import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.coresystem.api.core.gamemode.Gamemode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,7 +17,7 @@ public class StatsChange implements Listener {
 
     @EventHandler
     public void on(StatsChangeEvent e) {
-        BukkitCorePlayer p = e.getPlayer();
+        CorePlayer p = e.getPlayer();
 
         if (e.getStats().equals(CoreSystem.getInstance().getStatsAPI(Gamemode.KNOCKIT))) {
             p.bukkit().sendMessage("Your stats were changed!");

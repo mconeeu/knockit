@@ -7,13 +7,11 @@ package eu.mcone.knockit;
 
 import eu.mcone.coresystem.api.bukkit.CorePlugin;
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
-import eu.mcone.coresystem.api.bukkit.hologram.HologramManager;
-import eu.mcone.coresystem.api.bukkit.player.BukkitCorePlayer;
+import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.coresystem.api.bukkit.player.StatsAPI;
 import eu.mcone.coresystem.api.bukkit.world.BuildSystem;
 import eu.mcone.coresystem.api.bukkit.world.CoreWorld;
 import eu.mcone.coresystem.api.core.gamemode.Gamemode;
-import eu.mcone.coresystem.api.core.translation.TranslationField;
 import eu.mcone.knockit.listener.*;
 import eu.mcone.knockit.util.Item;
 import eu.mcone.knockit.util.Objective;
@@ -21,8 +19,6 @@ import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-
-import java.util.HashMap;
 
 public class KnockIT extends CorePlugin {
 
@@ -35,20 +31,15 @@ public class KnockIT extends CorePlugin {
     @Getter
     private StatsAPI statsAPI;
     @Getter
-    private HologramManager hologramManager;
-    @Getter
     private CoreWorld world;
 
     public void onEnable() {
         instance = this;
         world = CoreSystem.getInstance().getWorldManager().getWorld("Knockit");
-        registerTranslations();
+        CoreSystem.getInstance().getTranslationManager().loadCategories(this);
 
         sendConsoleMessage("§aStatsAPI wird initiiert...");
         statsAPI = CoreSystem.getInstance().getStatsAPI(Gamemode.KNOCKIT);
-
-        sendConsoleMessage("§aHologram-Manager wird gestartet");
-        hologramManager = CoreSystem.getInstance().inititaliseHologramManager(this);
 
         sendConsoleMessage("§aBuild-System witd initiiert");
         CoreSystem.getInstance().initialiseBuildSystem(BuildSystem.BuildEvent.BLOCK_BREAK, BuildSystem.BuildEvent.BLOCK_PLACE)
@@ -59,7 +50,7 @@ public class KnockIT extends CorePlugin {
 
         sendConsoleMessage("§aVersion §f" + this.getDescription().getVersion() + "§a wurde aktiviert...");
 
-        for (BukkitCorePlayer p : CoreSystem.getInstance().getOnlineCorePlayers()) {
+        for (CorePlayer p : CoreSystem.getInstance().getOnlineCorePlayers()) {
             p.getScoreboard().setNewObjective(new Objective());
             p.bukkit().getInventory().clear();
             Item.setItems(p.bukkit());
@@ -85,21 +76,6 @@ public class KnockIT extends CorePlugin {
         Bukkit.getPluginManager().registerEvents(new PlayerRespawn(), this);
         Bukkit.getPluginManager().registerEvents(new StatsChange(), this);
         Bukkit.getPluginManager().registerEvents(new WeatherChange(), this);
-    }
-
-    private void registerTranslations() {
-        CoreSystem.getInstance().getTranslationManager().insertIfNotExists(
-                new HashMap<String, TranslationField>(){{
-                    put("knockit.prefix", new TranslationField("§8[§7§l!§8] §2KnockIt §8» §7"));
-                    put("knockit.scoreboard.1", new TranslationField("&7&l⚔ &3§l§nKnockIT"));
-                    put("knockit.scoreboard.2", new TranslationField("&8» &7Kills:"));
-                    put("knockit.scoreboard.4", new TranslationField("§3"));
-                    put("knockit.scoreboard.5", new TranslationField("&8» &7Tode:"));
-                    put("knockit.scoreboard.6", new TranslationField("§c"));
-                    put("knockit.scoreboard.7", new TranslationField("&8» &7Coins:"));
-                    put("knockit.scoreboard.8", new TranslationField("&f§lMCONE.EU"));
-                }}
-        );
     }
 
 }
