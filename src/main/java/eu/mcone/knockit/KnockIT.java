@@ -14,7 +14,7 @@ import eu.mcone.coresystem.api.bukkit.world.CoreWorld;
 import eu.mcone.coresystem.api.core.gamemode.Gamemode;
 import eu.mcone.knockit.listener.*;
 import eu.mcone.knockit.util.Item;
-import eu.mcone.knockit.util.Objective;
+import eu.mcone.knockit.util.SidebarObjective;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -51,7 +51,7 @@ public class KnockIT extends CorePlugin {
         sendConsoleMessage("§aVersion §f" + this.getDescription().getVersion() + "§a wurde aktiviert...");
 
         for (CorePlayer p : CoreSystem.getInstance().getOnlineCorePlayers()) {
-            p.getScoreboard().setNewObjective(new Objective());
+            p.getScoreboard().setNewObjective(new SidebarObjective());
             p.bukkit().getInventory().clear();
             Item.setItems(p.bukkit());
         }

@@ -7,14 +7,13 @@ package eu.mcone.knockit.util;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
-import eu.mcone.coresystem.api.bukkit.scoreboard.CoreObjective;
+import eu.mcone.coresystem.api.bukkit.scoreboard.CoreSidebarObjective;
 import eu.mcone.knockit.KnockIT;
-import org.bukkit.scoreboard.DisplaySlot;
 
-public class Objective extends CoreObjective {
+public class SidebarObjective extends CoreSidebarObjective {
 
-    public Objective() {
-        super(DisplaySlot.SIDEBAR, "Main", "KnockIT");
+    public SidebarObjective() {
+        super("Main-KnockIT");
     }
 
     @Override

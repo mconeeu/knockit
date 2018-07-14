@@ -9,7 +9,7 @@ import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.knockit.KnockIT;
 import eu.mcone.knockit.util.Item;
-import eu.mcone.knockit.util.Objective;
+import eu.mcone.knockit.util.SidebarObjective;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -33,7 +33,7 @@ public class PlayerJoin implements Listener {
         Item.setItems(p);
         KnockIT.getInstance().getWorld().teleport(p, "spawn");
 
-        cp.getScoreboard().setNewObjective(new Objective());
+        cp.getScoreboard().setNewObjective(new SidebarObjective());
     }
 
 }
