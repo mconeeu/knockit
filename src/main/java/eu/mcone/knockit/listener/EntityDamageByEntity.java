@@ -6,11 +6,15 @@
 package eu.mcone.knockit.listener;
 
 import eu.mcone.knockit.KnockIT;
+import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 
 public class EntityDamageByEntity implements Listener {
@@ -26,8 +30,6 @@ public class EntityDamageByEntity implements Listener {
             if (p.getLocation().getY() > 80) {
                 e.setCancelled(true);
                 KnockIT.getInstance().getMessager().send(byEnt, "§4Du darfst am Spawn nicht kämpfen!");
-            } else {
-                e.setDamage(0.0D);
             }
         }
     }

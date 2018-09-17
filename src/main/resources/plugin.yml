@@ -1,6 +1,6 @@
 name: MCONE-KnockIt
 version: 2.0.0-SNAPSHOT
-authors: [Domink Lippl, Rufus Maiwald]
+authors: [Domink Lippl, Rufus Maiwald, Marvin Hülsmann]
 main: eu.mcone.knockit.KnockIT
 depend: [MCONE-BukkitCoreSystem,MCONE-GameSystem]
 

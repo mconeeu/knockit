@@ -7,8 +7,10 @@ package eu.mcone.knockit.listener;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
+import eu.mcone.coresystem.api.core.gamemode.Gamemode;
 import eu.mcone.gamesystem.api.GameSystemAPI;
 import eu.mcone.knockit.KnockIT;
+import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -25,31 +27,44 @@ public class PlayerDeath implements Listener {
 
         e.setDeathMessage(null);
         e.setKeepInventory(false);
-        e.setKeepLevel(false);
         e.getDrops().clear();
         p.spigot().respawn();
 
         if (k != null) {
-            KnockIT.getInstance().getMessager().send(k, "§7Du hast " + p.getDisplayName() + " §7getötet §8[§a+3 Coins§8]");
-            KnockIT.getInstance().getMessager().send(k, "§7Du hast §f1 §7Coin erhalten");
+            final CorePlayer ck = CoreSystem.getInstance().getCorePlayer(k);
 
-            KnockIT.getInstance().getStatsAPI().addKills(k.getUniqueId(), 1);
-            CoreSystem.getInstance().getCorePlayer(k).addCoins(3);
+            KnockIT.getInstance().getMessager().send(k, "§8[§a+3 Coins§8]");
+
+
+                CoreSystem.getInstance().createActionBar()
+                        .message("§f§l§oDu hast §c§l" + p.getDisplayName() + " §f§lgetötet")
+                        .send(k);
+
+
+            ck.getStats(Gamemode.KNOCKIT).addKills(1);
+            ck.addCoins(3);
             k.getWorld().playSound(k.getLocation(), Sound.LEVEL_UP, 1, 1);
 
-            KnockIT.getInstance().getMessager().send(p, "§7Du wurdest von §c" + k.getDisplayName() + " §7getötet §8[§c-1 Coins§8]");
-            KnockIT.getInstance().getStatsAPI().addDeaths(p.getUniqueId(), 1);
+
+            CoreSystem.getInstance().createActionBar()
+                    .message("§7Du wurdest von §c" + k.getDisplayName() + " §7getötet")
+                    .send(p);
+
+            KnockIT.getInstance().getMessager().send(p, "§8[§c-1 Coins§8]");
+            cp.getStats(Gamemode.KNOCKIT).addDeaths(1);
 
             if (cp.getCoins() > 0) {
                 cp.removeCoins(1);
-                KnockIT.getInstance().getMessager().send(p, "§7Dir wurde §f1 §7Coin abgezogen");
             }
             k.getWorld().playSound(p.getLocation(), Sound.ANVIL_LAND, 1, 1);
+
 
             k.setLevel(k.getLevel() + 1);
         } else {
             KnockIT.getInstance().getMessager().send(p, "§7Du bist gestorben");
             p.getWorld().playSound(p.getLocation(), Sound.ANVIL_LAND, 1, 1);
+            cp.getStats(Gamemode.KNOCKIT).addDeaths(1);
+
         }
     }
 

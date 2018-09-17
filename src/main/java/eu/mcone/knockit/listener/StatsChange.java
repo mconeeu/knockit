@@ -18,11 +18,7 @@ public class StatsChange implements Listener {
     @EventHandler
     public void on(StatsChangeEvent e) {
         CorePlayer p = e.getPlayer();
-
-        if (e.getStats().equals(CoreSystem.getInstance().getStatsAPI(Gamemode.KNOCKIT))) {
-            p.bukkit().sendMessage("Your stats were changed!");
-            p.getScoreboard().getObjective(DisplaySlot.SIDEBAR).reload();
-        }
+        p.getScoreboard().getObjective(DisplaySlot.SIDEBAR).reload();
     }
 
 }

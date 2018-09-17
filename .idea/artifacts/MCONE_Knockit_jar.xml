@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="MCONE-Knockit:jar">
-    <output-path>$PROJECT_DIR$/../../../Minecraft/localhost - server/KnockIt/plugins</output-path>
-    <root id="archive" name="MCONE-Knockit.jar">
-      <element id="module-output" name="mcone-knockit" />
-    </root>
-  </artifact>
-</component>
