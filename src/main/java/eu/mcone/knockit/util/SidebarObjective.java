@@ -9,12 +9,11 @@ import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.coresystem.api.bukkit.scoreboard.CoreSidebarObjective;
 import eu.mcone.coresystem.api.core.gamemode.Gamemode;
-import eu.mcone.knockit.KnockIT;
 
 public class SidebarObjective extends CoreSidebarObjective {
 
     public SidebarObjective() {
-        super("Main-KnockIT");
+        super("KnockIT");
     }
 
     @Override

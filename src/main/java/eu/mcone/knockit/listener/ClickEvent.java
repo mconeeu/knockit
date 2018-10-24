@@ -15,4 +15,5 @@ public class ClickEvent implements Listener {
     public void on(InventoryClickEvent e) {
         e.setCancelled(true);
     }
+
 }

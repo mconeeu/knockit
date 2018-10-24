@@ -4,14 +4,6 @@ authors: [Domink Lippl, Rufus Maiwald, Marvin Hülsmann]
 main: eu.mcone.knockit.KnockIT
 depend: [MCONE-BukkitCoreSystem,MCONE-GameSystem]
 
-commands:
-  angel:
-    permission: knockit.angel
-  setspawn:
-    permission: knockit.set.spawn
-  holo:
-    permission: system.bukkit.holo
-
 permissions:
   knockit:
     description: Root Permission

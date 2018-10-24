@@ -3,7 +3,7 @@
  * You are not allowed to decompile the code
  */
 
-package eu.mcone.knockit.kitinventorys;
+package eu.mcone.knockit.inventory;
 
 import eu.mcone.coresystem.api.bukkit.inventory.CoreInventory;
 import org.bukkit.entity.Player;
@@ -15,5 +15,6 @@ public class GadgetsInventory extends CoreInventory {
 
         openInventory();
     }
+
 }
 

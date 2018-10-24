@@ -13,7 +13,6 @@ import eu.mcone.coresystem.api.bukkit.world.CoreWorld;
 import eu.mcone.knockit.listener.*;
 import eu.mcone.knockit.util.SidebarObjective;
 import lombok.Getter;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 
@@ -52,23 +51,25 @@ public class KnockIT extends CorePlugin {
     }
 
     private void registerEvents() {
-        Bukkit.getPluginManager().registerEvents(new EntityDamage(), this);
-        Bukkit.getPluginManager().registerEvents(new EntityDamageByEntity(), this);
-        Bukkit.getPluginManager().registerEvents(new FoodLevelChange(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerDeath(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerDropItem(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerFish(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerInteract(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerJoin(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerLevelChange(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerMove(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerInteractEntity(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerQuit(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerRespawn(), this);
-        Bukkit.getPluginManager().registerEvents(new CoinsChange(), this);
-        Bukkit.getPluginManager().registerEvents(new StatsChange(), this);
-        Bukkit.getPluginManager().registerEvents(new WeatherChange(), this);
-        Bukkit.getPluginManager().registerEvents(new ClickEvent(), this);
+        registerEvents(
+                new EntityDamage(),
+                new EntityDamageByEntity(),
+                new FoodLevelChange(),
+                new PlayerDeath(),
+                new PlayerDropItem(),
+                new PlayerFish(),
+                new PlayerInteract(),
+                new PlayerJoin(),
+                new PlayerLevelChange(),
+                new PlayerMove(),
+                new PlayerQuit(),
+                new PlayerRespawn(),
+                new CoinsChange(),
+                new NpcInteract(),
+                new StatsChange(),
+                new WeatherChange(),
+                new ClickEvent()
+        );
     }
 
 }

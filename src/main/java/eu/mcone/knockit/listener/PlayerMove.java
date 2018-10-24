@@ -15,7 +15,6 @@ public class PlayerMove implements Listener {
     @EventHandler
     public void on(PlayerMoveEvent e) {
         Player p = e.getPlayer();
-        
     }
 
 }

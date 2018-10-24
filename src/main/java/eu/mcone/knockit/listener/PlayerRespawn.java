@@ -8,7 +8,6 @@ package eu.mcone.knockit.listener;
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.util.ItemBuilder;
 import eu.mcone.knockit.KnockIT;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;

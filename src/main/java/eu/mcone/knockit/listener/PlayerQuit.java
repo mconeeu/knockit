@@ -6,7 +6,6 @@
 package eu.mcone.knockit.listener;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -15,8 +14,7 @@ public class PlayerQuit implements Listener {
 
     @EventHandler
     public void on(PlayerQuitEvent e) {
-        Player p = e.getPlayer();
-        e.setQuitMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7 " + p.getDisplayName() + " §7hat das Spiel verlassen");
+        e.setQuitMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7 " + e.getPlayer().getDisplayName() + " §7hat das Spiel verlassen");
     }
 
 }

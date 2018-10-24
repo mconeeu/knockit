@@ -3,7 +3,7 @@
  * You are not allowed to decompile the code
  */
 
-package eu.mcone.knockit.kitinventorys;
+package eu.mcone.knockit.inventory;
 
 import eu.mcone.coresystem.api.bukkit.inventory.CoreInventory;
 import eu.mcone.coresystem.api.bukkit.inventory.InventorySlot;
@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 public class MainKitInventory extends CoreInventory {
 
     public MainKitInventory(Player p) {
-     super("§8» §e§lHändler §8| §fKits / Gadgets", p, 9 * 3, CoreInventory.Option.FILL_EMPTY_SLOTS);
+        super("§8» §e§lHändler §8| §fKits / Gadgets", p, 9 * 3, CoreInventory.Option.FILL_EMPTY_SLOTS);
 
         setItem(InventorySlot.ROW_1_SLOT_5, ItemBuilder.createSkullItemFromURL("http://textures.minecraft.net/texture/5163dafac1d91a8c91db576caac784336791a6e18d8f7f62778fc47bf146b6", 1).displayName("§e§lHändler").lore("§7§oBeim Händler kannst ausgewählte", "§7§oGadgets oder Kits für kaufen.", "§7§oDie meisten Items erhälst du", "§7§onur durch Coins!").create());
 
