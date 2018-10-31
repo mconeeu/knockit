@@ -33,6 +33,7 @@ public class KitManager {
                     p.getInventory().setItem(0, new ItemBuilder(Material.WOOD_SWORD).displayName("§8» §b§lHolz Schwert").enchantment(Enchantment.DAMAGE_ALL, 1).create());
                     p.getInventory().setItem(1, new ItemBuilder(Material.FISHING_ROD).displayName("§8» §f§lEnterhaken").create());
                     p.getInventory().setItem(2, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 1).create());
+                    p.getInventory().setItem(8, new ItemBuilder(Material.QUARTZ_BLOCK).displayName("§8» §6§lMLG-Block").create());
 
                     break;
                 }
@@ -46,6 +47,7 @@ public class KitManager {
                     p.getInventory().setItem(1, new ItemBuilder(Material.FISHING_ROD).displayName("§8» §f§lEnterhaken").create());
                     p.getInventory().setItem(2, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 2).create());
                     p.getInventory().setItem(3, new ItemBuilder(Material.BOW).displayName("§8» §d§lBogen").create());
+                    p.getInventory().setItem(8, new ItemBuilder(Material.QUARTZ_BLOCK).displayName("§8» §6§lMLG-Block").create());
                     p.getInventory().setItem(10, new ItemBuilder(Material.ARROW, 3, 0).displayName("§8» §6§lPfeile").create());
 
                     break;
@@ -60,6 +62,7 @@ public class KitManager {
                     p.getInventory().setItem(1, new ItemBuilder(Material.FISHING_ROD).displayName("§8» §f§lEnterhaken").create());
                     p.getInventory().setItem(2, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 2).create());
                     p.getInventory().setItem(3, new ItemBuilder(Material.ENDER_PEARL).displayName("§8» §5§lEnderperle").create());
+                    p.getInventory().setItem(8, new ItemBuilder(Material.QUARTZ_BLOCK).displayName("§8» §6§lMLG-Block").create());
 
                     break;
                 }

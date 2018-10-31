@@ -26,6 +26,8 @@ public class KnockIT extends CorePlugin {
     private static KnockIT instance;
     @Getter
     private CoreWorld world;
+    @Getter
+    private BuildSystem buildSystem;
 
     public void onEnable() {
         instance = this;
@@ -33,8 +35,8 @@ public class KnockIT extends CorePlugin {
         CoreSystem.getInstance().getTranslationManager().loadCategories(this);
 
         sendConsoleMessage("§aBuild-System witd initiiert");
-        CoreSystem.getInstance().initialiseBuildSystem(BuildSystem.BuildEvent.BLOCK_BREAK, BuildSystem.BuildEvent.BLOCK_PLACE)
-                .addFilter(BuildSystem.BuildEvent.BLOCK_PLACE, Material.QUARTZ_BLOCK);
+        buildSystem = CoreSystem.getInstance().initialiseBuildSystem(BuildSystem.BuildEvent.BLOCK_BREAK, BuildSystem.BuildEvent.BLOCK_PLACE);
+        buildSystem.addFilter(BuildSystem.BuildEvent.BLOCK_PLACE, Material.QUARTZ_BLOCK);
 
         sendConsoleMessage("§aEvents werden registriert...");
         registerEvents();
@@ -52,6 +54,7 @@ public class KnockIT extends CorePlugin {
 
     private void registerEvents() {
         registerEvents(
+                new BlockPlace(),
                 new EntityDamage(),
                 new EntityDamageByEntity(),
                 new FoodLevelChange(),

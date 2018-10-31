@@ -1,5 +1,5 @@
 name: MCONE-KnockIt
-version: 2.0.0-SNAPSHOT
+version: ${project.version}
 authors: [Domink Lippl, Rufus Maiwald, Marvin Hülsmann]
 main: eu.mcone.knockit.KnockIT
 depend: [MCONE-BukkitCoreSystem,MCONE-GameSystem]
