@@ -15,18 +15,6 @@ public enum Kit {
     DEFAULT(
             "§7Standard-Kit",
             new ItemBuilder(Material.LEATHER_CHESTPLATE)
-                    .displayName("§7Standard-Kit")
-                    .lore(
-                            "",
-                            "§f§oMit diesem Kit hast du",
-                            "§f§ofolgende Items:",
-                            "",
-                            "§6» §7Holz Schwert",
-                            "§6» §7Enterhaken",
-                            "§6» §7Knockback-Stick",
-                            "",
-                            "§4§lACHTUNG DU HAST DIESES KIT NUR EIN MAL !"
-                    )
                     .create(),
             0
     ),
