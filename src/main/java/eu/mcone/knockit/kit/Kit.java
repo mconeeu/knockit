@@ -24,8 +24,7 @@ public enum Kit {
                             "§6» §7Holz Schwert",
                             "§6» §7Enterhaken",
                             "§6» §7Knockback-Stick",
-                            "",
-                            "§4§lACHTUNG DU HAST DIESES KIT NUR EIN MAL !"
+                            ""
                     )
                     .create(),
             0

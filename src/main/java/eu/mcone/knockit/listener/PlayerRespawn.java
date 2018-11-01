@@ -27,9 +27,9 @@ public class PlayerRespawn implements Listener {
         Bukkit.getScheduler().runTask(KnockIT.getInstance(), () ->
                 KitManager.setKit(p, Kit.DEFAULT));
 
-        /*CoreSystem.getInstance().createActionBar()
+        CoreSystem.getInstance().createActionBar()
                 .message("§c§l§oDu bist gestorben")
-                .send(p);*/
+                .send(p);
     }
 
 }

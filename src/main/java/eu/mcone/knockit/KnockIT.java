@@ -64,7 +64,6 @@ public class KnockIT extends CorePlugin {
                 new PlayerInteract(),
                 new PlayerJoin(),
                 new PlayerLevelChange(),
-                new PlayerMove(),
                 new PlayerQuit(),
                 new PlayerRespawn(),
                 new CoinsChange(),
