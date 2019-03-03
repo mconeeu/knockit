@@ -54,14 +54,13 @@ public class KnockIT extends CorePlugin {
 
     private void registerEvents() {
         registerEvents(
-                new BlockPlace(),
                 new EntityDamage(),
                 new EntityDamageByEntity(),
                 new FoodLevelChange(),
+                new InventoryClick(),
                 new PlayerDeath(),
                 new PlayerDropItem(),
                 new PlayerFish(),
-                new PlayerInteract(),
                 new PlayerJoin(),
                 new PlayerLevelChange(),
                 new PlayerQuit(),
@@ -70,7 +69,7 @@ public class KnockIT extends CorePlugin {
                 new NpcInteract(),
                 new StatsChange(),
                 new WeatherChange(),
-                new ClickEvent()
+                new InventoryClick()
         );
     }
 

@@ -36,8 +36,8 @@ public class PlayerJoin implements Listener {
 
 
         CoreSystem.getInstance().createTitle()
-                .title("§3§lKNOCKIT")
-                .subTitle("§c§lSchlage alle Gegner runter!")
+                .title("§2§lKnockIT")
+                .subTitle("§7§oSchlage alle Gegner runter!")
                 .stay(5)
                 .fadeIn(1)
                 .fadeOut(1)

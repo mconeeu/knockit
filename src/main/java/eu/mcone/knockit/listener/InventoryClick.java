@@ -5,16 +5,17 @@
 
 package eu.mcone.knockit.listener;
 
+import eu.mcone.knockit.KnockIT;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 
-public class PlayerInteract implements Listener {
+public class InventoryClick implements Listener {
 
     @EventHandler
-    public void on(PlayerInteractEvent e) {
-        Player p = e.getPlayer();
+    public void on(InventoryClickEvent e) {
+        e.setCancelled(!KnockIT.getInstance().getBuildSystem().hasBuildModeEnabled((Player) e.getWhoClicked()));
     }
 
 }
