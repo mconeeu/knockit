@@ -33,7 +33,7 @@ public class KitManager {
                     p.getInventory().setItem(0, new ItemBuilder(Material.WOOD_SWORD).displayName("§8» §b§lHolz Schwert").enchantment(Enchantment.DAMAGE_ALL, 1).create());
                     p.getInventory().setItem(1, new ItemBuilder(Material.FISHING_ROD).displayName("§8» §f§lEnterhaken").create());
                     p.getInventory().setItem(2, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 1).create());
-                    p.getInventory().setItem(8, new ItemBuilder(Material.QUARTZ_BLOCK).displayName("§8» §6§lMLG-Block").create());
+                    p.getInventory().setItem(8, new ItemBuilder(Material.QUARTZ_BLOCK, 3).displayName("§8» §6§lMLG-Block").create());
 
                     break;
                 }

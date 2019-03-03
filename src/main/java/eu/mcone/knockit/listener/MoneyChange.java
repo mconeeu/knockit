@@ -10,7 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.scoreboard.DisplaySlot;
 
-public class CoinsChange implements Listener {
+public class MoneyChange implements Listener {
 
     @EventHandler
     public void on(MoneyChangeEvent e) {
