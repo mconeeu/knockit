@@ -7,15 +7,17 @@ package eu.mcone.knockit.listener;
 
 import eu.mcone.coresystem.api.bukkit.event.NpcInteractEvent;
 import eu.mcone.knockit.inventory.MainKitInventory;
+import net.minecraft.server.v1_8_R3.PacketPlayInUseEntity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-public class NpcInteract implements Listener {
+public class NpcListener implements Listener {
 
     @EventHandler
-    public void on(NpcInteractEvent e) {
-        if (e.getAction().equals(NpcInteractEvent.Action.RIGHT_CLICK)) {
-            if (e.getNpc().getData().getName().equals("Kit")) {
+    public void onNpcInteract(NpcInteractEvent e) {
+        if (e.getNpc().getData().getType().equals(EntityType.PLAYER) && e.getAction().equals(PacketPlayInUseEntity.EnumEntityUseAction.INTERACT)) {
+            if (e.getNpc().getData().getName().equals("kit")) {
                 new MainKitInventory(e.getPlayer());
             }
         }

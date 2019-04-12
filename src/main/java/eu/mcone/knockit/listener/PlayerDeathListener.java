@@ -10,16 +10,20 @@ import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.coresystem.api.core.gamemode.Gamemode;
 import eu.mcone.gamesystem.api.GameSystemAPI;
 import eu.mcone.knockit.KnockIT;
+import eu.mcone.knockit.kit.Kit;
+import eu.mcone.knockit.kit.KitManager;
+import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 
-public class PlayerDeath implements Listener {
+public class PlayerDeathListener implements Listener {
 
     @EventHandler
-    public void on(PlayerDeathEvent e) {
+    public void onDeath(PlayerDeathEvent e) {
         final Player p = e.getEntity();
         final CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
         final Player k = p.getKiller() != null ? p.getKiller() : GameSystemAPI.getInstance().getDamageLogger().getKiller(p);
@@ -53,6 +57,22 @@ public class PlayerDeath implements Listener {
 
         p.playSound(p.getLocation(), Sound.VILLAGER_HIT, 1, 1);
         cp.getStats(Gamemode.KNOCKIT).addDeaths(1);
+    }
+
+    @EventHandler
+    public void onRespawn(PlayerRespawnEvent e) {
+        Player p = e.getPlayer();
+
+        p.getInventory().clear();
+        p.setExp(1);
+        e.setRespawnLocation(KnockIT.getInstance().getWorld().getLocation("spawn"));
+
+        Bukkit.getScheduler().runTask(KnockIT.getInstance(), () ->
+                KitManager.setKit(p, Kit.DEFAULT));
+
+        CoreSystem.getInstance().createActionBar()
+                .message("§c§l§oDu bist gestorben")
+                .send(p);
     }
 
 }

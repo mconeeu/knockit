@@ -9,10 +9,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 
-public class BlockPlace implements Listener {
+public class MlgBlockListener implements Listener {
 
     @EventHandler
-    public void on(BlockPlaceEvent e) {
+    public void onBlockPlace(BlockPlaceEvent e) {
         Player p = e.getPlayer();
 
         if (!KnockIT.getInstance().getBuildSystem().hasBuildModeEnabled(p) && e.getBlock().getType().equals(Material.QUARTZ_BLOCK)) {

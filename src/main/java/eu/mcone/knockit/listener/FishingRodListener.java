@@ -15,10 +15,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.util.Vector;
 
-public class PlayerFish implements Listener {
+public class FishingRodListener implements Listener {
 
     @EventHandler
-    public void on(PlayerFishEvent e) {
+    public void onFish(PlayerFishEvent e) {
         Player p = e.getPlayer();
         Fish h = e.getHook();
 

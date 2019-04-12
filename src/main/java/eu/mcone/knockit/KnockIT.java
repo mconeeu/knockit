@@ -54,23 +54,15 @@ public class KnockIT extends CorePlugin {
 
     private void registerEvents() {
         registerEvents(
-                new BlockPlace(),
-                new EntityDamage(),
-                new EntityDamageByEntity(),
-                new FoodLevelChange(),
-                new InventoryClick(),
-                new PlayerDeath(),
-                new PlayerDropItem(),
-                new PlayerFish(),
-                new PlayerJoin(),
+                new EntityDamageListener(),
+                new FishingRodListener(),
+                new GeneralPlayerListener(),
+                new MlgBlockListener(),
+                new NpcListener(),
+                new PlayerDeathListener(),
                 new PlayerLevelChange(),
-                new PlayerQuit(),
-                new PlayerRespawn(),
-                new MoneyChange(),
-                new NpcInteract(),
-                new StatsChange(),
-                new WeatherChange(),
-                new InventoryClick()
+                new PlayerUpdateListener(),
+                new WeatherChangeListener()
         );
     }
 
