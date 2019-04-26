@@ -20,7 +20,7 @@ public class PlayerLevelChange implements Listener {
     public void onPlayerLevelChange(PlayerLevelChangeEvent e) {
         Player p = e.getPlayer();
 
-        if ((e.getNewLevel() % 3) == 0) {
+        if (e.getNewLevel() != 0 && (e.getNewLevel() % 3) == 0) {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 CoreSystem.getInstance().createTitle().title("§a"+e.getNewLevel()+"er Killstreak").subTitle("§fvon " + p.getDisplayName()).stay(5).send(player);
             }
