@@ -19,6 +19,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.util.Vector;
 
 public class PlayerDeathListener implements Listener {
 
@@ -32,6 +33,8 @@ public class PlayerDeathListener implements Listener {
         e.setKeepInventory(false);
         e.getDrops().clear();
         p.setLevel(0);
+
+        p.setVelocity(new Vector(0, 0, 0));
         p.spigot().respawn();
 
         if (k != null) {
