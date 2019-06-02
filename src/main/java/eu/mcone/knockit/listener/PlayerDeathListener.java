@@ -19,6 +19,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
 public class PlayerDeathListener implements Listener {
@@ -48,6 +49,7 @@ public class PlayerDeathListener implements Listener {
             ck.addCoins(3);
             k.getWorld().playSound(k.getLocation(), Sound.LEVEL_UP, 1, 1);
             k.setLevel(k.getLevel() + 1);
+            k.addPotionEffect(PotionEffectType.REGENERATION.createEffect(20*20, 3));
 
             KnockIT.getInstance().getMessager().send(p, "§7Du wurdest von §c" + k.getDisplayName() + " §7getötet §8[§c-1 Coins§8]");
             CoreSystem.getInstance().createActionBar()
