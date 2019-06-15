@@ -12,7 +12,6 @@ public class GadgetsInventory extends CoreInventory {
 
     public GadgetsInventory(Player p) {
         super("§8» §e§lHändler §8| §cGadgets", p, 9 * 3, CoreInventory.Option.FILL_EMPTY_SLOTS);
-
         openInventory();
     }
 

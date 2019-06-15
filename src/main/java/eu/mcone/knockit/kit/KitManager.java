@@ -7,7 +7,7 @@ package eu.mcone.knockit.kit;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
-import eu.mcone.coresystem.api.bukkit.util.ItemBuilder;
+import eu.mcone.coresystem.api.bukkit.item.ItemBuilder;
 import eu.mcone.knockit.KnockIT;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;

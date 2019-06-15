@@ -6,8 +6,8 @@
 package eu.mcone.knockit.listener;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
+import eu.mcone.coresystem.api.bukkit.gamemode.Gamemode;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
-import eu.mcone.coresystem.api.core.gamemode.Gamemode;
 import eu.mcone.gamesystem.api.GameSystemAPI;
 import eu.mcone.knockit.KnockIT;
 import eu.mcone.knockit.kit.Kit;
