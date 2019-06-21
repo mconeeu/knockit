@@ -36,7 +36,7 @@ public class KnockIT extends CorePlugin {
 
         sendConsoleMessage("§aBuild-System witd initiiert");
         buildSystem = CoreSystem.getInstance().initialiseBuildSystem(BuildSystem.BuildEvent.BLOCK_BREAK, BuildSystem.BuildEvent.BLOCK_PLACE);
-        buildSystem.addFilter(BuildSystem.BuildEvent.BLOCK_PLACE, Material.QUARTZ_BLOCK);
+        buildSystem.addFilter(BuildSystem.BuildEvent.BLOCK_PLACE, Material.QUARTZ_BLOCK.getId());
 
         sendConsoleMessage("§aEvents werden registriert...");
         registerEvents();

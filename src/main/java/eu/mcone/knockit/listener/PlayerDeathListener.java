@@ -6,8 +6,8 @@
 package eu.mcone.knockit.listener;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
+import eu.mcone.coresystem.api.bukkit.gamemode.Gamemode;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
-import eu.mcone.coresystem.api.core.gamemode.Gamemode;
 import eu.mcone.gamesystem.api.GameSystemAPI;
 import eu.mcone.knockit.KnockIT;
 import eu.mcone.knockit.kit.Kit;
@@ -19,6 +19,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.util.Vector;
 
 public class PlayerDeathListener implements Listener {
 
@@ -32,6 +34,8 @@ public class PlayerDeathListener implements Listener {
         e.setKeepInventory(false);
         e.getDrops().clear();
         p.setLevel(0);
+
+        p.setVelocity(new Vector(0, 0, 0));
         p.spigot().respawn();
 
         if (k != null) {
@@ -45,6 +49,7 @@ public class PlayerDeathListener implements Listener {
             ck.addCoins(25);
             k.getWorld().playSound(k.getLocation(), Sound.LEVEL_UP, 1, 1);
             k.setLevel(k.getLevel() + 1);
+            k.addPotionEffect(PotionEffectType.REGENERATION.createEffect(20*20, 3));
 
             KnockIT.getInstance().getMessager().send(p, "§7Du wurdest von §c" + k.getDisplayName() + " §7getötet §8[§c-1 Coins§8]");
             CoreSystem.getInstance().createActionBar()
