@@ -18,8 +18,8 @@ public enum Kit {
                     .create(),
             0
     ),
-    GOLD(
-            "§6Gold-Kit",
+    ARCHER(
+            "§6Bogenschützen-Kit",
             new ItemBuilder(Material.GOLD_CHESTPLATE)
                     .displayName("§6Gold-Kit")
                     .lore(
@@ -28,20 +28,46 @@ public enum Kit {
                             "§f§ofolgende Items:",
                             "",
                             "§6» §7Stein Schwert",
-                            "§6» §7Enterhaken",
+                            "§6» §7Angel",
                             "§6» §7Knockback-Stick",
                             "§6» §7Bogen",
                             "§6» §7Pfeile",
                             "§6» §7Ketten Rüstung",
-                            "", "§fKosten 15 Coins",
+                            "", "§fKosten 100 Coins",
                             "",
                             "§4§lACHTUNG DU HAST DIESES KIT NUR EIN MAL!"
                     )
                     .create(),
-            15
+            100
     ),
-    DIAMOND(
-            "§bDiamanten-Kit",
+
+
+    KNOCKBACK(
+            "§aKnockback-Kit",
+            new ItemBuilder(Material.CHAINMAIL_CHESTPLATE)
+                    .displayName("§aKnockback-Kit")
+                    .lore(
+                            "",
+                            "§f§oMit diesem Kit erhälst du",
+                            "§f§ofolgende Items:",
+                            "",
+                            "§6» §7Stein Schwert",
+                            "§6» §7Angel",
+                            "§6» §7Knockback-Stick auf Stufe 2",
+                            "§6» §7Ketten Rüstung",
+                            "", "§fKosten 100 Coins",
+                            "",
+                            "§4§lACHTUNG DU HAST DIESES KIT NUR EIN MAL!"
+                    )
+                    .create(),
+            100
+    ),
+
+
+
+
+    ENDERMAN(
+            "§bEnderman-Kit",
             new ItemBuilder(Material.DIAMOND_CHESTPLATE)
                     .displayName("§bDiamanten-Kit")
                     .lore(
@@ -50,18 +76,18 @@ public enum Kit {
                             "§f§ofolgende Kit:",
                             "",
                             "§6» §7Stein Schwert",
-                            "§6» §7Enterhaken",
+                            "§6» §7Angel",
                             "§6» §7Knockback-Stick",
                             "§6» §7Enderperle",
                             "§6» §7Eisen Brustplatte",
                             "§6» §7Ketten Rüstung",
                             "",
-                            "§fKosten 25 Coins",
+                            "§fKosten 150 Coins",
                             "",
                             "§4§lACHTUNG DU HAST DIESES KIT NUR EIN MAL!"
                     )
                     .create(),
-            25
+            150
     );
 
     @Getter

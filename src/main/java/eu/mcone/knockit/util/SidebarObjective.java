@@ -28,7 +28,7 @@ public class SidebarObjective extends CoreSidebarObjective {
         setScore(5, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.5") + player.getStats(Gamemode.KNOCKIT).getDeath());
         setScore(4, "");
         setScore(3, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.6"));
-        setScore(2, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.7")+ player.getCoins());
+        setScore(2, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.7"+ "§a")+ player.getFormattedCoins());
         setScore(1, "");
         setScore(0, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.8"));
     }

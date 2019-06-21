@@ -37,7 +37,7 @@ public class KitManager {
 
                     break;
                 }
-                case GOLD: {
+                case ARCHER: {
                     p.getInventory().setBoots(new ItemStack(Material.CHAINMAIL_BOOTS));
                     p.getInventory().setLeggings(new ItemStack(Material.CHAINMAIL_LEGGINGS));
                     p.getInventory().setChestplate(new ItemStack(Material.CHAINMAIL_CHESTPLATE));
@@ -45,14 +45,14 @@ public class KitManager {
 
                     p.getInventory().setItem(0, new ItemBuilder(Material.STONE_SWORD).displayName("§8» §b§lStein Schwert").enchantment(Enchantment.DAMAGE_ALL, 1).create());
                     p.getInventory().setItem(1, new ItemBuilder(Material.FISHING_ROD).displayName("§8» §f§lEnterhaken").create());
-                    p.getInventory().setItem(2, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 2).create());
+                    p.getInventory().setItem(2, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 1).create());
                     p.getInventory().setItem(3, new ItemBuilder(Material.BOW).displayName("§8» §d§lBogen").create());
                     p.getInventory().setItem(8, new ItemBuilder(Material.QUARTZ_BLOCK).displayName("§8» §6§lMLG-Block").create());
-                    p.getInventory().setItem(10, new ItemBuilder(Material.ARROW, 3, 0).displayName("§8» §6§lPfeile").create());
+                    p.getInventory().setItem(10, new ItemBuilder(Material.ARROW, 6, 0).displayName("§8» §6§lPfeile").create());
 
                     break;
                 }
-                case DIAMOND: {
+                case ENDERMAN: {
                     p.getInventory().setBoots(new ItemStack(Material.CHAINMAIL_BOOTS));
                     p.getInventory().setLeggings(new ItemStack(Material.CHAINMAIL_LEGGINGS));
                     p.getInventory().setChestplate(new ItemStack(Material.IRON_CHESTPLATE));
@@ -60,12 +60,24 @@ public class KitManager {
 
                     p.getInventory().setItem(0, new ItemBuilder(Material.STONE_SWORD).displayName("§8» §b§lStein Schwerd").enchantment(Enchantment.DAMAGE_ALL, 2).create());
                     p.getInventory().setItem(1, new ItemBuilder(Material.FISHING_ROD).displayName("§8» §f§lEnterhaken").create());
-                    p.getInventory().setItem(2, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 2).create());
-                    p.getInventory().setItem(3, new ItemBuilder(Material.ENDER_PEARL).displayName("§8» §5§lEnderperle").create());
+                    p.getInventory().setItem(2, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 1).create());
+                    p.getInventory().setItem(3, new ItemBuilder(Material.ENDER_PEARL,2,0).displayName("§8» §5§lEnderperle").create());
                     p.getInventory().setItem(8, new ItemBuilder(Material.QUARTZ_BLOCK).displayName("§8» §6§lMLG-Block").create());
 
                     break;
                 }
+
+                case KNOCKBACK:
+                    p.getInventory().setBoots(new ItemStack(Material.CHAINMAIL_BOOTS));
+                    p.getInventory().setLeggings(new ItemStack(Material.CHAINMAIL_LEGGINGS));
+                    p.getInventory().setChestplate(new ItemStack(Material.CHAINMAIL_CHESTPLATE));
+                    p.getInventory().setHelmet(new ItemStack(Material.CHAINMAIL_HELMET));
+
+                    p.getInventory().setItem(0, new ItemBuilder(Material.STONE_SWORD).displayName("§8» §b§lStein Schwert").enchantment(Enchantment.DAMAGE_ALL, 1).create());
+                    p.getInventory().setItem(1, new ItemBuilder(Material.FISHING_ROD).displayName("§8» §f§lEnterhaken").create());
+                    p.getInventory().setItem(2, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 3).create());
+                    p.getInventory().setItem(8, new ItemBuilder(Material.QUARTZ_BLOCK).displayName("§8» §6§lMLG-Block").create());
+
             }
 
             p.sendMessage("§8[§7§l!§8] §2KnockIt §8» §7Du hast das "+kit.getName()+" §7erfolgreich für "+kit.getCoins()+" Coins gekauft");

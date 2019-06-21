@@ -17,13 +17,20 @@ public class KitsInventory extends CoreInventory {
     public KitsInventory(Player p) {
         super("§8» §e§lHändler §8| §fKits", p, 9 * 3, CoreInventory.Option.FILL_EMPTY_SLOTS);
 
-        setItem(InventorySlot.ROW_2_SLOT_3, Kit.GOLD.getItem(), e -> {
-            KitManager.setKit(p, Kit.GOLD);
+        setItem(InventorySlot.ROW_2_SLOT_3, Kit.ARCHER.getItem(), e -> {
+            KitManager.setKit(p, Kit.ARCHER);
             p.closeInventory();
         });
 
-        setItem(InventorySlot.ROW_2_SLOT_7, Kit.DIAMOND.getItem(), e -> {
-            KitManager.setKit(p, Kit.DIAMOND);
+        setItem(InventorySlot.ROW_2_SLOT_5, Kit.KNOCKBACK.getItem(), e -> {
+            KitManager.setKit(p, Kit.KNOCKBACK);
+            p.closeInventory();
+
+        });
+
+
+        setItem(InventorySlot.ROW_2_SLOT_7, Kit.ENDERMAN.getItem(), e -> {
+            KitManager.setKit(p, Kit.ENDERMAN);
             p.closeInventory();
         });
 

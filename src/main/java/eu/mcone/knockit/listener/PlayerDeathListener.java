@@ -39,10 +39,10 @@ public class PlayerDeathListener implements Listener {
 
             KnockIT.getInstance().getMessager().send(k, "§7Du hast §6" + p.getDisplayName() + " §7getötet §8[§a+3 Coins§8]");
             CoreSystem.getInstance().createActionBar()
-                    .message("§a§oDu erhälst 3 Coins!")
+                    .message("§a§oDu erhälst 25 Coins!")
                     .send(k);
             ck.getStats(Gamemode.KNOCKIT).addKills(1);
-            ck.addCoins(3);
+            ck.addCoins(25);
             k.getWorld().playSound(k.getLocation(), Sound.LEVEL_UP, 1, 1);
             k.setLevel(k.getLevel() + 1);
 
@@ -50,7 +50,7 @@ public class PlayerDeathListener implements Listener {
             CoreSystem.getInstance().createActionBar()
                     .message("§c§oDir wurde 1 Coin abgezogen!")
                     .send(p);
-            if (cp.getCoins() > 0) cp.removeCoins(1);
+            if (cp.getCoins() > 5) cp.removeCoins(5);
         } else {
             KnockIT.getInstance().getMessager().send(p, "§7Du bist gestorben");
         }
