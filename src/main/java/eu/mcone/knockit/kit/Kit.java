@@ -64,6 +64,31 @@ public enum Kit {
     ),
 
 
+    GRAPPLING_HOOK(
+            "§dEnterhacken-Kit",
+            new ItemBuilder(Material.DIAMOND_CHESTPLATE)
+                    .displayName("§bDiamanten-Kit")
+                    .lore(
+                            "",
+                            "§f§oMit diesem Kit erhälst du",
+                            "§f§ofolgende Kit:",
+                            "",
+                            "§6» §7Stein Schwert",
+                            "§6» §7Enterhacken",
+                            "§6» §7Knockback-Stick",
+                            "§6» §7Enderperle",
+                            "§6» §7Eisen Brustplatte",
+                            "§6» §7Ketten Rüstung",
+                            "",
+                            "§fKosten 125 Coins",
+                            "",
+                            "§4§lACHTUNG DU HAST DIESES KIT NUR EIN MAL!"
+                    )
+                    .create(),
+            125
+    ),
+
+
 
 
     ENDERMAN(
@@ -89,6 +114,9 @@ public enum Kit {
                     .create(),
             150
     );
+
+
+
 
     @Getter
     private String name;

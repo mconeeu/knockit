@@ -25,7 +25,7 @@ public class FishingRodListener implements Listener {
         if (((e.getState().equals(PlayerFishEvent.State.IN_GROUND)) ||
                 (e.getState().equals(PlayerFishEvent.State.CAUGHT_ENTITY)) ||
                 (e.getState().equals(PlayerFishEvent.State.FAILED_ATTEMPT))) &&
-                (p.getItemInHand().getItemMeta().getDisplayName().equals("§8§ §7Enterhaken (Rechtsklick)")) &&
+                (p.getItemInHand().getItemMeta().getDisplayName().equals("§8§ §d§lEnterhaken")) &&
                 (Bukkit.getWorld(e.getPlayer().getWorld().getName())
                         .getBlockAt(h.getLocation().getBlockX(), h.getLocation().getBlockY() - 1,
                                 h.getLocation().getBlockZ())

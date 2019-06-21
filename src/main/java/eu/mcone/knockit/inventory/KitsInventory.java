@@ -19,19 +19,24 @@ public class KitsInventory extends CoreInventory {
     }
 
     public void createInventory(Player player) {
-        setItem(InventorySlot.ROW_2_SLOT_3, Kit.ARCHER.getItem(), e -> {
+        setItem(InventorySlot.ROW_2_SLOT_2, Kit.ARCHER.getItem(), e -> {
             KitManager.setKit(player, Kit.ARCHER);
             player.closeInventory();
         });
 
-        setItem(InventorySlot.ROW_2_SLOT_5, Kit.KNOCKBACK.getItem(), e -> {
+        setItem(InventorySlot.ROW_2_SLOT_4, Kit.KNOCKBACK.getItem(), e -> {
             KitManager.setKit(player, Kit.KNOCKBACK);
             player.closeInventory();
 
         });
 
+        setItem(InventorySlot.ROW_2_SLOT_6, Kit.GRAPPLING_HOOK.getItem(), e -> {
+            KitManager.setKit(player, Kit.GRAPPLING_HOOK);
+            player.closeInventory();
+        });
 
-        setItem(InventorySlot.ROW_2_SLOT_7, Kit.ENDERMAN.getItem(), e -> {
+
+        setItem(InventorySlot.ROW_2_SLOT_8, Kit.ENDERMAN.getItem(), e -> {
             KitManager.setKit(player, Kit.ENDERMAN);
             player.closeInventory();
         });
