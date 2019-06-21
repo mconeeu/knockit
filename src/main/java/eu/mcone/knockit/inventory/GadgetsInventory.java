@@ -6,13 +6,17 @@
 package eu.mcone.knockit.inventory;
 
 import eu.mcone.coresystem.api.bukkit.inventory.CoreInventory;
+import eu.mcone.coresystem.api.bukkit.inventory.InventorySlot;
 import org.bukkit.entity.Player;
 
 public class GadgetsInventory extends CoreInventory {
 
-    public GadgetsInventory(Player p) {
-        super("§8» §e§lHändler §8| §cGadgets", p, 9 * 3, CoreInventory.Option.FILL_EMPTY_SLOTS);
-        openInventory();
+    public GadgetsInventory() {
+        super("§8» §e§lHändler §8| §cGadgets", InventorySlot.ROW_3, CoreInventory.Option.FILL_EMPTY_SLOTS);
+    }
+
+    public void createInventory(Player p) {
+        this.openInventory(p);
     }
 
 }

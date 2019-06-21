@@ -14,27 +14,29 @@ import org.bukkit.entity.Player;
 
 public class KitsInventory extends CoreInventory {
 
-    public KitsInventory(Player p) {
-        super("§8» §e§lHändler §8| §fKits", p, 9 * 3, CoreInventory.Option.FILL_EMPTY_SLOTS);
+    public KitsInventory() {
+        super("§8» §e§lHändler §8| §fKits",InventorySlot.ROW_3, CoreInventory.Option.FILL_EMPTY_SLOTS);
+    }
 
+    public void createInventory(Player player) {
         setItem(InventorySlot.ROW_2_SLOT_3, Kit.ARCHER.getItem(), e -> {
-            KitManager.setKit(p, Kit.ARCHER);
-            p.closeInventory();
+            KitManager.setKit(player, Kit.ARCHER);
+            player.closeInventory();
         });
 
         setItem(InventorySlot.ROW_2_SLOT_5, Kit.KNOCKBACK.getItem(), e -> {
-            KitManager.setKit(p, Kit.KNOCKBACK);
-            p.closeInventory();
+            KitManager.setKit(player, Kit.KNOCKBACK);
+            player.closeInventory();
 
         });
 
 
         setItem(InventorySlot.ROW_2_SLOT_7, Kit.ENDERMAN.getItem(), e -> {
-            KitManager.setKit(p, Kit.ENDERMAN);
-            p.closeInventory();
+            KitManager.setKit(player, Kit.ENDERMAN);
+            player.closeInventory();
         });
 
-        openInventory();
+        openInventory(player);
     }
 
 

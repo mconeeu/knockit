@@ -38,7 +38,7 @@ public class KitManager {
 
                     break;
                 }
-                case GOLD: {
+                case ARCHER: {
                     p.getInventory().setBoots(new ItemStack(Material.CHAINMAIL_BOOTS));
                     p.getInventory().setLeggings(new ItemStack(Material.CHAINMAIL_LEGGINGS));
                     p.getInventory().setChestplate(new ItemStack(Material.CHAINMAIL_CHESTPLATE));
@@ -53,7 +53,7 @@ public class KitManager {
 
                     break;
                 }
-                case DIAMOND: {
+                case ENDERMAN: {
                     p.getInventory().setBoots(new ItemStack(Material.CHAINMAIL_BOOTS));
                     p.getInventory().setLeggings(new ItemStack(Material.CHAINMAIL_LEGGINGS));
                     p.getInventory().setChestplate(new ItemStack(Material.IRON_CHESTPLATE));
