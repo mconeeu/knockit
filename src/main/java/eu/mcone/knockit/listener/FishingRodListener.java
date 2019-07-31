@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 - 2018 Dominik Lippl, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * Copyright (c) 2017 - 2019 Dominik Lippl, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
  * You are not allowed to decompile the code
  */
 
@@ -18,22 +18,23 @@ import org.bukkit.util.Vector;
 public class FishingRodListener implements Listener {
 
     @EventHandler
-    public void onFish(PlayerFishEvent e) {
+    public void on(PlayerFishEvent e) {
         Player p = e.getPlayer();
         Fish h = e.getHook();
 
         if (((e.getState().equals(PlayerFishEvent.State.IN_GROUND)) ||
                 (e.getState().equals(PlayerFishEvent.State.CAUGHT_ENTITY)) ||
                 (e.getState().equals(PlayerFishEvent.State.FAILED_ATTEMPT))) &&
-                (p.getItemInHand().getItemMeta().getDisplayName().equals("§8§ §d§lEnterhaken")) &&
+                (p.getItemInHand().getItemMeta().getDisplayName().equals("§6» §7Enterhacken")) &&
                 (Bukkit.getWorld(e.getPlayer().getWorld().getName())
-                        .getBlockAt(h.getLocation().getBlockX(), h.getLocation().getBlockY() - 1,
-                                h.getLocation().getBlockZ())
+                        .getBlockAt(h.getLocation().getBlockX(), h.getLocation().getBlockY() - 1, h.getLocation().getBlockZ())
                         .getType() != Material.AIR)) {
+
             if (Bukkit.getWorld(e.getPlayer().getWorld().getName())
                     .getBlockAt(h.getLocation().getBlockX(), h.getLocation().getBlockY() - 1,
                             h.getLocation().getBlockZ())
                     .getType() != Material.STATIONARY_WATER) {
+
                 Location lc = p.getLocation();
                 Location to = e.getHook().getLocation();
 

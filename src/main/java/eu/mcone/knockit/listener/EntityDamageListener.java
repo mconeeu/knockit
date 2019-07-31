@@ -1,11 +1,12 @@
 /*
- * Copyright (c) 2017 - 2018 Dominik Lippl, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * Copyright (c) 2017 - 2019 Dominik Lippl, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
  * You are not allowed to decompile the code
  */
 
 package eu.mcone.knockit.listener;
 
 import eu.mcone.knockit.KnockIT;
+import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -29,9 +30,17 @@ public class EntityDamageListener implements Listener {
                 return;
             }
 
-            if (p.getLocation().getY() > 80) {
-                e.setCancelled(true);
-                ent.setFireTicks(0);
+            Location spawnHigh = KnockIT.getInstance().getCurrentWorld().getLocation("spawnHigh");
+            if (spawnHigh != null) {
+                if (p.getLocation().getY() > spawnHigh.getY()) {
+                    e.setCancelled(true);
+                    ent.setFireTicks(0);
+                }
+            } else {
+                if (p.getLocation().getY() > 80) {
+                    e.setCancelled(true);
+                    ent.setFireTicks(0);
+                }
             }
         }
     }
@@ -44,7 +53,7 @@ public class EntityDamageListener implements Listener {
         if (ent instanceof Player && byEnt instanceof Player) {
             Player p = (Player) ent;
 
-            if (p.getLocation().getY() > 80) {
+            if (p.getLocation().getY() > KnockIT.getInstance().getCurrentWorld().getLocation("spawnHigh").getY()) {
                 e.setCancelled(true);
                 KnockIT.getInstance().getMessager().send(byEnt, "§4Du darfst am Spawn nicht kämpfen!");
             }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 - 2018 Dominik Lippl, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * Copyright (c) 2017 - 2019 Dominik Lippl, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
  * You are not allowed to decompile the code
  */
 
@@ -11,7 +11,6 @@ import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.gamesystem.api.GameSystemAPI;
 import eu.mcone.knockit.KnockIT;
 import eu.mcone.knockit.kit.Kit;
-import eu.mcone.knockit.kit.KitManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -41,15 +40,16 @@ public class PlayerDeathListener implements Listener {
         if (k != null) {
             final CorePlayer ck = CoreSystem.getInstance().getCorePlayer(k);
 
-            KnockIT.getInstance().getMessager().send(k, "§7Du hast §6" + p.getDisplayName() + " §7getötet §8[§a+3 Coins§8]");
+            KnockIT.getInstance().getMessager().send(k, "§7Du hast §6" + p.getDisplayName() + " §7getötet §8[§a+25 Coins§8]");
             CoreSystem.getInstance().createActionBar()
                     .message("§a§oDu erhälst 25 Coins!")
                     .send(k);
+
             ck.getStats(Gamemode.KNOCKIT).addKills(1);
             ck.addCoins(25);
             k.getWorld().playSound(k.getLocation(), Sound.LEVEL_UP, 1, 1);
             k.setLevel(k.getLevel() + 1);
-            k.addPotionEffect(PotionEffectType.REGENERATION.createEffect(20*20, 3));
+            k.addPotionEffect(PotionEffectType.REGENERATION.createEffect(20 * 20, 3));
 
             KnockIT.getInstance().getMessager().send(p, "§7Du wurdest von §c" + k.getDisplayName() + " §7getötet §8[§c-1 Coins§8]");
             CoreSystem.getInstance().createActionBar()
@@ -70,14 +70,12 @@ public class PlayerDeathListener implements Listener {
 
         p.getInventory().clear();
         p.setExp(1);
-        e.setRespawnLocation(KnockIT.getInstance().getWorld().getLocation("spawn"));
+        e.setRespawnLocation(KnockIT.getInstance().getMapManager().getMapRotationHandler().getCurrentCoreWorld().getLocation(KnockIT.getInstance().getMapManager().getMapRotationHandler().getCurrentGameMap().getSpawnLocation()));
 
-        Bukkit.getScheduler().runTask(KnockIT.getInstance(), () ->
-                KitManager.setKit(p, Kit.DEFAULT));
+        Bukkit.getScheduler().runTask(KnockIT.getInstance(), () -> KnockIT.getInstance().getKnockITPlayer(p.getUniqueId()).setKit(Kit.DEFAULT));
 
         CoreSystem.getInstance().createActionBar()
                 .message("§c§l§oDu bist gestorben")
                 .send(p);
     }
-
 }

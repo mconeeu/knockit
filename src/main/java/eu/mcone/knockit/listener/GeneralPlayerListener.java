@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 - 2018 Dominik Lippl, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * Copyright (c) 2017 - 2019 Dominik Lippl, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
  * You are not allowed to decompile the code
  */
 
@@ -9,11 +9,12 @@ import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.knockit.KnockIT;
 import eu.mcone.knockit.kit.Kit;
-import eu.mcone.knockit.kit.KitManager;
+import eu.mcone.knockit.profile.KnockITPlayer;
 import eu.mcone.knockit.util.SidebarObjective;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -25,11 +26,13 @@ import org.bukkit.event.player.PlayerQuitEvent;
 public class GeneralPlayerListener implements Listener {
 
     @EventHandler
-    public void onJoin(PlayerJoinEvent e){
+    public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
 
-        e.setJoinMessage("§8[§7§l!§8] §2KnockIt §8» §f" + p.getDisplayName() + " §7ist dem Spiel beigetreten");
+        KnockIT.getInstance().getMessager().send(p, "§f" + p.getDisplayName() + " §7ist dem Spiel beigetreten");
+
+        new KnockITPlayer(cp);
 
         p.setExp(1);
         p.getInventory().clear();
@@ -37,8 +40,7 @@ public class GeneralPlayerListener implements Listener {
         p.setLevel(0);
         p.setGameMode(GameMode.SURVIVAL);
 
-        KnockIT.getInstance().getWorld().teleport(p, "spawn");
-
+        p.teleport(KnockIT.getInstance().getMapManager().getMapRotationHandler().getCurrentCoreWorld().getLocation(KnockIT.getInstance().getMapManager().getMapRotationHandler().getCurrentGameMap().getSpawnLocation()));
 
         CoreSystem.getInstance().createTitle()
                 .title("§2§lKnockIT")
@@ -48,7 +50,7 @@ public class GeneralPlayerListener implements Listener {
                 .fadeOut(1)
                 .send(p);
 
-        KitManager.setKit(p, Kit.DEFAULT);
+        KnockIT.getInstance().getKnockITPlayer(p.getUniqueId()).setKit(Kit.DEFAULT);
 
         cp.getScoreboard().setNewObjective(new SidebarObjective());
     }
@@ -77,9 +79,12 @@ public class GeneralPlayerListener implements Listener {
         e.setCancelled(true);
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOW)
     public void onQuit(PlayerQuitEvent e) {
-        e.setQuitMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7 " + e.getPlayer().getDisplayName() + " §7hat das Spiel verlassen");
-    }
+        KnockIT.getInstance().getMessager().send(e.getPlayer(), "§7 " + e.getPlayer().getDisplayName() + " §7hat das Spiel verlassen");
 
+        KnockITPlayer sp = KnockIT.getInstance().getKnockITPlayer(e.getPlayer().getUniqueId());
+        sp.saveData();
+        KnockIT.getInstance().unregisterKnockITPlayer(sp);
+    }
 }
