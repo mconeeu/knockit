@@ -9,8 +9,9 @@ import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.gamemode.Gamemode;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.gamesystem.api.GameSystemAPI;
+import eu.mcone.gamesystem.api.game.player.GamePlayer;
 import eu.mcone.knockit.KnockIT;
-import eu.mcone.knockit.kit.Kit;
+import eu.mcone.knockit.util.Kits;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -72,7 +73,8 @@ public class PlayerDeathListener implements Listener {
         p.setExp(1);
         e.setRespawnLocation(KnockIT.getInstance().getMapManager().getMapRotationHandler().getCurrentCoreWorld().getLocation(KnockIT.getInstance().getMapManager().getMapRotationHandler().getCurrentGameMap().getSpawnLocation()));
 
-        Bukkit.getScheduler().runTask(KnockIT.getInstance(), () -> KnockIT.getInstance().getKnockITPlayer(p.getUniqueId()).setKit(Kit.DEFAULT));
+        GamePlayer gamePlayer = KnockIT.getInstance().getGamePlayer(p);
+        Bukkit.getScheduler().runTask(KnockIT.getInstance(), () -> gamePlayer.setKit(Kits.DEFAULT.getName()));
 
         CoreSystem.getInstance().createActionBar()
                 .message("§c§l§oDu bist gestorben")

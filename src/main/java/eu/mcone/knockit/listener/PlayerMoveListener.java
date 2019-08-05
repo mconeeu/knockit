@@ -6,6 +6,7 @@
 package eu.mcone.knockit.listener;
 
 import eu.mcone.knockit.KnockIT;
+import eu.mcone.knockit.cmd.KnockITCommand;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -19,10 +20,12 @@ public class PlayerMoveListener implements Listener {
     public void on(PlayerMoveEvent e) {
         Player player = e.getPlayer();
         Location deathLocation = KnockIT.getInstance().getCurrentWorld().getLocation("deathHigh");
-        if (deathLocation != null && deathLocation.getY() > e.getPlayer().getLocation().getY()) {
-            player.setHealth(0.0D);
-            player.spigot().respawn();
-            player.playSound(e.getPlayer().getLocation(), Sound.HURT_FLESH, 1, 1);
+        if (!KnockITCommand.setup.contains(player)) {
+            if (deathLocation != null && deathLocation.getY() > e.getPlayer().getLocation().getY()) {
+                player.setHealth(0.0D);
+                player.spigot().respawn();
+                player.playSound(e.getPlayer().getLocation(), Sound.HURT_FLESH, 1, 1);
+            }
         }
     }
 }

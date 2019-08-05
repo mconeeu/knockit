@@ -7,9 +7,10 @@ package eu.mcone.knockit.listener;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
+import eu.mcone.gamesystem.api.game.player.GamePlayer;
 import eu.mcone.knockit.KnockIT;
-import eu.mcone.knockit.kit.Kit;
 import eu.mcone.knockit.profile.KnockITPlayer;
+import eu.mcone.knockit.util.Kits;
 import eu.mcone.knockit.util.SidebarObjective;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
@@ -29,6 +30,7 @@ public class GeneralPlayerListener implements Listener {
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
+        GamePlayer gamePlayer = KnockIT.getInstance().getGamePlayer(p);
 
         KnockIT.getInstance().getMessager().send(p, "§f" + p.getDisplayName() + " §7ist dem Spiel beigetreten");
 
@@ -40,7 +42,7 @@ public class GeneralPlayerListener implements Listener {
         p.setLevel(0);
         p.setGameMode(GameMode.SURVIVAL);
 
-        p.teleport(KnockIT.getInstance().getMapManager().getMapRotationHandler().getCurrentCoreWorld().getLocation(KnockIT.getInstance().getMapManager().getMapRotationHandler().getCurrentGameMap().getSpawnLocation()));
+        p.teleport(KnockIT.getInstance().getCurrentWorld().getLocation("spawn"));
 
         CoreSystem.getInstance().createTitle()
                 .title("§2§lKnockIT")
@@ -50,7 +52,7 @@ public class GeneralPlayerListener implements Listener {
                 .fadeOut(1)
                 .send(p);
 
-        KnockIT.getInstance().getKnockITPlayer(p.getUniqueId()).setKit(Kit.DEFAULT);
+        gamePlayer.setKit(Kits.DEFAULT.getName());
 
         cp.getScoreboard().setNewObjective(new SidebarObjective());
     }

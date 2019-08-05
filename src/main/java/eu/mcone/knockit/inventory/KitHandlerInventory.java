@@ -10,6 +10,7 @@ import eu.mcone.coresystem.api.bukkit.inventory.InventoryOption;
 import eu.mcone.coresystem.api.bukkit.inventory.InventorySlot;
 import eu.mcone.coresystem.api.bukkit.item.ItemBuilder;
 import eu.mcone.coresystem.api.bukkit.item.Skull;
+import eu.mcone.knockit.KnockIT;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -25,10 +26,9 @@ public class KitHandlerInventory extends CoreInventory {
         setItem(InventorySlot.ROW_2_SLOT_3, new ItemBuilder(Material.STICK, 1, 0).displayName("§cGadgets kaufen").enchantment(Enchantment.KNOCKBACK, 1).itemFlags(ItemFlag.HIDE_ENCHANTS).create(),
                 e -> new GadgetsInventory(player));
 
-        setItem(InventorySlot.ROW_2_SLOT_7, new ItemBuilder(Material.DIAMOND_CHESTPLATE, 1, 0).displayName("§cKits kaufen").create(),
-                e -> new KitsInventory(player));
+        setItem(InventorySlot.ROW_2_SLOT_7, new ItemBuilder(Material.DIAMOND_CHESTPLATE, 1, 0).displayName("§cKits kaufen").create(), e -> KnockIT.getInstance().getKitManager().openKitsInventory(player));
 
-        setItem(InventorySlot.ROW_3_SLOT_5, new ItemBuilder(Material.CHEST, 1).displayName("§2Kits sortieren").create(), e -> new SortKitsInventory(player));
+        setItem(InventorySlot.ROW_3_SLOT_5, new ItemBuilder(Material.CHEST, 1).displayName("§2Kits sortieren").create(), e -> KnockIT.getInstance().getKitManager().openKitSortingInventory(player));
 
         openInventory();
     }

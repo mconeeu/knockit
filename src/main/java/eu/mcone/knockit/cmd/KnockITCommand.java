@@ -10,7 +10,12 @@ import eu.mcone.coresystem.api.bukkit.command.CorePlayerCommand;
 import eu.mcone.knockit.KnockIT;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class KnockITCommand extends CorePlayerCommand {
+
+    public static List<Player> setup = new ArrayList<>();
 
     public KnockITCommand() {
         super("knockit");
@@ -31,6 +36,18 @@ public class KnockITCommand extends CorePlayerCommand {
                 KnockIT.getInstance().getMessager().send(player, "§7/knockit set spawnHigh | Setzt die Schutzhöhe");
                 KnockIT.getInstance().getMessager().send(player, "§7/knockit set deathHigh | Setzte die Todeshöhe");
                 KnockIT.getInstance().getMessager().send(player, "§8§m---------- §r§a§lMCONE-KnockIT §8§m----------");
+            } else if (args[0].equalsIgnoreCase("setup")) {
+                if (player.hasPermission("knockit.setup")) {
+                    if (setup.contains(player)) {
+                        setup.remove(player);
+                        KnockIT.getInstance().getMessager().send(player, "§cDu bist nun nicht mehr im Setup");
+                    } else {
+                        setup.add(player);
+                        KnockIT.getInstance().getMessager().send(player, "§2Du bist nun im Setup modus!");
+                    }
+                } else {
+                    KnockIT.getInstance().getMessager().send(player, "§cDu hast keine Permissions für /knockit setup");
+                }
             }
         } else if (args.length == 2) {
             if (player.hasPermission("knockit.setup")) {
