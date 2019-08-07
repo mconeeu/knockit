@@ -23,10 +23,9 @@ public class KitHandlerInventory extends CoreInventory {
 
         setItem(InventorySlot.ROW_1_SLOT_5, Skull.fromUrl("http://textures.minecraft.net/texture/5163dafac1d91a8c91db576caac784336791a6e18d8f7f62778fc47bf146b6", 1).toItemBuilder().displayName("§e§lHändler").lore("§7§oBeim Händler kannst ausgewählte", "§7§oGadgets oder Kits für kaufen.", "§7§oDie meisten Items erhälst du", "§7§onur durch Coins!").create());
 
-        setItem(InventorySlot.ROW_2_SLOT_3, new ItemBuilder(Material.STICK, 1, 0).displayName("§cGadgets kaufen").enchantment(Enchantment.KNOCKBACK, 1).itemFlags(ItemFlag.HIDE_ENCHANTS).create(),
-                e -> new GadgetsInventory(player));
+        setItem(InventorySlot.ROW_2_SLOT_3, new ItemBuilder(Material.STICK, 1, 0).displayName("§cGadgets kaufen").enchantment(Enchantment.KNOCKBACK, 1).itemFlags(ItemFlag.HIDE_ENCHANTS).create(), e -> new GadgetsInventory(player));
 
-        setItem(InventorySlot.ROW_2_SLOT_7, new ItemBuilder(Material.DIAMOND_CHESTPLATE, 1, 0).displayName("§cKits kaufen").create(), e -> KnockIT.getInstance().getKitManager().openKitsInventory(player));
+        setItem(InventorySlot.ROW_2_SLOT_7, new ItemBuilder(Material.DIAMOND_CHESTPLATE, 1, 0).displayName("§cKits kaufen").create(), e -> KnockIT.getInstance().getKitManager().openKitsInventory(player, this));
 
         setItem(InventorySlot.ROW_3_SLOT_5, new ItemBuilder(Material.CHEST, 1).displayName("§2Kits sortieren").create(), e -> KnockIT.getInstance().getKitManager().openKitSortingInventory(player));
 

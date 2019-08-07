@@ -44,7 +44,6 @@ public class GadgetsInventory extends CoreInventory {
 
         if ((cp.getCoins() - gadgets.getCoins()) >= 0) {
             cp.removeCoins(gadgets.getCoins());
-            player.getInventory().clear();
 
             KnockIT.getInstance().getKnockITPlayer(player.getUniqueId()).setGadget(gadgets);
 

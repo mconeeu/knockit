@@ -7,10 +7,8 @@ package eu.mcone.knockit.listener;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
-import eu.mcone.gamesystem.api.game.player.GamePlayer;
 import eu.mcone.knockit.KnockIT;
 import eu.mcone.knockit.profile.KnockITPlayer;
-import eu.mcone.knockit.util.Kits;
 import eu.mcone.knockit.util.SidebarObjective;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
@@ -26,11 +24,10 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class GeneralPlayerListener implements Listener {
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
-        GamePlayer gamePlayer = KnockIT.getInstance().getGamePlayer(p);
 
         KnockIT.getInstance().getMessager().send(p, "§f" + p.getDisplayName() + " §7ist dem Spiel beigetreten");
 
@@ -51,8 +48,6 @@ public class GeneralPlayerListener implements Listener {
                 .fadeIn(1)
                 .fadeOut(1)
                 .send(p);
-
-        gamePlayer.setKit(Kits.DEFAULT.getName());
 
         cp.getScoreboard().setNewObjective(new SidebarObjective());
     }
@@ -81,7 +76,7 @@ public class GeneralPlayerListener implements Listener {
         e.setCancelled(true);
     }
 
-    @EventHandler(priority = EventPriority.LOW)
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onQuit(PlayerQuitEvent e) {
         KnockIT.getInstance().getMessager().send(e.getPlayer(), "§7 " + e.getPlayer().getDisplayName() + " §7hat das Spiel verlassen");
 

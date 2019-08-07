@@ -7,6 +7,7 @@ package eu.mcone.knockit.listener;
 
 import eu.mcone.knockit.KnockIT;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -20,18 +21,26 @@ public class MlgBlockListener implements Listener {
     public void onBlockPlace(BlockPlaceEvent e) {
         Player player = e.getPlayer();
 
-        if (player.getLocation().getY() > 80) {
-            KnockIT.getInstance().getMessager().send(player, "§cDu kannst am Spawn keine Blöcke setzten!");
-            e.setCancelled(true);
+        Location spawnHigh = KnockIT.getInstance().getCurrentWorld().getLocation("spawnHigh");
+        if (spawnHigh != null) {
+            if (player.getLocation().getY() > spawnHigh.getY()) {
+                KnockIT.getInstance().getMessager().send(player, "§cDu kannst am Spawn keine Blöcke setzten!");
+                e.setCancelled(true);
+            }
         } else {
-            if (!KnockIT.getInstance().getBuildSystem().hasBuildModeEnabled(player) && e.getBlock().getType().equals(Material.QUARTZ_BLOCK)) {
-                Block block = e.getBlockPlaced();
+            if (player.getLocation().getY() > 80) {
+                KnockIT.getInstance().getMessager().send(player, "§cDu kannst am Spawn keine Blöcke setzten!");
+                e.setCancelled(true);
+            } else {
+                if (!KnockIT.getInstance().getBuildSystem().hasBuildModeEnabled(player) && e.getBlock().getType().equals(Material.QUARTZ_BLOCK)) {
+                    Block block = e.getBlockPlaced();
 
-                Bukkit.getScheduler().runTaskLater(
-                        KnockIT.getInstance(),
-                        () -> block.setType(Material.AIR),
-                        60
-                );
+                    Bukkit.getScheduler().runTaskLater(
+                            KnockIT.getInstance(),
+                            () -> block.setType(Material.AIR),
+                            60
+                    );
+                }
             }
         }
     }

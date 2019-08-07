@@ -7,15 +7,12 @@ package eu.mcone.knockit.profile;
 
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.coresystem.api.bukkit.player.plugin.GamePlayerData;
-import eu.mcone.gamesystem.api.game.manager.kit.Kit;
 import eu.mcone.knockit.KnockIT;
 import eu.mcone.knockit.gadgets.Gadgets;
 import lombok.Getter;
 
 public class KnockITPlayer extends GamePlayerData<KnockITPlayerProfile> {
 
-    @Getter
-    private transient Kit currentKit;
     @Getter
     private transient Gadgets currentGadget;
 
@@ -45,6 +42,15 @@ public class KnockITPlayer extends GamePlayerData<KnockITPlayerProfile> {
     }
 
     public void removeGadget(Gadgets gadgets) {
+        currentGadget = null;
         corePlayer.bukkit().getInventory().remove(gadgets.getItem());
+    }
+
+    public boolean hasGadget() {
+        return currentGadget != null;
+    }
+
+    public Gadgets getCurrentGadget() {
+        return currentGadget;
     }
 }

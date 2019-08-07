@@ -36,7 +36,7 @@ import java.util.*;
 public class KnockIT extends GameTemplate {
 
     public KnockIT() {
-        super("knockit", Gamemode.KNOCKIT, ChatColor.GREEN, "knockit.prefix", GameSystemOptions.USE_MAP_MANAGER);
+        super("knockit", Gamemode.KNOCKIT, ChatColor.GREEN, "knockit.prefix", GameSystemOptions.USE_MAP_MANAGER, GameSystemOptions.USE_GAME_STATE_HANDLER, GameSystemOptions.USE_KIT_MANAGER);
     }
 
     @Getter
@@ -108,7 +108,9 @@ public class KnockIT extends GameTemplate {
                 new PlayerLevelChange(),
                 new PlayerUpdateListener(),
                 new WeatherChangeListener(),
-                new GameMapCountdownChangeListener()
+                new GameMapCountdownChangeListener(),
+                new GamePlayerLodadedListener(),
+                new GamePlayerBoughtKitListener()
         );
     }
 
@@ -117,20 +119,31 @@ public class KnockIT extends GameTemplate {
                 new Kit(1, Kits.DEFAULT.getName(), "§7Standard-Kit",
                         new ItemBuilder(Material.LEATHER_CHESTPLATE).create(),
                         new KitItem[]{
-                                new KitItem(1.1, KitItemType.WEAPON, new ItemBuilder(Material.WOOD_SWORD).displayName("§8» §b§lHolz Schwert").enchantment(Enchantment.DAMAGE_ALL, 1).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
-                                new KitItem(1.2, KitItemType.WEAPON, new ItemBuilder(Material.FISHING_ROD).displayName("§8» §f§lAngel").unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
-                                new KitItem(1.3, KitItemType.WEAPON, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 1).create()),
-                                new KitItem(1.4, KitItemType.WEAPON, new ItemBuilder(Material.QUARTZ_BLOCK, 3).displayName("§8» §6§lMLG-Block").create())
+                                new KitItem(1.1, KitItemType.HELMET, new ItemBuilder(Material.LEATHER_HELMET).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(1.2, KitItemType.CHESTPLATE, new ItemBuilder(Material.LEATHER_CHESTPLATE).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(1.3, KitItemType.LEGGINGS, new ItemBuilder(Material.LEATHER_LEGGINGS).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(1.4, KitItemType.BOOTS, new ItemBuilder(Material.LEATHER_BOOTS).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+
+                                new KitItem(1.5, KitItemType.WEAPON, new ItemBuilder(Material.WOOD_SWORD).displayName("§8» §b§lHolz Schwert").enchantment(Enchantment.DAMAGE_ALL, 1).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(1.6, KitItemType.WEAPON, new ItemBuilder(Material.FISHING_ROD).displayName("§8» §f§lAngel").unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(1.7, KitItemType.WEAPON, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 1).create()),
+                                new KitItem(1.8, KitItemType.WEAPON, new ItemBuilder(Material.QUARTZ_BLOCK, 3).displayName("§8» §6§lMLG-Block").create())
                         },
                         100
                 ),
-                new Kit(2, Kits.ARCHER.getName(), "§2Bogenschützen-Kit", new ItemBuilder(Material.LEATHER_CHESTPLATE).create(),
+                new Kit(2, Kits.ARCHER.getName(), "§2Bogenschützen-Kit",
+                        new ItemBuilder(Material.IRON_CHESTPLATE).create(),
                         new KitItem[]{
-                                new KitItem(2.1, KitItemType.WEAPON, new ItemBuilder(Material.STONE_SWORD).displayName("§8» §b§lStein Schwert").enchantment(Enchantment.DAMAGE_ALL, 1).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
-                                new KitItem(2.2, KitItemType.WEAPON, new ItemBuilder(Material.FISHING_ROD).displayName("§8» §f§lAngel").unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
-                                new KitItem(2.3, KitItemType.WEAPON, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 1).create()),
-                                new KitItem(2.4, KitItemType.WEAPON, new ItemBuilder(Material.BOW).displayName("§8» §d§lBogen").create()),
-                                new KitItem(2.5, KitItemType.WEAPON, new ItemBuilder(Material.ARROW, 3, 0).displayName("§8» §6§lPfeile").create())
+                                new KitItem(2.1, KitItemType.HELMET, new ItemBuilder(Material.LEATHER_HELMET).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(2.2, KitItemType.CHESTPLATE, new ItemBuilder(Material.IRON_CHESTPLATE).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(2.3, KitItemType.LEGGINGS, new ItemBuilder(Material.LEATHER_LEGGINGS).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(2.4, KitItemType.BOOTS, new ItemBuilder(Material.LEATHER_BOOTS).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+
+                                new KitItem(2.5, KitItemType.WEAPON, new ItemBuilder(Material.STONE_SWORD).displayName("§8» §b§lStein Schwert").enchantment(Enchantment.DAMAGE_ALL, 1).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(2.6, KitItemType.WEAPON, new ItemBuilder(Material.FISHING_ROD).displayName("§8» §f§lAngel").unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(2.7, KitItemType.WEAPON, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 1).create()),
+                                new KitItem(2.8, KitItemType.WEAPON, new ItemBuilder(Material.BOW).displayName("§8» §d§lBogen").create()),
+                                new KitItem(2.9, KitItemType.WEAPON, new ItemBuilder(Material.ARROW, 3, 0).displayName("§8» §6§lPfeile").create())
                         },
                         100
                 ),
@@ -149,9 +162,14 @@ public class KnockIT extends GameTemplate {
                                         "",
                                         "§4§lACHTUNG DU HAST DIESES KIT NUR EIN MAL!").create(),
                         new KitItem[]{
-                                new KitItem(3.1, KitItemType.WEAPON, new ItemBuilder(Material.STONE_SWORD).displayName("§8» §b§lStein Schwert").enchantment(Enchantment.DAMAGE_ALL, 1).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
-                                new KitItem(3.2, KitItemType.WEAPON, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 2).create()),
-                                new KitItem(3.3, KitItemType.WEAPON, new ItemBuilder(Material.FISHING_ROD).displayName("§8§ §f§lAngel").unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create())
+                                new KitItem(3.1, KitItemType.HELMET, new ItemBuilder(Material.LEATHER_HELMET).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(3.2, KitItemType.CHESTPLATE, new ItemBuilder(Material.CHAINMAIL_CHESTPLATE).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(3.3, KitItemType.LEGGINGS, new ItemBuilder(Material.LEATHER_LEGGINGS).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(3.4, KitItemType.BOOTS, new ItemBuilder(Material.LEATHER_BOOTS).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+
+                                new KitItem(3.5, KitItemType.WEAPON, new ItemBuilder(Material.STONE_SWORD).displayName("§8» §b§lStein Schwert").enchantment(Enchantment.DAMAGE_ALL, 1).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(3.5, KitItemType.WEAPON, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 2).create()),
+                                new KitItem(3.6, KitItemType.WEAPON, new ItemBuilder(Material.FISHING_ROD).displayName("§8§ §f§lAngel").unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create())
                         },
                         100
                 ),
@@ -171,9 +189,14 @@ public class KnockIT extends GameTemplate {
                                         "",
                                         "§4§lACHTUNG DU HAST DIESES KIT NUR EIN MAL!").create(),
                         new KitItem[]{
-                                new KitItem(4.1, KitItemType.WEAPON, new ItemBuilder(Material.STONE_SWORD).displayName("§8» §b§lStein Schwert").unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).enchantment(Enchantment.DAMAGE_ALL, 2).create()),
-                                new KitItem(4.2, KitItemType.WEAPON, new ItemBuilder(Material.FISHING_ROD).displayName("§6» §7Enterhacken").unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
-                                new KitItem(4.3, KitItemType.WEAPON, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 2).create())
+                                new KitItem(4.1, KitItemType.HELMET, new ItemBuilder(Material.LEATHER_HELMET).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(4.2, KitItemType.CHESTPLATE, new ItemBuilder(Material.GOLD_CHESTPLATE).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(4.3, KitItemType.LEGGINGS, new ItemBuilder(Material.LEATHER_LEGGINGS).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(4.4, KitItemType.BOOTS, new ItemBuilder(Material.LEATHER_BOOTS).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+
+                                new KitItem(4.5, KitItemType.WEAPON, new ItemBuilder(Material.STONE_SWORD).displayName("§8» §b§lStein Schwert").unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).enchantment(Enchantment.DAMAGE_ALL, 2).create()),
+                                new KitItem(4.6, KitItemType.WEAPON, new ItemBuilder(Material.FISHING_ROD).displayName("§6» §7Enterhacken").unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(4.7, KitItemType.WEAPON, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 2).create())
                         },
                         100
                 ),
@@ -194,10 +217,15 @@ public class KnockIT extends GameTemplate {
                                         "",
                                         "§4§lACHTUNG DU HAST DIESES KIT NUR EIN MAL!").create(),
                         new KitItem[]{
-                                new KitItem(4.1, KitItemType.WEAPON, new ItemBuilder(Material.STONE_SWORD).displayName("§8» §b§lStein Schwert").enchantment(Enchantment.DAMAGE_ALL, 1).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
-                                new KitItem(4.2, KitItemType.WEAPON, new ItemBuilder(Material.FISHING_ROD).displayName("§8» §f§lAngel").unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
-                                new KitItem(4.3, KitItemType.WEAPON, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 1).create()),
-                                new KitItem(4.4, KitItemType.WEAPON, new ItemBuilder(Material.ENDER_PEARL).displayName("§8§ §d§lEnderperle").create())
+                                new KitItem(5.1, KitItemType.HELMET, new ItemBuilder(Material.LEATHER_HELMET).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(5.2, KitItemType.CHESTPLATE, new ItemBuilder(Material.DIAMOND_CHESTPLATE).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(5.3, KitItemType.LEGGINGS, new ItemBuilder(Material.LEATHER_LEGGINGS).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(5.4, KitItemType.BOOTS, new ItemBuilder(Material.LEATHER_BOOTS).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+
+                                new KitItem(5.5, KitItemType.WEAPON, new ItemBuilder(Material.STONE_SWORD).displayName("§8» §b§lStein Schwert").enchantment(Enchantment.DAMAGE_ALL, 1).unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(5.6, KitItemType.WEAPON, new ItemBuilder(Material.FISHING_ROD).displayName("§8» §f§lAngel").unbreakable(true).itemFlags(ItemFlag.HIDE_UNBREAKABLE).create()),
+                                new KitItem(5.7, KitItemType.WEAPON, new ItemBuilder(Material.STICK).displayName("§8» §5§lKnockback-Stick").enchantment(Enchantment.KNOCKBACK, 1).create()),
+                                new KitItem(5.8, KitItemType.WEAPON, new ItemBuilder(Material.ENDER_PEARL).displayName("§8§ §d§lEnderperle").create())
                         },
                         100
                 )
