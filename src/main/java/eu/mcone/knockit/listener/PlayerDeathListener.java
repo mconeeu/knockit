@@ -34,6 +34,7 @@ public class PlayerDeathListener implements Listener {
         e.setKeepInventory(false);
         e.getDrops().clear();
         p.setLevel(0);
+        p.setExp(1);
 
         p.setVelocity(new Vector(0, 0, 0));
         p.spigot().respawn();

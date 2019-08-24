@@ -25,7 +25,7 @@ public class GadgetsInventory extends CoreInventory {
         setItem(InventorySlot.ROW_2_SLOT_3, Gadgets.GRENADE.getItem(), e -> buyItem(Gadgets.GRENADE));
 
         setItem(InventorySlot.ROW_2_SLOT_5, Gadgets.PLAYER_SWAP.getItem(), e -> {
-            if (Bukkit.getOnlinePlayers().size() >= 1) {
+            if (Bukkit.getOnlinePlayers().size() == 1) {
                 KnockIT.getInstance().getMessager().send(player, "§cEs sind momentan nicht genügend Spieler online damit du dieses Item bnutzen kannst.");
             } else {
                 buyItem(Gadgets.PLAYER_SWAP);

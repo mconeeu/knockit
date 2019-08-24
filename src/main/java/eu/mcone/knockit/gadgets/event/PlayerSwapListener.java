@@ -10,7 +10,9 @@ import eu.mcone.knockit.gadgets.Gadgets;
 import eu.mcone.knockit.profile.KnockITPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,9 +24,9 @@ public class PlayerSwapListener implements Listener {
 
     @EventHandler
     public void on(PlayerInteractEvent e) {
+        Player player = e.getPlayer();
         if (e.getItem() != null) {
             if (e.getItem().equals(Gadgets.PLAYER_SWAP.getItem())) {
-                Player player = e.getPlayer();
                 KnockITPlayer knockITPlayer = KnockIT.getInstance().getKnockITPlayer(e.getPlayer().getUniqueId());
 
                 int playerSize = Bukkit.getOnlinePlayers().size();

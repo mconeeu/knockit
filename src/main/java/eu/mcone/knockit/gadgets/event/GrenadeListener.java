@@ -5,6 +5,8 @@
 
 package eu.mcone.knockit.gadgets.event;
 
+import eu.mcone.knockit.KnockIT;
+import eu.mcone.knockit.gadgets.Gadgets;
 import org.bukkit.Location;
 import org.bukkit.entity.Egg;
 import org.bukkit.entity.Entity;
@@ -13,6 +15,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.util.Vector;
 
 public class GrenadeListener implements Listener {
@@ -53,6 +56,30 @@ public class GrenadeListener implements Listener {
     public void on(CreatureSpawnEvent e) {
         if (e.getSpawnReason().equals(CreatureSpawnEvent.SpawnReason.EGG)) {
             e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void on(PlayerInteractEvent e) {
+        Player player = e.getPlayer();
+
+        Location spawnHigh = KnockIT.getInstance().getCurrentWorld().getLocation("spawnHigh");
+        if (e.getItem() != null) {
+            if (e.getItem().equals(Gadgets.GRENADE.getItem())) {
+                if (spawnHigh != null) {
+                    if (player.getLocation().getY() > spawnHigh.getY()) {
+                        KnockIT.getInstance().getMessager().send(player, "§cDu kannst am Spawn keine Granate werfen!");
+                        e.setCancelled(true);
+                    }
+                } else {
+                    if (player.getLocation().getY() > 80) {
+                        KnockIT.getInstance().getMessager().send(player, "§cDu kannst am Spawn keine Granate werfen!");
+                        e.setCancelled(true);
+                    } else {
+                        e.setCancelled(false);
+                    }
+                }
+            }
         }
     }
 }
