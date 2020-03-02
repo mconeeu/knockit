@@ -6,10 +6,9 @@
 package eu.mcone.knockit.listener;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
-import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
+import eu.mcone.gameapi.api.event.player.GamePlayerLoadedEvent;
 import eu.mcone.knockit.KnockIT;
-import eu.mcone.knockit.kit.Kit;
-import eu.mcone.knockit.kit.KitManager;
+import eu.mcone.knockit.player.KnockItPlayer;
 import eu.mcone.knockit.util.SidebarObjective;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
@@ -25,20 +24,12 @@ import org.bukkit.event.player.PlayerQuitEvent;
 public class GeneralPlayerListener implements Listener {
 
     @EventHandler
-    public void onJoin(PlayerJoinEvent e){
+    public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
 
         e.setJoinMessage("§8[§7§l!§8] §2KnockIt §8» §f" + p.getDisplayName() + " §7ist dem Spiel beigetreten");
 
-        p.setExp(1);
-        p.getInventory().clear();
-        p.setHealth(20.00);
-        p.setLevel(0);
         p.setGameMode(GameMode.SURVIVAL);
-
-        KnockIT.getInstance().getWorld().teleport(p, "spawn");
-
 
         CoreSystem.getInstance().createTitle()
                 .title("§2§lKnockIT")
@@ -47,10 +38,12 @@ public class GeneralPlayerListener implements Listener {
                 .fadeIn(1)
                 .fadeOut(1)
                 .send(p);
+    }
 
-        KitManager.setKit(p, Kit.DEFAULT);
-
-        cp.getScoreboard().setNewObjective(new SidebarObjective());
+    @EventHandler
+    public void onGamePlayerLoaded(GamePlayerLoadedEvent e) {
+        KnockItPlayer kp = new KnockItPlayer(e.getCorePlayer());
+        e.getCorePlayer().getScoreboard().setNewObjective(new SidebarObjective());
     }
 
     @EventHandler
@@ -79,6 +72,10 @@ public class GeneralPlayerListener implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent e) {
+        KnockItPlayer kp = KnockIT.getInstance().getKnockITPlayer(e.getPlayer().getUniqueId());
+
+        kp.saveData();
+        kp.unregister();
         e.setQuitMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7 " + e.getPlayer().getDisplayName() + " §7hat das Spiel verlassen");
     }
 

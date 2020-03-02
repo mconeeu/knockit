@@ -5,8 +5,8 @@
 
 package eu.mcone.knockit.listener;
 
-import eu.mcone.coresystem.api.bukkit.event.NpcInteractEvent;
-import eu.mcone.knockit.inventory.MainKitInventory;
+import eu.mcone.coresystem.api.bukkit.event.npc.NpcInteractEvent;
+import eu.mcone.knockit.inventory.TraderInventory;
 import net.minecraft.server.v1_8_R3.PacketPlayInUseEntity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
@@ -17,8 +17,8 @@ public class NpcListener implements Listener {
     @EventHandler
     public void onNpcInteract(NpcInteractEvent e) {
         if (e.getNpc().getData().getType().equals(EntityType.PLAYER) && e.getAction().equals(PacketPlayInUseEntity.EnumEntityUseAction.INTERACT)) {
-            if (e.getNpc().getData().getName().equals("kit")) {
-                new MainKitInventory(e.getPlayer());
+            if (e.getNpc().getData().getName().equals("trader")) {
+                new TraderInventory(e.getPlayer());
             }
         }
     }
