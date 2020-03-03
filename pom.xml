@@ -31,6 +31,43 @@
         </resources>
     </build>
 
+    <developers>
+        <developer>
+            <id>dominklippl</id>
+            <name>Dominik Lippl</name>
+            <url>https://DerDeveloper.eu</url>
+            <organization>MC ONE</organization>
+            <organizationUrl>https://www.mcone.eu</organizationUrl>
+            <roles>
+                <role>adminstrator</role>
+                <role>developer</role>
+            </roles>
+            <timezone>Europe/Berlin</timezone>
+        </developer>
+        <developer>
+            <id>marvinhuelsmann</id>
+            <name>Marvin Huelsmann</name>
+            <organization>MC ONE</organization>
+            <organizationUrl>https://www.mcone.eu</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>Europe/Berlin</timezone>
+        </developer>
+        <developer>
+            <id>rufusmaiwald</id>
+            <name>Rufus Maiwald</name>
+            <url>https://rufusmaiwald.de</url>
+            <organization>MC ONE</organization>
+            <organizationUrl>https://www.mcone.eu</organizationUrl>
+            <roles>
+                <role>adminstrator</role>
+                <role>developer</role>
+            </roles>
+            <timezone>Europe/Berlin</timezone>
+        </developer>
+    </developers>
+
     <repositories>
         <repository>
             <id>mcone-systems</id>

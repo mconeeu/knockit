@@ -11,8 +11,6 @@ import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.gameapi.api.GameAPI;
 import eu.mcone.gameapi.api.damage.DamageLogger;
 import eu.mcone.knockit.KnockIT;
-import eu.mcone.knockit.kit.Kit;
-import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,7 +18,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.util.Vector;
 
 public class PlayerDeathListener implements Listener {
 
@@ -37,7 +34,6 @@ public class PlayerDeathListener implements Listener {
         e.getDrops().clear();
         p.setLevel(0);
 
-        p.setVelocity(new Vector(0, 0, 0));
         p.spigot().respawn();
 
         if (k != null) {
@@ -63,12 +59,6 @@ public class PlayerDeathListener implements Listener {
     @EventHandler
     public void onRespawn(PlayerRespawnEvent e) {
         Player p = e.getPlayer();
-
-        p.getInventory().clear();
-        p.setExp(1);
-
-        Bukkit.getScheduler().runTask(KnockIT.getInstance(), () ->
-                GameAPI.getInstance().getGamePlayer(p).setKit(Kit.DEFAULT));
 
         CoreSystem.getInstance().createActionBar()
                 .message("§c§oDu bist gestorben")

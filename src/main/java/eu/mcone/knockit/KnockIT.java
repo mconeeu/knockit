@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 - 2018 Dominik Lippl, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * Copyright (c) 2017 - 2019 Dominik Lippl, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
  * You are not allowed to decompile the code
  */
 
@@ -7,14 +7,16 @@ package eu.mcone.knockit;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.gamemode.Gamemode;
-import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.coresystem.api.bukkit.world.BuildSystem;
 import eu.mcone.gameapi.api.GamePlugin;
 import eu.mcone.gameapi.api.Option;
+import eu.mcone.knockit.cmd.KnockITCommand;
+import eu.mcone.knockit.gadgets.event.GrenadeListener;
+import eu.mcone.knockit.gadgets.event.PlayerSwapListener;
+import eu.mcone.knockit.gadgets.event.RocketListener;
 import eu.mcone.knockit.kit.Kit;
 import eu.mcone.knockit.listener.*;
 import eu.mcone.knockit.player.KnockItPlayer;
-import eu.mcone.knockit.util.SidebarObjective;
 import lombok.Getter;
 import org.bukkit.Material;
 
@@ -43,7 +45,7 @@ public class KnockIT extends GamePlugin {
         players = new ArrayList<>();
         CoreSystem.getInstance().getTranslationManager().loadCategories(this);
 
-        sendConsoleMessage("§aBuild-System witd initiiert");
+        sendConsoleMessage("§aInitiating BuildSystem...");
         buildSystem = CoreSystem.getInstance().initialiseBuildSystem(BuildSystem.BuildEvent.BLOCK_BREAK, BuildSystem.BuildEvent.BLOCK_PLACE);
         buildSystem.addFilter(BuildSystem.BuildEvent.BLOCK_PLACE, Material.QUARTZ_BLOCK.getId());
 
@@ -54,33 +56,33 @@ public class KnockIT extends GamePlugin {
         );
         getKitManager().setDefaultKit(Kit.DEFAULT);
 
-        sendConsoleMessage("§aEvents werden registriert...");
-        registerEvents();
-
-        sendConsoleMessage("§aVersion §f" + this.getDescription().getVersion() + "§a wurde aktiviert...");
-
-        for (CorePlayer p : CoreSystem.getInstance().getOnlineCorePlayers()) {
-            p.getScoreboard().setNewObjective(new SidebarObjective());
-        }
-    }
-
-    @Override
-    public void onGameDisable() {
-        sendConsoleMessage("§cPlugin wurde deaktiviert!");
-    }
-
-    private void registerEvents() {
+        sendConsoleMessage("§aRegistering Commands and Listeners...");
+        registerCommands(new KnockITCommand());
         registerEvents(
-                new EntityDamageListener(),
+                new PlayerHeightListener(),
+                new RocketListener(),
+                new PlayerSwapListener(),
+                new GrenadeListener(),
                 new FishingRodListener(),
                 new GeneralPlayerListener(),
                 new MlgBlockListener(),
                 new NpcListener(),
                 new PlayerDeathListener(),
-                new PlayerLevelChange(),
+                new KillStreakListener(),
                 new PlayerUpdateListener(),
                 new WeatherChangeListener()
         );
+
+        sendConsoleMessage("§aVersion §f" + this.getDescription().getVersion() + "§a enabled...");
+    }
+
+    @Override
+    public void onGameDisable() {
+        for (KnockItPlayer knockITPlayer : getOnlineKnockITPlayers()) {
+            knockITPlayer.saveData();
+        }
+
+        sendConsoleMessage("§cPlugin disabled!");
     }
 
     public KnockItPlayer getKnockITPlayer(UUID uuid) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 - 2018 Dominik Lippl, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * Copyright (c) 2017 - 2019 Dominik Lippl, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
  * You are not allowed to decompile the code
  */
 
@@ -11,11 +11,12 @@ import eu.mcone.knockit.KnockIT;
 import eu.mcone.knockit.player.KnockItPlayer;
 import eu.mcone.knockit.util.SidebarObjective;
 import org.bukkit.GameMode;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerItemDamageEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -26,10 +27,9 @@ public class GeneralPlayerListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-
-        e.setJoinMessage("§8[§7§l!§8] §2KnockIt §8» §f" + p.getDisplayName() + " §7ist dem Spiel beigetreten");
-
         p.setGameMode(GameMode.SURVIVAL);
+
+        e.setJoinMessage(null);
 
         CoreSystem.getInstance().createTitle()
                 .title("§2§lKnockIT")
@@ -54,13 +54,6 @@ public class GeneralPlayerListener implements Listener {
     }
 
     @EventHandler
-    public void onInventoryClick(InventoryClickEvent e) {
-        if ((e.getRawSlot() < e.getInventory().getSize()) && (e.getCurrentItem() != null)) {
-            e.setCancelled(!KnockIT.getInstance().getBuildSystem().hasBuildModeEnabled((Player) e.getWhoClicked()));
-        }
-    }
-
-    @EventHandler
     public void on(PlayerItemDamageEvent e) {
         e.setCancelled(true);
     }
@@ -71,12 +64,26 @@ public class GeneralPlayerListener implements Listener {
     }
 
     @EventHandler
+    public void onEntityDamage(EntityDamageEvent e) {
+        Entity ent = e.getEntity();
+
+        if (ent instanceof Player) {
+            if (e.getCause().equals(EntityDamageEvent.DamageCause.VOID)) {
+                e.setCancelled(true);
+            } else if (e.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
+                e.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
     public void onQuit(PlayerQuitEvent e) {
         KnockItPlayer kp = KnockIT.getInstance().getKnockITPlayer(e.getPlayer().getUniqueId());
 
         kp.saveData();
         kp.unregister();
-        e.setQuitMessage(CoreSystem.getInstance().getTranslationManager().get("knockit.prefix") + "§7 " + e.getPlayer().getDisplayName() + " §7hat das Spiel verlassen");
+
+        e.setQuitMessage(null);
     }
 
 }

@@ -38,10 +38,26 @@ public class Kit {
                     )
                     .create(),
             new HashMap<Integer, ItemStack>(){{
-                put(PlayerInventorySlot.BOOTS, new ItemStack(Material.LEATHER_BOOTS));
-                put(PlayerInventorySlot.LEGGINGS, new ItemStack(Material.LEATHER_LEGGINGS));
-                put(PlayerInventorySlot.CHESTPLATE, new ItemStack(Material.IRON_CHESTPLATE));
-                put(PlayerInventorySlot.HELMET, new ItemStack(Material.LEATHER_HELMET));
+                put(PlayerInventorySlot.BOOTS, new ItemBuilder(Material.LEATHER_BOOTS)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.LEGGINGS, new ItemBuilder(Material.LEATHER_LEGGINGS)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.CHESTPLATE, new ItemBuilder(Material.LEATHER_CHESTPLATE)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.HELMET, new ItemBuilder(Material.LEATHER_HELMET)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
 
                 put(PlayerInventorySlot.HOTBAR_SLOT_1, new ItemBuilder(Material.WOOD_SWORD)
                         .displayName("§8» §b§lHolz Schwert")
@@ -94,10 +110,26 @@ public class Kit {
                     )
                     .create(),
             new HashMap<Integer, ItemStack>(){{
-                put(PlayerInventorySlot.BOOTS, new ItemStack(Material.CHAINMAIL_BOOTS));
-                put(PlayerInventorySlot.LEGGINGS, new ItemStack(Material.CHAINMAIL_LEGGINGS));
-                put(PlayerInventorySlot.CHESTPLATE, new ItemStack(Material.CHAINMAIL_CHESTPLATE));
-                put(PlayerInventorySlot.HELMET, new ItemStack(Material.CHAINMAIL_HELMET));
+                put(PlayerInventorySlot.BOOTS, new ItemBuilder(Material.LEATHER_BOOTS)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.LEGGINGS, new ItemBuilder(Material.LEATHER_LEGGINGS)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.CHESTPLATE, new ItemBuilder(Material.LEATHER_CHESTPLATE)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.HELMET, new ItemBuilder(Material.LEATHER_HELMET)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
 
                 put(PlayerInventorySlot.HOTBAR_SLOT_1, new ItemBuilder(Material.STONE_SWORD)
                         .displayName("§8» §b§lStein Schwert")
@@ -160,10 +192,26 @@ public class Kit {
                     )
                     .create(),
             new HashMap<Integer, ItemStack>(){{
-                put(PlayerInventorySlot.BOOTS, new ItemStack(Material.CHAINMAIL_BOOTS));
-                put(PlayerInventorySlot.LEGGINGS, new ItemStack(Material.CHAINMAIL_LEGGINGS));
-                put(PlayerInventorySlot.CHESTPLATE, new ItemStack(Material.CHAINMAIL_CHESTPLATE));
-                put(PlayerInventorySlot.HELMET, new ItemStack(Material.CHAINMAIL_HELMET));
+                put(PlayerInventorySlot.BOOTS, new ItemBuilder(Material.LEATHER_BOOTS)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.LEGGINGS, new ItemBuilder(Material.LEATHER_LEGGINGS)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.CHESTPLATE, new ItemBuilder(Material.CHAINMAIL_CHESTPLATE)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.HELMET, new ItemBuilder(Material.LEATHER_HELMET)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
 
                 put(PlayerInventorySlot.HOTBAR_SLOT_1, new ItemBuilder(Material.STONE_SWORD)
                         .displayName("§8» §b§lStein Schwerd")
@@ -222,10 +270,26 @@ public class Kit {
                     )
                     .create(),
             new HashMap<Integer, ItemStack>(){{
-                put(PlayerInventorySlot.BOOTS, new ItemStack(Material.CHAINMAIL_BOOTS));
-                put(PlayerInventorySlot.LEGGINGS, new ItemStack(Material.CHAINMAIL_LEGGINGS));
-                put(PlayerInventorySlot.CHESTPLATE, new ItemStack(Material.CHAINMAIL_CHESTPLATE));
-                put(PlayerInventorySlot.HELMET, new ItemStack(Material.CHAINMAIL_HELMET));
+                put(PlayerInventorySlot.BOOTS, new ItemBuilder(Material.LEATHER_BOOTS)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.LEGGINGS, new ItemBuilder(Material.LEATHER_LEGGINGS)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.CHESTPLATE, new ItemBuilder(Material.GOLD_CHESTPLATE)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.HELMET, new ItemBuilder(Material.LEATHER_HELMET)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
 
                 put(PlayerInventorySlot.HOTBAR_SLOT_1, new ItemBuilder(Material.STONE_SWORD)
                         .displayName("§8» §b§lStein Schwert")
@@ -279,10 +343,26 @@ public class Kit {
                     )
                     .create(),
             new HashMap<Integer, ItemStack>(){{
-                put(PlayerInventorySlot.BOOTS, new ItemStack(Material.CHAINMAIL_BOOTS));
-                put(PlayerInventorySlot.LEGGINGS, new ItemStack(Material.CHAINMAIL_LEGGINGS));
-                put(PlayerInventorySlot.CHESTPLATE, new ItemStack(Material.CHAINMAIL_CHESTPLATE));
-                put(PlayerInventorySlot.HELMET, new ItemStack(Material.CHAINMAIL_HELMET));
+                put(PlayerInventorySlot.BOOTS, new ItemBuilder(Material.LEATHER_BOOTS)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.LEGGINGS, new ItemBuilder(Material.LEATHER_LEGGINGS)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.CHESTPLATE, new ItemBuilder(Material.DIAMOND_CHESTPLATE)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.HELMET, new ItemBuilder(Material.LEATHER_HELMET)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
 
                 put(PlayerInventorySlot.HOTBAR_SLOT_1, new ItemBuilder(Material.STONE_SWORD)
                         .displayName("§8» §b§lStein Schwert")

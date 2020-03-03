@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 - 2018 Dominik Lippl, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
+ * Copyright (c) 2017 - 2019 Dominik Lippl, Rufus Maiwald and the MC ONE Minecraftnetwork. All rights reserved
  * You are not allowed to decompile the code
  */
 
@@ -14,7 +14,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLevelChangeEvent;
 
-public class PlayerLevelChange implements Listener {
+public class KillStreakListener implements Listener {
 
     @EventHandler
     public void onPlayerLevelChange(PlayerLevelChangeEvent e) {
@@ -24,13 +24,13 @@ public class PlayerLevelChange implements Listener {
             int coins = e.getNewLevel() / 2;
 
             for (Player player : Bukkit.getOnlinePlayers()) {
-                CoreSystem.getInstance().createTitle().title("§a"+e.getNewLevel()+"er Killstreak").subTitle("§fvon " + p.getDisplayName()).stay(5).send(player);
+                CoreSystem.getInstance().createTitle().title("§a" + e.getNewLevel() + "er Killstreak").subTitle("§fvon " + p.getDisplayName()).stay(5).send(player);
                 player.getLocation().getWorld().playSound(p.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
 
                 if (player != p) {
-                    KnockIT.getInstance().getMessager().send(player, "§7Der Spieler §f" + p.getDisplayName() + " §7hat einen §e"+e.getNewLevel()+"er Killstreak!");
+                    KnockIT.getInstance().getMessager().send(player, "§7Der Spieler §f" + p.getDisplayName() + " §7hat einen §e" + e.getNewLevel() + "§7er Killstreak!");
                 } else {
-                    KnockIT.getInstance().getMessager().send(player, "§7Du hast einen §e"+e.getNewLevel()+"er Killstreak! §8[§a+"+coins+" Coins§8]");
+                    KnockIT.getInstance().getMessager().send(player, "§7Du hast einen §e" + e.getNewLevel() + "er Killstreak! §8[§a+" + coins + " Coins§8]");
                     CoreSystem.getInstance().getCorePlayer(p).addCoins(coins);
                 }
             }
