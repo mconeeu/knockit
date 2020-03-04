@@ -17,7 +17,7 @@ import org.bukkit.entity.Player;
 public class TraderInventory extends CoreInventory {
 
     public TraderInventory(Player p) {
-        super( "§8» §e§lHändler §8| §fKits / Gadgets", p, InventorySlot.ROW_3, InventoryOption.FILL_EMPTY_SLOTS);
+        super( "§8» §e§lHändler", p, InventorySlot.ROW_3, InventoryOption.FILL_EMPTY_SLOTS);
 
         setItem(InventorySlot.ROW_1_SLOT_5, Skull.fromUrl("http://textures.minecraft.net/texture/5163dafac1d91a8c91db576caac784336791a6e18d8f7f62778fc47bf146b6", 1).toItemBuilder().displayName("§e§lHändler").lore("§7§oBeim Händler kannst ausgewählte", "§7§oGadgets oder Kits für kaufen.", "§7§oDie meisten Items erhälst du", "§7§onur durch Coins!").create());
 

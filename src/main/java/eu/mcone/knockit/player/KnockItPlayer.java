@@ -42,8 +42,12 @@ public class KnockItPlayer extends GamePlayerInventory<PlayerInventoryProfile> {
     }
 
     public void removeGadget(Gadget gadgets) {
-        currentGadget = null;
         corePlayer.bukkit().getInventory().remove(gadgets.getItem());
+        resetGadget();
+    }
+
+    public void resetGadget() {
+        currentGadget = null;
     }
 
     public boolean hasGadget() {

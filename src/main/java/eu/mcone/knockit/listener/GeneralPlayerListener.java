@@ -42,7 +42,7 @@ public class GeneralPlayerListener implements Listener {
 
     @EventHandler
     public void onGamePlayerLoaded(GamePlayerLoadedEvent e) {
-        KnockItPlayer kp = new KnockItPlayer(e.getCorePlayer());
+        new KnockItPlayer(e.getCorePlayer());
         e.getCorePlayer().getScoreboard().setNewObjective(new SidebarObjective());
     }
 
