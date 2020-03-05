@@ -28,7 +28,6 @@ public class PlayerDeathListener implements Listener {
         final Player p = e.getEntity();
         final CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
         final Player k = p.getKiller() != null ? p.getKiller() : DAMAGE_LOGGER.getKiller(p);
-        KnockIT.getInstance().getKnockITPlayer(p.getUniqueId()).resetGadget();
 
         e.setDeathMessage(null);
         e.setKeepInventory(false);
