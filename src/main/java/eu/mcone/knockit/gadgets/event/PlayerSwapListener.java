@@ -45,22 +45,29 @@ public class PlayerSwapListener implements Listener {
                             || !p.getLocation().subtract(0, 1, 0).getBlock().getRelative(BlockFace.DOWN).getType().equals(Material.AIR)
                     ) {
                         if (Bukkit.getOnlinePlayers().size() > 1) {
-                            List<Player> swapPlayers = new ArrayList<>(Bukkit.getOnlinePlayers());
-                            swapPlayers.remove(p);
+                            List<Player> swapPlayers = new ArrayList<>();
+                            for (Player player : Bukkit.getOnlinePlayers()) {
+                                if (player != p && !PlayerHeightListener.isOnSpawn(player.getLocation())) {
+                                    swapPlayers.add(player);
+                                }
+                            }
+
                             Player t = swapPlayers.get(RANDOM.nextInt(swapPlayers.size()));
+                            if (t != null) {
+                                t.playSound(t.getLocation(), Sound.ENDERMAN_TELEPORT, 1, 1);
+                                p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 1, 1);
 
-                            t.playSound(t.getLocation(), Sound.ENDERMAN_TELEPORT, 1, 1);
-                            p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 1, 1);
+                                t.teleport(p.getLocation());
+                                p.teleport(t.getLocation());
 
-                            t.teleport(p.getLocation());
-                            p.teleport(t.getLocation());
-
-                            KnockIT.getInstance().getKnockITPlayer(e.getPlayer().getUniqueId()).removeGadget(Gadget.PLAYER_SWAP);
-                            KnockIT.getInstance().getMessager().send(t, "§2Du wurdest mit dem Spieler §f" + p.getName() + " §2getauscht, da er das §aSwap-Gadget§2 benutzt hat.");
-                            KnockIT.getInstance().getMessager().send(p, "§2Du wurdest mit dem Spieler §f" + t.getName() + " §2getauscht.");
-                        } else {
-                            KnockIT.getInstance().getMessager().send(p, "§cEs sind momentan nicht genügend Spieler online um das Item benutzen zu können!");
+                                KnockIT.getInstance().getKnockITPlayer(e.getPlayer().getUniqueId()).removeGadget(Gadget.PLAYER_SWAP);
+                                KnockIT.getInstance().getMessager().send(t, "§2Du wurdest mit dem Spieler §f" + p.getName() + " §2getauscht, da er das §aSwap-Gadget§2 benutzt hat.");
+                                KnockIT.getInstance().getMessager().send(p, "§2Du wurdest mit dem Spieler §f" + t.getName() + " §2getauscht.");
+                                return;
+                            }
                         }
+
+                        KnockIT.getInstance().getMessager().send(p, "§cEs sind momentan nicht genügend Spieler online um das Item benutzen zu können!");
                     } else {
                         KnockIT.getInstance().getMessager().send(p, "§4Du kannst dieses Gadget nur am Boden benutzen!");
                     }

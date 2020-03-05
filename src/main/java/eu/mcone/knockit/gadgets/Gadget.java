@@ -19,36 +19,43 @@ public enum Gadget {
             "§cGranate",
             new ItemBuilder(Material.EGG)
                     .displayName("§cGranate")
+                    .lore("§7§oDieses Gadget kostet", "§7§o3 Killstreaks")
                     .enchantment(Enchantment.PROTECTION_EXPLOSIONS, 1)
                     .itemFlags(ItemFlag.HIDE_ENCHANTS)
                     .create(),
-            10
+            10,
+            3
     ),
 
     PLAYER_SWAP(
             "§eSpieler tauscher",
             new ItemBuilder(Material.COMPASS)
                     .displayName("§eSpielertauscher")
+                    .lore("§7§oDieses Gadget kostet", "§7§o3 Killstreaks")
                     .create(),
-            10
+            10,
+            3
     ),
 
     ROCKET(
             "§7Rakete",
             new ItemBuilder(Material.FIREWORK)
                     .displayName("§7Rakete")
+                    .lore("§7§oDieses Gadget kostet", "§7§o2 Killstreaks")
                     .create(),
-            10
+            10,
+            2
     );
 
-    private final String displayName;
-    private final ItemStack item;
-    private final int coins;
+    private String displayName;
+    private ItemStack item;
+    private int coins, level;
 
-    Gadget(final String displayName, final ItemStack item, final int coins) {
+    Gadget(String displayName, ItemStack item, int coins, int level) {
         this.displayName = displayName;
         this.item = item;
         this.coins = coins;
+        this.level = level;
     }
 
 }

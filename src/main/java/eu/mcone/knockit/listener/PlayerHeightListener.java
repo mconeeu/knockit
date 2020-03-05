@@ -9,6 +9,7 @@ import eu.mcone.knockit.KnockIT;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -38,13 +39,12 @@ public class PlayerHeightListener implements Listener {
         Entity target = e.getEntity();
         Entity damager = e.getDamager();
 
-        if (target instanceof Player && damager instanceof Player) {
-            Player p = (Player) damager;
+        if (target instanceof Player && (damager instanceof Player || damager instanceof Projectile)) {
             Player t = (Player) target;
 
-            if (PlayerHeightListener.isOnSpawn(p.getLocation()) || PlayerHeightListener.isOnSpawn(t.getLocation())) {
+            if (PlayerHeightListener.isOnSpawn(damager.getLocation()) || PlayerHeightListener.isOnSpawn(t.getLocation())) {
                 e.setCancelled(true);
-                KnockIT.getInstance().getMessager().send(p, "§4Du darfst am Spawn nicht kämpfen!");
+                KnockIT.getInstance().getMessager().send(damager instanceof Player ? (Player) damager : (Player) ((Projectile) damager).getShooter(), "§4Du darfst am Spawn nicht kämpfen!");
             }
         }
     }

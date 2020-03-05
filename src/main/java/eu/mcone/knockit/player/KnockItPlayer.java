@@ -6,16 +6,12 @@ import eu.mcone.coresystem.api.bukkit.player.profile.PlayerDataProfile;
 import eu.mcone.coresystem.api.bukkit.player.profile.PlayerInventoryProfile;
 import eu.mcone.knockit.KnockIT;
 import eu.mcone.knockit.gadgets.Gadget;
-import lombok.Getter;
 
 public class KnockItPlayer extends GamePlayerInventory<PlayerInventoryProfile> {
 
     static {
         PlayerDataProfile.preventTeleport(true);
     }
-
-    @Getter
-    private Gadget currentGadget;
 
     public KnockItPlayer(CorePlayer player) {
         super(player);
@@ -37,21 +33,11 @@ public class KnockItPlayer extends GamePlayerInventory<PlayerInventoryProfile> {
     }
 
     public void setGadget(Gadget gadget) {
-        currentGadget = gadget;
         corePlayer.bukkit().getInventory().addItem(gadget.getItem());
     }
 
     public void removeGadget(Gadget gadgets) {
         corePlayer.bukkit().getInventory().remove(gadgets.getItem());
-        resetGadget();
-    }
-
-    public void resetGadget() {
-        currentGadget = null;
-    }
-
-    public boolean hasGadget() {
-        return currentGadget != null;
     }
 
 }
