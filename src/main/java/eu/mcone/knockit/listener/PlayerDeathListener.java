@@ -36,7 +36,7 @@ public class PlayerDeathListener implements Listener {
 
         p.spigot().respawn();
 
-        if (k != null) {
+        if (k != null && !p.equals(k)) {
             final CorePlayer ck = CoreSystem.getInstance().getCorePlayer(k);
 
             KnockIT.getInstance().getMessager().send(k, "§7Du hast §6" + p.getDisplayName() + " §7getötet §8[§a+3 Coins§8]");

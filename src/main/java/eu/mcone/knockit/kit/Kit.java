@@ -22,20 +22,18 @@ public class Kit {
                     .displayName("§7Standard-Kit")
                     .lore(
                             "",
-                            "§f§oMit diesem Kit erhälst du",
-                            "§f§ofolgende Items:",
+                            "§7§oMit diesem Kit erhälst du:",
+                            "§8» §7Stein Schwert",
+                            "§8» §7Angel",
+                            "§8» §7Knockback-Stick",
+                            "§8» §7Bogen",
+                            "§8» §7Pfeile",
+                            "§8» §7Ketten Rüstung",
                             "",
-                            "§6» §7Stein Schwert",
-                            "§6» §7Angel",
-                            "§6» §7Knockback-Stick",
-                            "§6» §7Bogen",
-                            "§6» §7Pfeile",
-                            "§6» §7Ketten Rüstung",
-                            "",
-                            "§fKosten 100 Coins",
-                            "",
-                            "§4§lACHTUNG DU HAST DIESES KIT NUR EIN MAL!"
+                            "§7Kosten: §f100 Coins",
+                            "§c§oDu erhälst das Kit nur einmal!"
                     )
+                    .itemFlags(ItemFlag.HIDE_ATTRIBUTES)
                     .create(),
             new HashMap<Integer, ItemStack>(){{
                 put(PlayerInventorySlot.BOOTS, new ItemBuilder(Material.LEATHER_BOOTS)
@@ -95,18 +93,16 @@ public class Kit {
                     .displayName("§6Bogenschützen-Kit")
                     .lore(
                             "",
-                            "§f§oMit diesem Kit erhälst du",
-                            "§f§ofolgende Items:",
+                            "§7§oMit diesem Kit erhälst du:",
+                            "§8» §6Stein Schwert",
+                            "§8» §6Angel",
+                            "§8» §6Knockback-Stick",
+                            "§8» §6Bogen",
+                            "§8» §6Pfeile",
+                            "§8» §6Ketten Rüstung",
                             "",
-                            "§6» §7Stein Schwert",
-                            "§6» §7Angel",
-                            "§6» §7Knockback-Stick",
-                            "§6» §7Bogen",
-                            "§6» §7Pfeile",
-                            "§6» §7Ketten Rüstung",
-                            "", "§fKosten 100 Coins",
-                            "",
-                            "§4§lACHTUNG DU HAST DIESES KIT NUR EIN MAL!"
+                            "§7Kosten: §f100 Coins",
+                            "§c§oDu erhälst das Kit nur einmal!"
                     )
                     .create(),
             new HashMap<Integer, ItemStack>(){{
@@ -179,16 +175,14 @@ public class Kit {
                     .displayName("§aKnockback-Kit")
                     .lore(
                             "",
-                            "§f§oMit diesem Kit erhälst du",
-                            "§f§ofolgende Items:",
+                            "§7§oMit diesem Kit erhälst du:",
+                            "§8» §aStein Schwert",
+                            "§8» §aAngel",
+                            "§8» §aKnockback-Stick auf Stufe 2",
+                            "§8» §aKetten Rüstung",
                             "",
-                            "§6» §7Stein Schwert",
-                            "§6» §7Angel",
-                            "§6» §7Knockback-Stick auf Stufe 2",
-                            "§6» §7Ketten Rüstung",
-                            "", "§fKosten 100 Coins",
-                            "",
-                            "§4§lACHTUNG DU HAST DIESES KIT NUR EIN MAL!"
+                            "§7Kosten: §f100 Coins",
+                            "§c§oDu erhälst das Kit nur einmal!"
                     )
                     .create(),
             new HashMap<Integer, ItemStack>(){{
@@ -254,19 +248,16 @@ public class Kit {
                     .displayName("§dEnterhaken-Kit")
                     .lore(
                             "",
-                            "§f§oMit diesem Kit erhälst du",
-                            "§f§ofolgende Kit:",
+                            "§7§oMit diesem Kit erhälst du:",
+                            "§8» §dStein Schwert",
+                            "§8» §dEnterhacken",
+                            "§8» §dKnockback-Stick",
+                            "§8» §dEnderperle",
+                            "§8» §dEisen Brustplatte",
+                            "§8» §dKetten Rüstung",
                             "",
-                            "§6» §7Stein Schwert",
-                            "§6» §7Enterhacken",
-                            "§6» §7Knockback-Stick",
-                            "§6» §7Enderperle",
-                            "§6» §7Eisen Brustplatte",
-                            "§6» §7Ketten Rüstung",
-                            "",
-                            "§fKosten 125 Coins",
-                            "",
-                            "§4§lACHTUNG DU HAST DIESES KIT NUR EIN MAL!"
+                            "§7Kosten: §f125 Coins",
+                            "§c§oDu erhälst das Kit nur einmal!"
                     )
                     .create(),
             new HashMap<Integer, ItemStack>(){{
@@ -324,22 +315,19 @@ public class Kit {
     public static final eu.mcone.gameapi.api.kit.Kit ENDERMAN = new eu.mcone.gameapi.api.kit.Kit(
             "enderman",
             new ItemBuilder(Material.ENDER_PEARL)
-                    .displayName("§bEnderman-Kit")
+                    .displayName("§dEnderman-Kit")
                     .lore(
                             "",
-                            "§f§oMit diesem Kit erhälst du",
-                            "§f§ofolgende Kit:",
+                            "§7§oMit diesem Kit erhälst du:",
+                            "§8» §dStein Schwert",
+                            "§8» §dAngel",
+                            "§8» §dKnockback-Stick",
+                            "§8» §dEnderperle",
+                            "§8» §dEisen Brustplatte",
+                            "§8» §dKetten Rüstung",
                             "",
-                            "§6» §7Stein Schwert",
-                            "§6» §7Angel",
-                            "§6» §7Knockback-Stick",
-                            "§6» §7Enderperle",
-                            "§6» §7Eisen Brustplatte",
-                            "§6» §7Ketten Rüstung",
-                            "",
-                            "§fKosten 150 Coins",
-                            "",
-                            "§4§lACHTUNG DU HAST DIESES KIT NUR EIN MAL!"
+                            "§7Kosten: §f150 Coins",
+                            "§c§oDu erhälst das Kit nur einmal!"
                     )
                     .create(),
             new HashMap<Integer, ItemStack>(){{
