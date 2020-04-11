@@ -35,7 +35,7 @@
         <developer>
             <id>dominklippl</id>
             <name>Dominik Lippl</name>
-            <url>https://DerDeveloper.eu</url>
+            <url>https://dominiklippl.de</url>
             <organization>MC ONE</organization>
             <organizationUrl>https://www.mcone.eu</organizationUrl>
             <roles>
@@ -91,13 +91,13 @@
         <dependency>
             <groupId>eu.mcone.coresystem</groupId>
             <artifactId>bukkit-api</artifactId>
-            <version>10.5.5-SNAPSHOT</version>
+            <version>10.6.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>eu.mcone.gameapi</groupId>
             <artifactId>api</artifactId>
-            <version>3.1.1-SNAPSHOT</version>
+            <version>3.3.2-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

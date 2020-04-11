@@ -43,7 +43,6 @@ public class KnockIT extends GamePlugin {
     public void onGameEnable() {
         instance = this;
         players = new ArrayList<>();
-        CoreSystem.getInstance().getTranslationManager().loadCategories(this);
 
         sendConsoleMessage("§aInitiating BuildSystem...");
         buildSystem = CoreSystem.getInstance().initialiseBuildSystem(BuildSystem.BuildEvent.BLOCK_BREAK, BuildSystem.BuildEvent.BLOCK_PLACE);
