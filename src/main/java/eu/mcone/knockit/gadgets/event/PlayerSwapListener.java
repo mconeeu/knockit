@@ -39,7 +39,7 @@ public class PlayerSwapListener implements Listener {
 
             if (i.equals(Gadget.PLAYER_SWAP.getItem())) {
                 if (PlayerHeightListener.isOnSpawn(p.getLocation())) {
-                    KnockIT.getInstance().getMessager().send(p, "§4Du kannst am Spawn keine Spieler tauschen!");
+                    KnockIT.getInstance().getMessenger().send(p, "§4Du kannst am Spawn keine Spieler tauschen!");
                 } else {
                     if (!p.getLocation().getBlock().getRelative(BlockFace.DOWN).getType().equals(Material.AIR)
                             || !p.getLocation().subtract(0, 1, 0).getBlock().getRelative(BlockFace.DOWN).getType().equals(Material.AIR)
@@ -61,15 +61,15 @@ public class PlayerSwapListener implements Listener {
                                 p.teleport(t.getLocation());
 
                                 KnockIT.getInstance().getKnockITPlayer(e.getPlayer().getUniqueId()).removeGadget(Gadget.PLAYER_SWAP);
-                                KnockIT.getInstance().getMessager().send(t, "§2Du wurdest mit dem Spieler §f" + p.getName() + " §2getauscht, da er das §aSwap-Gadget§2 benutzt hat.");
-                                KnockIT.getInstance().getMessager().send(p, "§2Du wurdest mit dem Spieler §f" + t.getName() + " §2getauscht.");
+                                KnockIT.getInstance().getMessenger().send(t, "§2Du wurdest mit dem Spieler §f" + p.getName() + " §2getauscht, da er das §aSwap-Gadget§2 benutzt hat.");
+                                KnockIT.getInstance().getMessenger().send(p, "§2Du wurdest mit dem Spieler §f" + t.getName() + " §2getauscht.");
                                 return;
                             }
                         }
 
-                        KnockIT.getInstance().getMessager().send(p, "§cEs sind momentan nicht genügend Spieler online um das Item benutzen zu können!");
+                        KnockIT.getInstance().getMessenger().send(p, "§cEs sind momentan nicht genügend Spieler online um das Item benutzen zu können!");
                     } else {
-                        KnockIT.getInstance().getMessager().send(p, "§4Du kannst dieses Gadget nur am Boden benutzen!");
+                        KnockIT.getInstance().getMessenger().send(p, "§4Du kannst dieses Gadget nur am Boden benutzen!");
                     }
                 }
             }

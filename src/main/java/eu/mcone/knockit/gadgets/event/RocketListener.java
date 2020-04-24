@@ -31,7 +31,7 @@ public class RocketListener implements Listener {
 
             if (e.getItem().equals(Gadget.ROCKET.getItem())) {
                 if (PlayerHeightListener.isOnSpawn(p.getLocation())) {
-                    KnockIT.getInstance().getMessager().send(p, "§4Du kannst am Spawn keine Rakete starten!");
+                    KnockIT.getInstance().getMessenger().send(p, "§4Du kannst am Spawn keine Rakete starten!");
                     e.setCancelled(true);
                 } else {
                     e.setCancelled(false);
@@ -45,7 +45,7 @@ public class RocketListener implements Listener {
 
                         KnockIT.getInstance().getKnockITPlayer(e.getPlayer().getUniqueId()).removeGadget(Gadget.ROCKET);
                         p.playSound(p.getLocation(), Sound.FIREWORK_LAUNCH, 1, 1);
-                        KnockIT.getInstance().getMessager().send(p, "§2Du wurdest in die Luft geschleudert!");
+                        KnockIT.getInstance().getMessenger().send(p, "§2Du wurdest in die Luft geschleudert!");
                     }
                 }
             }

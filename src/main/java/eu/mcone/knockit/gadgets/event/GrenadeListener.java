@@ -75,7 +75,7 @@ public class GrenadeListener implements Listener {
 
             if (i.equals(Gadget.GRENADE.getItem())) {
                 if (PlayerHeightListener.isOnSpawn(p.getLocation())) {
-                    KnockIT.getInstance().getMessager().send(p, "§4Du kannst am Spawn keine Granate werfen!");
+                    KnockIT.getInstance().getMessenger().send(p, "§4Du kannst am Spawn keine Granate werfen!");
                     e.setCancelled(true);
                 } else {
                     e.setCancelled(false);

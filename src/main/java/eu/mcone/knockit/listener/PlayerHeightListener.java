@@ -44,7 +44,7 @@ public class PlayerHeightListener implements Listener {
 
             if (PlayerHeightListener.isOnSpawn(damager.getLocation()) || PlayerHeightListener.isOnSpawn(t.getLocation())) {
                 e.setCancelled(true);
-                KnockIT.getInstance().getMessager().send(damager instanceof Player ? (Player) damager : (Player) ((Projectile) damager).getShooter(), "§4Du darfst am Spawn nicht kämpfen!");
+                KnockIT.getInstance().getMessenger().send(damager instanceof Player ? (Player) damager : (Player) ((Projectile) damager).getShooter(), "§4Du darfst am Spawn nicht kämpfen!");
             }
         }
     }
