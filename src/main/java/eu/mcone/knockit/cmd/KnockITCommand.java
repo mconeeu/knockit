@@ -17,12 +17,12 @@ public class KnockITCommand extends CoreCommand {
 
     @Override
     public boolean onCommand(CommandSender sender, String[] args) {
-        KnockIT.getInstance().getMessager().send(sender, "§8§m---------- §r§a§lMCONE-KnockIT §8§m----------");
-        KnockIT.getInstance().getMessager().send(sender, "§7Entwickelt von §fDiserDominik, §fDrMarv und §fRufi");
-        KnockIT.getInstance().getMessager().send(sender, "§r");
-        KnockIT.getInstance().getMessager().send(sender, "§7§oWir bemühen uns darum alle Systeme und Spielmodi so effizient wie möglich zu gestalten.");
-        KnockIT.getInstance().getMessager().send(sender, "§7§oDeshalb sind auch alle von uns verwendeten Plugins ausschließlich selbst entwickelt!");
-        KnockIT.getInstance().getMessager().send(sender, "§8§m---------- §r§a§lMCONE-KnockIT §8§m----------");
+        KnockIT.getInstance().getMessenger().send(sender, "§8§m---------- §r§a§lMCONE-KnockIT §8§m----------");
+        KnockIT.getInstance().getMessenger().send(sender, "§7Entwickelt von §fDiserDominik, §fMarvio und §fRufi");
+        KnockIT.getInstance().getMessenger().send(sender, "§r");
+        KnockIT.getInstance().getMessenger().send(sender, "§7§oWir bemühen uns darum alle Systeme und Spielmodi so effizient wie möglich zu gestalten.");
+        KnockIT.getInstance().getMessenger().send(sender, "§7§oDeshalb sind auch alle von uns verwendeten Plugins ausschließlich selbst entwickelt!");
+        KnockIT.getInstance().getMessenger().send(sender, "§8§m---------- §r§a§lMCONE-KnockIT §8§m----------");
 
         return true;
     }

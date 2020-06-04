@@ -1,8 +1,8 @@
 name: MCONE-KnockIt
+author: Domink Lippl
 version: ${project.version}
-authors: [Domink Lippl, Rufus Maiwald, Marvin Hülsmann]
 main: eu.mcone.knockit.KnockIT
-depend: [MCONE-BukkitCoreSystem,MCONE-GameAPI]
+depend: [MCONE-BukkitCoreSystem, MCONE-GameAPI]
 
 permissions:
   knockit:

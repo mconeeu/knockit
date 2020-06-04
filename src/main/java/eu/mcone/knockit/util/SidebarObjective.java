@@ -52,10 +52,10 @@ public class SidebarObjective extends CoreSidebarObjective {
         setScore(6, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.5") + player.getStats(Gamemode.KNOCKIT).getDeath());
         setScore(5, "");
         setScore(4, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.6"));
-        setScore(3, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.7") + player.getFormattedCoins());
+        setScore(3, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.7") + player.bukkit().getLevel());
         setScore(2, "");
         setScore(1, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.8"));
-        setScore(0, " §f"+updateTime);
+        setScore(0, " §f" + updateTime);
     }
 
     @Override
@@ -64,8 +64,8 @@ public class SidebarObjective extends CoreSidebarObjective {
 
         setScore(9, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.3") + player.getStats(Gamemode.KNOCKIT).getKill());
         setScore(6, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.5") + player.getStats(Gamemode.KNOCKIT).getDeath());
-        setScore(3, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.7") + player.getFormattedCoins());
-        setScore(0, " §f"+updateTime);
+        setScore(3, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.7") + player.bukkit().getLevel());
+        setScore(0, " §f" + updateTime);
     }
 
     private static String getUpdateDate() {

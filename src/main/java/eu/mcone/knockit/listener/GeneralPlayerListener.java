@@ -6,8 +6,11 @@
 package eu.mcone.knockit.listener;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
+import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.gameapi.api.event.player.GamePlayerLoadedEvent;
+import eu.mcone.gameapi.api.player.GamePlayer;
 import eu.mcone.knockit.KnockIT;
+import eu.mcone.knockit.kit.Kit;
 import eu.mcone.knockit.player.KnockItPlayer;
 import eu.mcone.knockit.util.SidebarObjective;
 import org.bukkit.GameMode;
@@ -22,26 +25,27 @@ import org.bukkit.event.player.PlayerItemDamageEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import static com.mongodb.client.model.Filters.eq;
+
 public class GeneralPlayerListener implements Listener {
 
     @EventHandler
-    public void onJoin(PlayerJoinEvent e) {
+    public void on(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         p.setGameMode(GameMode.SURVIVAL);
 
         e.setJoinMessage(null);
-
-        CoreSystem.getInstance().createTitle()
-                .title("§2§lKnockIT")
-                .subTitle("§7§oSchlage alle Gegner runter!")
-                .stay(5)
-                .fadeIn(1)
-                .fadeOut(1)
-                .send(p);
     }
 
     @EventHandler
     public void onGamePlayerLoaded(GamePlayerLoadedEvent e) {
+
+        if (CoreSystem.getInstance().getMongoDB().getCollection("knockit_profile").find(eq("uuid", e.getBukkitPlayer().getUniqueId().toString())).first() == null) {
+            KnockIT.getInstance().getMessenger().send(e.getBukkitPlayer(), "§7Du scheinst neu auf KnockIT zu sein! Du bekommst das Standart-Kit!");
+            GamePlayer gamePlayer = KnockIT.getInstance().getGamePlayer(e.getBukkitPlayer());
+            gamePlayer.setKit(Kit.DEFAULT);
+        }
+
         new KnockItPlayer(e.getCorePlayer());
         e.getCorePlayer().getScoreboard().setNewObjective(new SidebarObjective());
     }

@@ -8,9 +8,11 @@ package eu.mcone.knockit;
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.gamemode.Gamemode;
 import eu.mcone.coresystem.api.bukkit.world.BuildSystem;
+import eu.mcone.coresystem.api.bukkit.world.CoreWorld;
 import eu.mcone.gameapi.api.GamePlugin;
 import eu.mcone.gameapi.api.Option;
 import eu.mcone.knockit.cmd.KnockITCommand;
+import eu.mcone.knockit.cmd.ShopCMD;
 import eu.mcone.knockit.gadgets.event.GrenadeListener;
 import eu.mcone.knockit.gadgets.event.PlayerSwapListener;
 import eu.mcone.knockit.gadgets.event.RocketListener;
@@ -48,7 +50,10 @@ public class KnockIT extends GamePlugin {
         buildSystem = CoreSystem.getInstance().initialiseBuildSystem(BuildSystem.BuildEvent.BLOCK_BREAK, BuildSystem.BuildEvent.BLOCK_PLACE);
         buildSystem.addFilter(BuildSystem.BuildEvent.BLOCK_PLACE, Material.QUARTZ_BLOCK.getId());
 
-        getMapManager().getMapRotationHandler().setRotationInterval(600).startRotation();
+        getMapManager()
+                .getMapRotationHandler()
+                .setRotationInterval(600)
+                .startRotation();
 
         getKitManager().registerKits(
                 Kit.DEFAULT, Kit.ARCHER, Kit.KNOCKBACK, Kit.GRAPLING_HOOK, Kit.ENDERMAN
@@ -56,7 +61,9 @@ public class KnockIT extends GamePlugin {
         getKitManager().setDefaultKit(Kit.DEFAULT);
 
         sendConsoleMessage("§aRegistering Commands and Listeners...");
-        registerCommands(new KnockITCommand());
+        registerCommands(
+                new KnockITCommand(),
+                new ShopCMD());
         registerEvents(
                 new PlayerHeightListener(),
                 new RocketListener(),
