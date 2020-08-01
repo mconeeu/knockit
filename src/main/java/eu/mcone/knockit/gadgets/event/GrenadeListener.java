@@ -34,7 +34,7 @@ public class GrenadeListener implements Listener {
 
             e.getEntity().getWorld().createExplosion(location.getX(), location.getY(), location.getZ(), 4, false, false);
 
-            for (Entity entity : e.getEntity().getNearbyEntities(10, 10, 10)) {
+            for (Entity entity : e.getEntity().getNearbyEntities(8, 8, 8)) {
                 if (entity instanceof Player) {
                     Player p = (Player) entity;
 
@@ -48,8 +48,8 @@ public class GrenadeListener implements Listener {
 
                     Vector v = new Vector(x, y, z);
                     v.normalize();
-                    v.setY(1.0D);
-                    v.multiply(2.0D);
+                    v.setY(0.6D);
+                    v.multiply(1.3D);
                     p.setVelocity(v);
                 }
             }

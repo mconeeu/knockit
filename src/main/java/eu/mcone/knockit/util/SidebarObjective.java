@@ -41,6 +41,8 @@ public class SidebarObjective extends CoreSidebarObjective {
         super("KnockIT");
     }
 
+
+
     @Override
     protected void onRegister(CorePlayer corePlayer, CoreSidebarObjectiveEntry entry) {
         entry.setTitle(CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.1"));

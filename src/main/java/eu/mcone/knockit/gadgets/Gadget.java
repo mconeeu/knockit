@@ -47,9 +47,10 @@ public enum Gadget {
             2
     );
 
-    private String displayName;
-    private ItemStack item;
-    private int coins, level;
+    private final String displayName;
+    private final ItemStack item;
+    private final int coins;
+    private final int level;
 
     Gadget(String displayName, ItemStack item, int coins, int level) {
         this.displayName = displayName;
