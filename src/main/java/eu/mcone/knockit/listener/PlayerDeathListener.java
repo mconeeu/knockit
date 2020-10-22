@@ -6,7 +6,6 @@
 package eu.mcone.knockit.listener;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
-import eu.mcone.coresystem.api.bukkit.gamemode.Gamemode;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.gameapi.api.GameAPI;
 import eu.mcone.gameapi.api.damage.DamageLogger;
@@ -41,7 +40,7 @@ public class PlayerDeathListener implements Listener {
             final CorePlayer ck = CoreSystem.getInstance().getCorePlayer(k);
 
             KnockIT.getInstance().getMessenger().send(k, "§7Du hast §6" + p.getDisplayName() + " §7getötet §8[§a+3 Coins§8]");
-            ck.getStats(Gamemode.KNOCKIT).addKills(1);
+            GameAPI.getInstance().getGamePlayer(k).addKills(1);
             ck.addCoins(3);
             k.getWorld().playSound(k.getLocation(), Sound.LEVEL_UP, 1, 1);
             k.setLevel(k.getLevel() + 1);
@@ -56,7 +55,7 @@ public class PlayerDeathListener implements Listener {
 
         cp.getScoreboard().getObjective(DisplaySlot.SIDEBAR).reload();
         p.playSound(p.getLocation(), Sound.VILLAGER_HIT, 1, 1);
-        cp.getStats(Gamemode.KNOCKIT).addDeaths(1);
+        GameAPI.getInstance().getGamePlayer(p).addDeaths(1);
     }
 
     @EventHandler

@@ -8,7 +8,6 @@ package eu.mcone.knockit;
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.gamemode.Gamemode;
 import eu.mcone.coresystem.api.bukkit.world.BuildSystem;
-import eu.mcone.coresystem.api.bukkit.world.CoreWorld;
 import eu.mcone.gameapi.api.GamePlugin;
 import eu.mcone.gameapi.api.Option;
 import eu.mcone.knockit.cmd.KnockITCommand;
@@ -30,7 +29,7 @@ import java.util.UUID;
 public class KnockIT extends GamePlugin {
 
     public KnockIT() {
-        super(Gamemode.KNOCKIT, "knockit.prefix", Option.KIT_MANAGER_APPLY_KITS_ONCE, Option.KIT_MANAGER_CLEAR_INVENTORY_ON_KIT_SET);
+        super(Gamemode.KNOCKIT, "knockit.prefix", Option.KIT_MANAGER_CLEAR_INVENTORY_ON_KIT_SET);
     }
 
     @Getter

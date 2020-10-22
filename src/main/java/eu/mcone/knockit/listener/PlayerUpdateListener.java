@@ -5,8 +5,8 @@
 
 package eu.mcone.knockit.listener;
 
-import eu.mcone.coresystem.api.bukkit.event.MoneyChangeEvent;
-import eu.mcone.coresystem.api.bukkit.event.StatsChangeEvent;
+import eu.mcone.coresystem.api.bukkit.event.player.MoneyChangeEvent;
+import eu.mcone.coresystem.api.bukkit.event.player.StatsChangeEvent;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
