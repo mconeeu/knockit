@@ -24,7 +24,7 @@ public class KillStreakListener implements Listener {
             int coins = e.getNewLevel() / 2;
 
             for (Player player : Bukkit.getOnlinePlayers()) {
-                CoreSystem.getInstance().createTitle().title("§a" + e.getNewLevel() + "er Killstreak").subTitle("§fvon " + p.getDisplayName()).stay(5).send(player);
+                CoreSystem.getInstance().createTitle().title("§a" + e.getNewLevel() + "er Killstreak").subTitle("§fvon " + p.getDisplayName()).stay(2).send(player);
                 player.getLocation().getWorld().playSound(p.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
 
                 if (player != p) {

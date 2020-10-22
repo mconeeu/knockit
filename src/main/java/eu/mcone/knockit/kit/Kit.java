@@ -295,6 +295,8 @@ public class Kit {
                         .lore("§d§oEnterhaken-Kit")
                         .unbreakable(true)
                         .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .enchantment(Enchantment.PROTECTION_ENVIRONMENTAL,1)
+                        .itemFlags(ItemFlag.HIDE_ENCHANTS)
                         .create()
                 );
                 put(PlayerInventorySlot.HOTBAR_SLOT_3, new ItemBuilder(Material.STICK)

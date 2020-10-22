@@ -87,6 +87,8 @@ public class GeneralPlayerListener implements Listener {
         kp.saveData();
         kp.unregister();
 
+        KnockIT.getInstance().isInFishingRodCooldown.remove(e.getPlayer());
+
         e.setQuitMessage(null);
     }
 

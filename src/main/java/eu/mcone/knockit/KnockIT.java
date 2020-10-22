@@ -20,6 +20,8 @@ import eu.mcone.knockit.listener.*;
 import eu.mcone.knockit.player.KnockItPlayer;
 import lombok.Getter;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -39,6 +41,8 @@ public class KnockIT extends GamePlugin {
 
     @Getter
     private List<KnockItPlayer> players;
+    @Getter
+    public ArrayList<Player> isInFishingRodCooldown = new ArrayList<>();
 
     @Override
     public void onGameEnable() {

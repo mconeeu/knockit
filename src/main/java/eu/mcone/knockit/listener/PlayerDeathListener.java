@@ -34,6 +34,8 @@ public class PlayerDeathListener implements Listener {
         e.getDrops().clear();
         p.setLevel(0);
 
+        KnockIT.getInstance().isInFishingRodCooldown.remove(p);
+
         p.spigot().respawn();
 
         if (k != null && !p.equals(k)) {
