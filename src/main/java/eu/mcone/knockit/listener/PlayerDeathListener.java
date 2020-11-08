@@ -41,14 +41,14 @@ public class PlayerDeathListener implements Listener {
         if (k != null && !p.equals(k)) {
             final CorePlayer ck = CoreSystem.getInstance().getCorePlayer(k);
 
-            KnockIT.getInstance().getMessenger().send(k, "§7Du hast §6" + p.getDisplayName() + " §7getötet §8[§a+3 Coins§8]");
+            KnockIT.getInstance().getMessenger().send(k, "§7Du hast §6" + cp.bukkit().getName() + " §7getötet §8[§a+3 Coins§8]");
             GameAPI.getInstance().getGamePlayer(k).addKills(1);
             ck.addCoins(3);
             k.getWorld().playSound(k.getLocation(), Sound.LEVEL_UP, 1, 1);
             k.setLevel(k.getLevel() + 1);
             k.addPotionEffect(PotionEffectType.REGENERATION.createEffect(20 * 20, 3));
 
-            KnockIT.getInstance().getMessenger().send(p, "§7Du wurdest von §c" + k.getDisplayName() + " §7getötet §8[§c-1 Coins§8]");
+            KnockIT.getInstance().getMessenger().send(p, "§7Du wurdest von §c" + ck.bukkit().getName() + " §7getötet §8[§c-1 Coins§8]");
             if (cp.getCoins() > 5) cp.removeCoins(5);
         } else {
             KnockIT.getInstance().getMessenger().send(p, "§7Du bist gestorben");

@@ -5,6 +5,8 @@
 
 package eu.mcone.knockit.gadgets.event;
 
+import eu.mcone.coresystem.api.bukkit.CoreSystem;
+import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.knockit.KnockIT;
 import eu.mcone.knockit.gadgets.Gadget;
 import eu.mcone.knockit.listener.PlayerHeightListener;
@@ -61,8 +63,12 @@ public class PlayerSwapListener implements Listener {
                                 p.teleport(t.getLocation());
 
                                 KnockIT.getInstance().getKnockITPlayer(e.getPlayer().getUniqueId()).removeGadget(Gadget.PLAYER_SWAP);
-                                KnockIT.getInstance().getMessenger().send(t, "§2Du wurdest mit dem Spieler §f" + p.getName() + " §2getauscht, da er das §aSwap-Gadget§2 benutzt hat.");
-                                KnockIT.getInstance().getMessenger().send(p, "§2Du wurdest mit dem Spieler §f" + t.getName() + " §2getauscht.");
+
+                                CorePlayer corePlayer = CoreSystem.getInstance().getCorePlayer(p);
+                                CorePlayer coreTarget = CoreSystem.getInstance().getCorePlayer(p);
+
+                                KnockIT.getInstance().getMessenger().send(t, "§2Du wurdest mit dem Spieler §f" + corePlayer.getName() + " §2getauscht, da er das §aSwap-Gadget§2 benutzt hat.");
+                                KnockIT.getInstance().getMessenger().send(p, "§2Du wurdest mit dem Spieler §f" + coreTarget.getName() + " §2getauscht.");
                                 return;
                             }
                         }

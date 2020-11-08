@@ -67,7 +67,7 @@ public class FishingRodListener implements Listener {
                     p.setVelocity(v);
 
                     int heldItemSlot = p.getInventory().getHeldItemSlot();
-                    p.getInventory().setItem(heldItemSlot, null);
+                    p.getInventory().setItem(heldItemSlot, new ItemBuilder(Material.INK_SACK, 1).displayName("Lädt...").create());
 
                     KnockIT.getInstance().isInFishingRodCooldown.add(p);
 
