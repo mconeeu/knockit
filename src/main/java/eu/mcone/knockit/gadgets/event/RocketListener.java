@@ -43,7 +43,9 @@ public class RocketListener implements Listener {
                         v.multiply(2.0D);
                         p.setVelocity(v);
 
-                        KnockIT.getInstance().getKnockITPlayer(e.getPlayer().getUniqueId()).removeGadget(Gadget.ROCKET);
+                        p.getInventory().remove(p.getItemInHand());
+
+
                         p.playSound(p.getLocation(), Sound.FIREWORK_LAUNCH, 1, 1);
                         KnockIT.getInstance().getMessenger().send(p, "§2Du wurdest in die Luft geschleudert!");
                     }

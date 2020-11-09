@@ -8,16 +8,23 @@ package eu.mcone.knockit.listener;
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.gameapi.api.GameAPI;
+import eu.mcone.gameapi.api.GamePlugin;
 import eu.mcone.gameapi.api.damage.DamageLogger;
+import eu.mcone.gameapi.api.player.GamePlayer;
 import eu.mcone.knockit.KnockIT;
+import eu.mcone.knockit.cmd.KnockITCommand;
+import eu.mcone.knockit.kit.Kit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.DisplaySlot;
+
+import javax.swing.*;
 
 public class PlayerDeathListener implements Listener {
 
@@ -28,6 +35,32 @@ public class PlayerDeathListener implements Listener {
         final Player p = e.getEntity();
         final CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
         final Player k = p.getKiller() != null ? p.getKiller() : DAMAGE_LOGGER.getKiller(p);
+        final GamePlayer gamePlayer = KnockIT.getInstance().getGamePlayer(p);
+
+
+        if (!gamePlayer.getCurrentKit().equals(Kit.DEFAULT)) {
+            if (!KnockIT.getInstance().getIsKitAutoBuyDisabled().contains(p)) {
+                KnockIT.getInstance().getKitMap().put(p, gamePlayer.getCurrentKit());
+
+                if (cp.getCoins() - gamePlayer.getCurrentKit().getCoinsPrice() > 0) {
+                    GamePlugin.getGamePlugin().getKitManager().setDefaultKit(KnockIT.getInstance().getKitMap().get(p));
+                    KnockIT.getInstance().getMessenger().sendSuccess(p, "Du hast automatisch dein vorheriges Kit gekauft! Du kannst dieses automatische Kauf Verfahren beim Händler deaktivieren!");
+                    KnockIT.getInstance().getMessenger().send(p, "§8[§a-" + gamePlayer.getCurrentKit().getCoinsPrice() + " Coins§8]");
+                    cp.removeCoins(gamePlayer.getCurrentKit().getCoinsPrice());
+
+                } else {
+                    KnockIT.getInstance().getMessenger().send(p, "§4Dein Kit Abo wurde beendet, weil du zu wenige Coins für das Kit besitzt.");
+                    GamePlugin.getGamePlugin().getKitManager().setDefaultKit(Kit.DEFAULT);
+                }
+            } else {
+                KnockIT.getInstance().getMessenger().send(p, "§4Dein Kit Abo wurde auf Wunsch vom Händler beendet!");
+                KnockIT.getInstance().getIsKitAutoBuyDisabled().remove(p);
+                GamePlugin.getGamePlugin().getKitManager().setDefaultKit(Kit.DEFAULT);
+            }
+        } else {
+            GamePlugin.getGamePlugin().getKitManager().setDefaultKit(Kit.DEFAULT);
+        }
+
 
         e.setDeathMessage(null);
         e.setKeepInventory(false);

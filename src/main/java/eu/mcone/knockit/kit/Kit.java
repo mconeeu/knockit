@@ -7,6 +7,7 @@ package eu.mcone.knockit.kit;
 
 import eu.mcone.coresystem.api.bukkit.inventory.PlayerInventorySlot;
 import eu.mcone.coresystem.api.bukkit.item.ItemBuilder;
+import eu.mcone.knockit.gadgets.Gadget;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
@@ -31,11 +32,12 @@ public class Kit {
                             "§8» §7Ketten Rüstung",
                             "",
                             "§7Kosten: §f100 Coins",
-                            "§c§oDu erhälst das Kit nur einmal!"
+                            "§c§oWenn du mit dem Kit stirbst,",
+                            "§c§okaufst du es automatisch erneut!"
                     )
                     .itemFlags(ItemFlag.HIDE_ATTRIBUTES)
                     .create(),
-            new HashMap<Integer, ItemStack>(){{
+            new HashMap<Integer, ItemStack>() {{
                 put(PlayerInventorySlot.BOOTS, new ItemBuilder(Material.LEATHER_BOOTS)
                         .unbreakable(true)
                         .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
@@ -102,10 +104,11 @@ public class Kit {
                             "§8» §6Ketten Rüstung",
                             "",
                             "§7Kosten: §f100 Coins",
-                            "§c§oDu erhälst das Kit nur einmal!"
+                            "§c§oWenn du mit dem Kit stirbst,",
+                            "§c§okaufst du es automatisch erneut!"
                     )
                     .create(),
-            new HashMap<Integer, ItemStack>(){{
+            new HashMap<Integer, ItemStack>() {{
                 put(PlayerInventorySlot.BOOTS, new ItemBuilder(Material.LEATHER_BOOTS)
                         .unbreakable(true)
                         .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
@@ -151,6 +154,7 @@ public class Kit {
                 put(PlayerInventorySlot.HOTBAR_SLOT_4, new ItemBuilder(Material.BOW)
                         .displayName("§8» §d§lBogen")
                         .lore("§6§oBogenschützen-Kit")
+                        .unbreakable(true)
                         .create()
                 );
                 put(PlayerInventorySlot.HOTBAR_SLOT_9, new ItemBuilder(Material.QUARTZ_BLOCK)
@@ -182,10 +186,11 @@ public class Kit {
                             "§8» §aKetten Rüstung",
                             "",
                             "§7Kosten: §f100 Coins",
-                            "§c§oDu erhälst das Kit nur einmal!"
+                            "§c§oWenn du mit dem Kit stirbst,",
+                            "§c§okaufst du es automatisch erneut!"
                     )
                     .create(),
-            new HashMap<Integer, ItemStack>(){{
+            new HashMap<Integer, ItemStack>() {{
                 put(PlayerInventorySlot.BOOTS, new ItemBuilder(Material.LEATHER_BOOTS)
                         .unbreakable(true)
                         .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
@@ -228,11 +233,6 @@ public class Kit {
                         .enchantment(Enchantment.KNOCKBACK, 1)
                         .create()
                 );
-                put(PlayerInventorySlot.HOTBAR_SLOT_4, new ItemBuilder(Material.ENDER_PEARL,2,0)
-                        .displayName("§8» §5§lEnderperle")
-                        .lore("§a§oKnockbacl-Kit")
-                        .create()
-                );
                 put(PlayerInventorySlot.HOTBAR_SLOT_9, new ItemBuilder(Material.QUARTZ_BLOCK)
                         .displayName("§8» §6§lMLG-Block")
                         .lore("§a§oKnockbacl-Kit")
@@ -252,15 +252,15 @@ public class Kit {
                             "§8» §dStein Schwert",
                             "§8» §dEnterhacken",
                             "§8» §dKnockback-Stick",
-                            "§8» §dEnderperle",
                             "§8» §dEisen Brustplatte",
                             "§8» §dKetten Rüstung",
                             "",
                             "§7Kosten: §f125 Coins",
-                            "§c§oDu erhälst das Kit nur einmal!"
+                            "§c§oWenn du mit dem Kit stirbst,",
+                            "§c§okaufst du es automatisch erneut!"
                     )
                     .create(),
-            new HashMap<Integer, ItemStack>(){{
+            new HashMap<Integer, ItemStack>() {{
                 put(PlayerInventorySlot.BOOTS, new ItemBuilder(Material.LEATHER_BOOTS)
                         .unbreakable(true)
                         .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
@@ -295,7 +295,7 @@ public class Kit {
                         .lore("§d§oEnterhaken-Kit")
                         .unbreakable(true)
                         .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
-                        .enchantment(Enchantment.PROTECTION_ENVIRONMENTAL,1)
+                        .enchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1)
                         .itemFlags(ItemFlag.HIDE_ENCHANTS)
                         .create()
                 );
@@ -314,6 +314,70 @@ public class Kit {
             125
     );
 
+    public static final eu.mcone.gameapi.api.kit.Kit JETPACK = new eu.mcone.gameapi.api.kit.Kit(
+            "jetpack",
+            new ItemBuilder(Material.FIREWORK)
+                    .displayName("§eJetPack-Kit")
+                    .lore(
+                            "",
+                            "§7§oMit diesem Kit erhälst du:",
+                            "§8» §eStein Schwert",
+                            "§8» §eJetPack Gegenstand",
+                            "§8» §eEisen Brustplatte",
+                            "§8» §eKetten Rüstung",
+                            "",
+                            "§7Kosten: §f165 Coins",
+                            "§c§oWenn du mit dem Kit stirbst,",
+                            "§c§okaufst du es automatisch erneut!"
+                    )
+                    .create(),
+            new HashMap<Integer, ItemStack>() {{
+                put(PlayerInventorySlot.BOOTS, new ItemBuilder(Material.LEATHER_BOOTS)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.LEGGINGS, new ItemBuilder(Material.LEATHER_LEGGINGS)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.CHESTPLATE, new ItemBuilder(Material.IRON_CHESTPLATE)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.HELMET, new ItemBuilder(Material.LEATHER_HELMET)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+
+                put(PlayerInventorySlot.HOTBAR_SLOT_1, new ItemBuilder(Material.STONE_SWORD)
+                        .displayName("§8» §b§lStein Schwert")
+                        .lore("§b§oJetPack-Kit")
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .enchantment(Enchantment.DAMAGE_ALL, 2)
+                        .create()
+                );
+                put(PlayerInventorySlot.HOTBAR_SLOT_3, Gadget.ROCKET.getItem());
+
+                put(PlayerInventorySlot.HOTBAR_SLOT_2, new ItemBuilder(Material.STICK)
+                        .displayName("§8» §5§lKnockback-Stick")
+                        .lore("§b§oJetPack-Kit")
+                        .enchantment(Enchantment.KNOCKBACK, 1)
+                        .create()
+                );
+                put(PlayerInventorySlot.HOTBAR_SLOT_9, new ItemBuilder(Material.QUARTZ_BLOCK)
+                        .displayName("§8» §6§lMLG-Block")
+                        .lore("§b§oJetPack-Kit")
+                        .create()
+                );
+            }},
+            165
+    );
+
     public static final eu.mcone.gameapi.api.kit.Kit ENDERMAN = new eu.mcone.gameapi.api.kit.Kit(
             "enderman",
             new ItemBuilder(Material.ENDER_PEARL)
@@ -325,14 +389,15 @@ public class Kit {
                             "§8» §dAngel",
                             "§8» §dKnockback-Stick",
                             "§8» §dEnderperle",
-                            "§8» §dEisen Brustplatte",
+                            "§8» §dDiamanten Brustplatte",
                             "§8» §dKetten Rüstung",
                             "",
                             "§7Kosten: §f150 Coins",
-                            "§c§oDu erhälst das Kit nur einmal!"
+                            "§c§oWenn du mit dem Kit stirbst,",
+                            "§c§okaufst du es automatisch erneut!"
                     )
                     .create(),
-            new HashMap<Integer, ItemStack>(){{
+            new HashMap<Integer, ItemStack>() {{
                 put(PlayerInventorySlot.BOOTS, new ItemBuilder(Material.LEATHER_BOOTS)
                         .unbreakable(true)
                         .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
@@ -375,7 +440,7 @@ public class Kit {
                         .enchantment(Enchantment.KNOCKBACK, 1)
                         .create()
                 );
-                put(PlayerInventorySlot.HOTBAR_SLOT_4, new ItemBuilder(Material.ENDER_PEARL,2,0)
+                put(PlayerInventorySlot.HOTBAR_SLOT_4, new ItemBuilder(Material.ENDER_PEARL, 3, 0)
                         .displayName("§8» §5§lEnderperle")
                         .lore("§b§oEnderman-Kit")
                         .create()

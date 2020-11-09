@@ -41,11 +41,10 @@ public class GadgetsInventory extends CoreInventory {
 
             KnockIT.getInstance().getKnockITPlayer(player.getUniqueId()).setGadget(gadget);
             KnockIT.getInstance().getMessenger().send(player, "§2Du hast das Gadget §a" + gadget.getDisplayName() + "§2 erfolgreich für §f" + gadget.getCoins() + " Killstreaks§2 gekauft");
-            player.closeInventory();
         } else {
             KnockIT.getInstance().getMessenger().send(player, "§4Du hast nicht genügend Killstreaks!");
-            player.closeInventory();
         }
+        player.closeInventory();
     }
 }
 

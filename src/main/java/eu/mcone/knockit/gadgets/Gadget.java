@@ -19,11 +19,11 @@ public enum Gadget {
             "§cGranate",
             new ItemBuilder(Material.EGG)
                     .displayName("§cGranate")
-                    .lore("§7§oDieses Gadget kostet", "§7§o3 Killstreaks")
+                    .lore("§7§oDieser Gadget kostet eine", "", "§7§o3 Killstreak")
                     .enchantment(Enchantment.PROTECTION_EXPLOSIONS, 1)
                     .itemFlags(ItemFlag.HIDE_ENCHANTS)
                     .create(),
-            10,
+            3,
             3
     ),
 
@@ -31,9 +31,9 @@ public enum Gadget {
             "§eSpieler tauscher",
             new ItemBuilder(Material.COMPASS)
                     .displayName("§eSpielertauscher")
-                    .lore("§7§oDieses Gadget kostet", "§7§o3 Killstreaks")
+                    .lore("§7§oDieser Gadget kostet eine", "", "§7§o3 Killstreak")
                     .create(),
-            10,
+            3,
             3
     ),
 
@@ -41,9 +41,9 @@ public enum Gadget {
             "§7Rakete",
             new ItemBuilder(Material.FIREWORK)
                     .displayName("§7Rakete")
-                    .lore("§7§oDieses Gadget kostet", "§7§o2 Killstreaks")
+                    .lore("§7§oDieser Gadget kostet eine", "", "§7§o2 Killstreak")
                     .create(),
-            10,
+            2,
             2
     );
 

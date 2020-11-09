@@ -21,7 +21,7 @@ public class MlgBlockListener implements Listener {
         Player player = e.getPlayer();
 
         if (PlayerHeightListener.isOnSpawn(player.getLocation())) {
-            KnockIT.getInstance().getMessenger().send(player, "§cDu kannst am Spawn keine Blöcke setzten!");
+            KnockIT.getInstance().getMessenger().send(player, "§4Du kannst am Spawn keine Blöcke setzten!");
             e.setCancelled(true);
         } else {
             if (!KnockIT.getInstance().getBuildSystem().hasBuildModeEnabled(player) && e.getBlock().getType().equals(Material.QUARTZ_BLOCK)) {
@@ -30,7 +30,7 @@ public class MlgBlockListener implements Listener {
                 Bukkit.getScheduler().runTaskLater(
                         KnockIT.getInstance(),
                         () -> block.setType(Material.AIR),
-                        60
+                        65
                 );
             }
         }
