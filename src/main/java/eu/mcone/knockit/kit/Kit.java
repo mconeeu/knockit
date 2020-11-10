@@ -314,6 +314,77 @@ public class Kit {
             125
     );
 
+    public static final eu.mcone.gameapi.api.kit.Kit BIG_HITTER = new eu.mcone.gameapi.api.kit.Kit(
+            "big_hitter",
+            new ItemBuilder(Material.BLAZE_ROD)
+                    .displayName("§eBig Hitter-Kit")
+                    .lore(
+                            "",
+                            "§7§oMit diesem Kit erhälst du:",
+                            "§8» §eStein Schwert",
+                            "§8» §eEin schlag mit Knockback 6",
+                            "§8» §eAngel",
+                            "§8» §eEisen Brustplatte",
+                            "§8» §eKetten Rüstung",
+                            "",
+                            "§7Kosten: §f165 Coins",
+                            "§c§oWenn du mit dem Kit stirbst,",
+                            "§c§okaufst du es automatisch erneut!"
+                    )
+                    .create(),
+            new HashMap<Integer, ItemStack>() {{
+                put(PlayerInventorySlot.BOOTS, new ItemBuilder(Material.LEATHER_BOOTS)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.LEGGINGS, new ItemBuilder(Material.LEATHER_LEGGINGS)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.CHESTPLATE, new ItemBuilder(Material.IRON_CHESTPLATE)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.HELMET, new ItemBuilder(Material.LEATHER_HELMET)
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+
+                put(PlayerInventorySlot.HOTBAR_SLOT_1, new ItemBuilder(Material.STONE_SWORD)
+                        .displayName("§8» §b§lStein Schwert")
+                        .lore("§b§oBigHitter-Kit")
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .enchantment(Enchantment.DAMAGE_ALL, 2)
+                        .create()
+                );
+                put(PlayerInventorySlot.HOTBAR_SLOT_2, new ItemBuilder(Material.FISHING_ROD)
+                        .displayName("§8» §f§lAngel")
+                        .lore("§b§oBigHitter-Kit")
+                        .unbreakable(true)
+                        .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
+                        .create()
+                );
+                put(PlayerInventorySlot.HOTBAR_SLOT_3, new ItemBuilder(Material.BLAZE_ROD)
+                        .displayName("§8» §b§lBig Hitter Stock")
+                        .lore("§b§oBigHitter-Kit")
+                        .unbreakable(false)
+                        .enchantment(Enchantment.KNOCKBACK, 6)
+                        .create()
+                );
+                put(PlayerInventorySlot.HOTBAR_SLOT_9, new ItemBuilder(Material.QUARTZ_BLOCK)
+                        .displayName("§8» §6§lMLG-Block")
+                        .lore("§b§oBigHitter-Kit")
+                        .create()
+                );
+            }},
+            195
+    );
+
     public static final eu.mcone.gameapi.api.kit.Kit JETPACK = new eu.mcone.gameapi.api.kit.Kit(
             "jetpack",
             new ItemBuilder(Material.FIREWORK)

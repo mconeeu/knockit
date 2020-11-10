@@ -16,6 +16,7 @@ import eu.mcone.knockit.cmd.ShopCMD;
 import eu.mcone.knockit.gadgets.event.GrenadeListener;
 import eu.mcone.knockit.gadgets.event.PlayerSwapListener;
 import eu.mcone.knockit.gadgets.event.RocketListener;
+import eu.mcone.knockit.gadgets.event.StickListener;
 import eu.mcone.knockit.kit.Kit;
 import eu.mcone.knockit.listener.*;
 import eu.mcone.knockit.player.KnockItPlayer;
@@ -63,7 +64,7 @@ public class KnockIT extends GamePlugin {
                 .startRotation();
 
         getKitManager().registerKits(
-                Kit.DEFAULT, Kit.ARCHER, Kit.KNOCKBACK, Kit.GRAPLING_HOOK, Kit.JETPACK, Kit.ENDERMAN
+                Kit.DEFAULT, Kit.ARCHER, Kit.KNOCKBACK, Kit.GRAPLING_HOOK, Kit.JETPACK, Kit.ENDERMAN, Kit.BIG_HITTER
         );
         //   getKitManager().setDefaultKit(Kit.DEFAULT);
 
@@ -84,7 +85,8 @@ public class KnockIT extends GamePlugin {
                 new PlayerDeathListener(),
                 new KillStreakListener(),
                 new PlayerUpdateListener(),
-                new WeatherChangeListener()
+                new WeatherChangeListener(),
+                new StickListener()
         );
 
         sendConsoleMessage("§aVersion §f" + this.getDescription().getVersion() + "§a enabled...");
