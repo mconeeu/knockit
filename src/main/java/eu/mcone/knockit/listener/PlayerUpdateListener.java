@@ -5,7 +5,6 @@
 
 package eu.mcone.knockit.listener;
 
-import eu.mcone.coresystem.api.bukkit.event.player.MoneyChangeEvent;
 import eu.mcone.coresystem.api.bukkit.event.player.StatsChangeEvent;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import org.bukkit.event.EventHandler;
@@ -13,11 +12,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.scoreboard.DisplaySlot;
 
 public class PlayerUpdateListener implements Listener {
-
-    @EventHandler
-    public void onMoneyChange(MoneyChangeEvent e) {
-        e.getPlayer().getScoreboard().getObjective(DisplaySlot.SIDEBAR).reload();
-    }
 
     @EventHandler
     public void onStatsChange(StatsChangeEvent e) {

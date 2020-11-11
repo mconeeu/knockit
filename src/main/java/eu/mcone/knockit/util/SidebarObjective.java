@@ -6,13 +6,14 @@
 package eu.mcone.knockit.util;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
-import eu.mcone.coresystem.api.bukkit.gamemode.Gamemode;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.coresystem.api.bukkit.scoreboard.CoreSidebarObjectiveEntry;
-import eu.mcone.coresystem.api.bukkit.stats.CoreStats;
+import eu.mcone.gameapi.api.GameAPI;
 import eu.mcone.gameapi.api.Module;
+import eu.mcone.gameapi.api.player.GamePlayer;
 import eu.mcone.gameapi.api.scoreboard.GameObjective;
 import eu.mcone.knockit.KnockIT;
+import eu.mcone.knockit.kit.Kit;
 import org.bukkit.scoreboard.DisplaySlot;
 
 import java.util.Calendar;
@@ -44,12 +45,14 @@ public class SidebarObjective extends GameObjective {
 
     @Override
     protected void onGameObjectiveRegister(CorePlayer corePlayer, CoreSidebarObjectiveEntry entry) {
-        entry.setScore(11, "");
-        entry.setScore(10, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.2"));
-        entry.setScore(9, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.3") + player.getStats(Gamemode.KNOCKIT, CoreStats.class).getKills());
+        GamePlayer gamePlayer = GameAPI.getInstance().getGamePlayer(corePlayer.bukkit());
         entry.setScore(8, "");
         entry.setScore(7, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.4"));
-        entry.setScore(6, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.5") + player.getStats(Gamemode.KNOCKIT, CoreStats.class).getDeaths());
+        if (gamePlayer.getCurrentKit() != null) {
+            entry.setScore(6, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.5") + gamePlayer.getCurrentKit().getName());
+        } else {
+            entry.setScore(6, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.5") + Kit.DEFAULT.getName());
+        }
         entry.setScore(5, "");
         entry.setScore(4, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.6"));
         entry.setScore(3, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.7") + player.bukkit().getLevel());
@@ -60,10 +63,14 @@ public class SidebarObjective extends GameObjective {
 
     @Override
     protected void onGameObjectiveReload(CorePlayer corePlayer, CoreSidebarObjectiveEntry entry) {
+        GamePlayer gamePlayer = GameAPI.getInstance().getGamePlayer(corePlayer.bukkit());
         entry.setTitle(CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.1"));
 
-        entry.setScore(9, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.3") + player.getStats(Gamemode.KNOCKIT, CoreStats.class).getKills());
-        entry.setScore(6, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.5") + player.getStats(Gamemode.KNOCKIT, CoreStats.class).getDeaths());
+        if (gamePlayer.getCurrentKit() != null) {
+            entry.setScore(6, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.5") + gamePlayer.getCurrentKit().getName());
+        } else {
+            entry.setScore(6, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.5") + Kit.DEFAULT.getName());
+        }
         entry.setScore(3, CoreSystem.getInstance().getTranslationManager().get("knockit.scoreboard.7") + player.bukkit().getLevel());
         entry.setScore(0, " §f" + updateTime);
     }

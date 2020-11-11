@@ -34,37 +34,6 @@ public class TraderInventory extends CoreInventory {
                 e -> new GadgetsInventory(p)
         );
 
-        GamePlayer gamePlayer = KnockIT.getInstance().getGamePlayer(p);
-
-        if (!gamePlayer.getCurrentKit().equals(Kit.DEFAULT)) {
-            if (!KnockIT.getInstance().getIsKitAutoBuyDisabled().contains(p)) {
-                if (!KnockIT.getInstance().getKitMap().containsKey(p)) {
-                    KnockIT.getInstance().getKitMap().put(p, gamePlayer.getCurrentKit());
-                }
-            }
-        }
-
-        if (!gamePlayer.getCurrentKit().equals(Kit.DEFAULT)) {
-            if (KnockIT.getInstance().getKitMap().containsKey(p)) {
-                setItem(
-                        InventorySlot.ROW_3_SLOT_5,
-                        new ItemBuilder(Material.INK_SACK, 1, 5)
-                                .displayName("§aAutomatisches Kit")
-                                .lore("§7§oKlicke um kein automatisches Kit mehr", "§7§obeim sterben zu kaufen!")
-                                .create(),
-                        e -> {
-                            KnockIT.getInstance().getKitMap().remove(p);
-                            KnockIT.getInstance().getMessenger().sendSuccess(p, "§4Wenn du das nächste mal §cstirbst§4. Kaufst du nicht mehr §cautomatisch dein aktuelles Kit erneut§4!");
-
-                            KnockIT.getInstance().isKitAutoBuyDisabled.add(p);
-
-                            player.closeInventory();
-                        }
-                );
-
-            }
-        }
-
         setItem(
                 InventorySlot.ROW_3_SLOT_7,
                 new ItemBuilder(Material.DIAMOND_CHESTPLATE, 1, 0).displayName("§cKits kaufen").create(),

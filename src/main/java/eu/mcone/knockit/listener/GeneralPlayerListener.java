@@ -6,8 +6,6 @@
 package eu.mcone.knockit.listener;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
-import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
-import eu.mcone.gameapi.api.GameAPI;
 import eu.mcone.gameapi.api.GamePlugin;
 import eu.mcone.gameapi.api.event.player.GamePlayerLoadedEvent;
 import eu.mcone.gameapi.api.player.GamePlayer;
@@ -36,19 +34,23 @@ public class GeneralPlayerListener implements Listener {
         Player p = e.getPlayer();
         p.setGameMode(GameMode.SURVIVAL);
 
+        p.setFlying(false);
+        p.setAllowFlight(false);
+
         e.setJoinMessage(null);
     }
 
     @EventHandler
     public void onGamePlayerLoaded(GamePlayerLoadedEvent e) {
 
-
         GamePlayer gamePlayer = KnockIT.getInstance().getGamePlayer(e.getBukkitPlayer());
 
         if (CoreSystem.getInstance().getMongoDB().getCollection("knockit_profile").find(eq("uuid", e.getBukkitPlayer().getUniqueId().toString())).first() == null) {
             KnockIT.getInstance().getMessenger().send(e.getBukkitPlayer(), "§7Du scheinst neu auf KnockIT zu sein! Du bekommst das Standart-Kit!");
+
+            gamePlayer.setKit(Kit.DEFAULT, true);
         }
-        GamePlugin.getGamePlugin().getKitManager().setDefaultKit(Kit.DEFAULT);
+
 
         new KnockItPlayer(e.getCorePlayer());
         e.getCorePlayer().getScoreboard().setNewObjective(new SidebarObjective());
@@ -86,10 +88,10 @@ public class GeneralPlayerListener implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent e) {
-        KnockItPlayer kp = KnockIT.getInstance().getKnockITPlayer(e.getPlayer().getUniqueId());
+          KnockItPlayer kp = KnockIT.getInstance().getKnockITPlayer(e.getPlayer().getUniqueId());
 
-        kp.saveData();
-        kp.unregister();
+          kp.saveData();
+          kp.unregister();
 
         KnockIT.getInstance().isInFishingRodCooldown.remove(e.getPlayer());
 

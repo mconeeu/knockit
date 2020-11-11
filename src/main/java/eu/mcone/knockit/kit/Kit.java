@@ -18,7 +18,7 @@ import java.util.HashMap;
 public class Kit {
 
     public static final eu.mcone.gameapi.api.kit.Kit DEFAULT = new eu.mcone.gameapi.api.kit.Kit(
-            "standard",
+            "Standard",
             new ItemBuilder(Material.WOOD_SWORD)
                     .displayName("§7Standard-Kit")
                     .lore(
@@ -90,7 +90,7 @@ public class Kit {
     );
 
     public static final eu.mcone.gameapi.api.kit.Kit ARCHER = new eu.mcone.gameapi.api.kit.Kit(
-            "archer",
+            "Bogenschütze",
             new ItemBuilder(Material.BOW)
                     .displayName("§6Bogenschützen-Kit")
                     .lore(
@@ -172,7 +172,7 @@ public class Kit {
     );
 
     public static final eu.mcone.gameapi.api.kit.Kit KNOCKBACK = new eu.mcone.gameapi.api.kit.Kit(
-            "knockback",
+            "Knockbacker",
             new ItemBuilder(Material.STICK)
                     .enchantment(Enchantment.KNOCKBACK, 2)
                     .itemFlags(ItemFlag.HIDE_ENCHANTS)
@@ -243,7 +243,7 @@ public class Kit {
     );
 
     public static final eu.mcone.gameapi.api.kit.Kit GRAPLING_HOOK = new eu.mcone.gameapi.api.kit.Kit(
-            "grapling_hook",
+            "Enterhacken",
             new ItemBuilder(Material.FISHING_ROD)
                     .displayName("§dEnterhaken-Kit")
                     .lore(
@@ -315,7 +315,7 @@ public class Kit {
     );
 
     public static final eu.mcone.gameapi.api.kit.Kit BIG_HITTER = new eu.mcone.gameapi.api.kit.Kit(
-            "big_hitter",
+            "Big Hitter",
             new ItemBuilder(Material.BLAZE_ROD)
                     .displayName("§eBig Hitter-Kit")
                     .lore(
@@ -386,7 +386,7 @@ public class Kit {
     );
 
     public static final eu.mcone.gameapi.api.kit.Kit JETPACK = new eu.mcone.gameapi.api.kit.Kit(
-            "jetpack",
+            "Jetpack",
             new ItemBuilder(Material.FIREWORK)
                     .displayName("§eJetPack-Kit")
                     .lore(
@@ -450,7 +450,7 @@ public class Kit {
     );
 
     public static final eu.mcone.gameapi.api.kit.Kit ENDERMAN = new eu.mcone.gameapi.api.kit.Kit(
-            "enderman",
+            "Enderman",
             new ItemBuilder(Material.ENDER_PEARL)
                     .displayName("§dEnderman-Kit")
                     .lore(
@@ -460,7 +460,7 @@ public class Kit {
                             "§8» §dAngel",
                             "§8» §dKnockback-Stick",
                             "§8» §dEnderperle",
-                            "§8» §dDiamanten Brustplatte",
+                            "§8» §dEisen Brustplatte",
                             "§8» §dKetten Rüstung",
                             "",
                             "§7Kosten: §f150 Coins",
@@ -479,7 +479,7 @@ public class Kit {
                         .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
                         .create()
                 );
-                put(PlayerInventorySlot.CHESTPLATE, new ItemBuilder(Material.DIAMOND_CHESTPLATE)
+                put(PlayerInventorySlot.CHESTPLATE, new ItemBuilder(Material.IRON_CHESTPLATE)
                         .unbreakable(true)
                         .itemFlags(ItemFlag.HIDE_UNBREAKABLE)
                         .create()

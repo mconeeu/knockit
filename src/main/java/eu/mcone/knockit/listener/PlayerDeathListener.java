@@ -14,6 +14,7 @@ import eu.mcone.gameapi.api.player.GamePlayer;
 import eu.mcone.knockit.KnockIT;
 import eu.mcone.knockit.cmd.KnockITCommand;
 import eu.mcone.knockit.kit.Kit;
+import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -33,39 +34,14 @@ public class PlayerDeathListener implements Listener {
     @EventHandler
     public void onDeath(PlayerDeathEvent e) {
         final Player p = e.getEntity();
-        final CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
         final Player k = p.getKiller() != null ? p.getKiller() : DAMAGE_LOGGER.getKiller(p);
-        final GamePlayer gamePlayer = KnockIT.getInstance().getGamePlayer(p);
+        final CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
 
-
-        if (!gamePlayer.getCurrentKit().equals(Kit.DEFAULT)) {
-            if (!KnockIT.getInstance().getIsKitAutoBuyDisabled().contains(p)) {
-                KnockIT.getInstance().getKitMap().put(p, gamePlayer.getCurrentKit());
-
-                if (cp.getCoins() - gamePlayer.getCurrentKit().getCoinsPrice() > 0) {
-                    GamePlugin.getGamePlugin().getKitManager().setDefaultKit(KnockIT.getInstance().getKitMap().get(p));
-                    KnockIT.getInstance().getMessenger().sendSuccess(p, "Du hast automatisch dein vorheriges Kit gekauft! Du kannst dieses automatische Kauf Verfahren beim Händler deaktivieren!");
-                    KnockIT.getInstance().getMessenger().send(p, "§8[§a-" + gamePlayer.getCurrentKit().getCoinsPrice() + " Coins§8]");
-                    cp.removeCoins(gamePlayer.getCurrentKit().getCoinsPrice());
-
-                } else {
-                    KnockIT.getInstance().getMessenger().send(p, "§4Dein Kit Abo wurde beendet, weil du zu wenige Coins für das Kit besitzt.");
-                    GamePlugin.getGamePlugin().getKitManager().setDefaultKit(Kit.DEFAULT);
-                }
-            } else {
-                KnockIT.getInstance().getMessenger().send(p, "§4Dein Kit Abo wurde auf Wunsch vom Händler beendet!");
-                KnockIT.getInstance().getIsKitAutoBuyDisabled().remove(p);
-                GamePlugin.getGamePlugin().getKitManager().setDefaultKit(Kit.DEFAULT);
-            }
-        } else {
-            GamePlugin.getGamePlugin().getKitManager().setDefaultKit(Kit.DEFAULT);
-        }
-
+        p.setLevel(0);
 
         e.setDeathMessage(null);
         e.setKeepInventory(false);
         e.getDrops().clear();
-        p.setLevel(0);
 
         KnockIT.getInstance().isInFishingRodCooldown.remove(p);
 
@@ -81,6 +57,8 @@ public class PlayerDeathListener implements Listener {
             k.setLevel(k.getLevel() + 1);
             k.addPotionEffect(PotionEffectType.REGENERATION.createEffect(20 * 20, 3));
 
+            ck.getScoreboard().getObjective(DisplaySlot.SIDEBAR).reload();
+
             KnockIT.getInstance().getMessenger().send(p, "§7Du wurdest von §c" + ck.bukkit().getName() + " §7getötet §8[§c-1 Coins§8]");
             if (cp.getCoins() > 5) cp.removeCoins(5);
         } else {
@@ -88,7 +66,6 @@ public class PlayerDeathListener implements Listener {
         }
 
 
-        cp.getScoreboard().getObjective(DisplaySlot.SIDEBAR).reload();
         p.playSound(p.getLocation(), Sound.VILLAGER_HIT, 1, 1);
         GameAPI.getInstance().getGamePlayer(p).addDeaths(1);
     }
@@ -96,6 +73,11 @@ public class PlayerDeathListener implements Listener {
     @EventHandler
     public void onRespawn(PlayerRespawnEvent e) {
         Player p = e.getPlayer();
+
+        Bukkit.getScheduler().runTaskLater(KnockIT.getInstance(), () -> {
+            CorePlayer corePlayer = CoreSystem.getInstance().getCorePlayer(p);
+            corePlayer.getScoreboard().getObjective(DisplaySlot.SIDEBAR).reload();
+        }, 21);
 
         CoreSystem.getInstance().createActionBar()
                 .message("§c§oDu bist gestorben")

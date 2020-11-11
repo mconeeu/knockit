@@ -66,7 +66,9 @@ public class KnockIT extends GamePlugin {
         getKitManager().registerKits(
                 Kit.DEFAULT, Kit.ARCHER, Kit.KNOCKBACK, Kit.GRAPLING_HOOK, Kit.JETPACK, Kit.ENDERMAN, Kit.BIG_HITTER
         );
-        //   getKitManager().setDefaultKit(Kit.DEFAULT);
+
+        getKitManager().setDefaultKit(Kit.DEFAULT);
+
 
         sendConsoleMessage("§aRegistering Commands and Listeners...");
         registerCommands(
