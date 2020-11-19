@@ -10,7 +10,6 @@ import eu.mcone.coresystem.api.bukkit.gamemode.Gamemode;
 import eu.mcone.coresystem.api.bukkit.world.BuildSystem;
 import eu.mcone.gameapi.api.GamePlugin;
 import eu.mcone.gameapi.api.Option;
-import eu.mcone.knockit.cmd.AutoBuyCMD;
 import eu.mcone.knockit.cmd.KnockITCommand;
 import eu.mcone.knockit.cmd.ShopCMD;
 import eu.mcone.knockit.gadgets.event.GrenadeListener;
@@ -23,14 +22,16 @@ import eu.mcone.knockit.player.KnockItPlayer;
 import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitTask;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.UUID;
 
 public class KnockIT extends GamePlugin {
 
     public KnockIT() {
-        super(Gamemode.KNOCKIT, "knockit.prefix", Option.KIT_MANAGER_CLEAR_INVENTORY_ON_KIT_SET);
+        super(Gamemode.KNOCKIT, "knockit.prefix", Option.KIT_MANAGER_CLEAR_INVENTORY_ON_KIT_SET, Option.KIT_MANAGER_ALLOW_AUTO_BUY_KIT);
     }
 
     @Getter
@@ -42,17 +43,11 @@ public class KnockIT extends GamePlugin {
     private List<KnockItPlayer> players;
     @Getter
     public ArrayList<Player> isInFishingRodCooldown = new ArrayList<>();
-    @Getter
-    public HashMap<Player, eu.mcone.gameapi.api.kit.Kit> kitMap = new HashMap<>();
-    @Getter
-    public ArrayList<Player> isKitAutoBuyDisabled = new ArrayList<>();
 
     @Override
     public void onGameEnable() {
         instance = this;
         players = new ArrayList<>();
-        kitMap = new HashMap<>();
-        isKitAutoBuyDisabled = new ArrayList<>();
 
         sendConsoleMessage("§aInitiating BuildSystem...");
         buildSystem = CoreSystem.getInstance().initialiseBuildSystem(BuildSystem.BuildEvent.BLOCK_BREAK, BuildSystem.BuildEvent.BLOCK_PLACE);
@@ -66,15 +61,14 @@ public class KnockIT extends GamePlugin {
         getKitManager().registerKits(
                 Kit.DEFAULT, Kit.ARCHER, Kit.KNOCKBACK, Kit.GRAPLING_HOOK, Kit.JETPACK, Kit.ENDERMAN, Kit.BIG_HITTER
         );
-
         getKitManager().setDefaultKit(Kit.DEFAULT);
 
 
         sendConsoleMessage("§aRegistering Commands and Listeners...");
         registerCommands(
                 new KnockITCommand(),
-                new ShopCMD(),
-                new AutoBuyCMD());
+                new ShopCMD()
+        );
         registerEvents(
                 new PlayerHeightListener(),
                 new RocketListener(),

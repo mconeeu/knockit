@@ -32,8 +32,8 @@ public class Kit {
                             "§8» §7Ketten Rüstung",
                             "",
                             "§7Kosten: §f100 Coins",
-                            "§c§oWenn du mit dem Kit stirbst,",
-                            "§c§okaufst du es automatisch erneut!"
+                            "§2§oBenutze die AutoBuy-Funktion, damit",
+                            "§2§okaufst du das Kit automatisch erneut!"
                     )
                     .itemFlags(ItemFlag.HIDE_ATTRIBUTES)
                     .create(),
@@ -104,8 +104,8 @@ public class Kit {
                             "§8» §6Ketten Rüstung",
                             "",
                             "§7Kosten: §f100 Coins",
-                            "§c§oWenn du mit dem Kit stirbst,",
-                            "§c§okaufst du es automatisch erneut!"
+                            "§2§oBenutze die AutoBuy-Funktion, damit",
+                            "§2§okaufst du das Kit automatisch erneut!"
                     )
                     .create(),
             new HashMap<Integer, ItemStack>() {{
@@ -186,8 +186,8 @@ public class Kit {
                             "§8» §aKetten Rüstung",
                             "",
                             "§7Kosten: §f100 Coins",
-                            "§c§oWenn du mit dem Kit stirbst,",
-                            "§c§okaufst du es automatisch erneut!"
+                            "§2§oBenutze die AutoBuy-Funktion, damit",
+                            "§2§okaufst du das Kit automatisch erneut!"
                     )
                     .create(),
             new HashMap<Integer, ItemStack>() {{
@@ -256,8 +256,8 @@ public class Kit {
                             "§8» §dKetten Rüstung",
                             "",
                             "§7Kosten: §f125 Coins",
-                            "§c§oWenn du mit dem Kit stirbst,",
-                            "§c§okaufst du es automatisch erneut!"
+                            "§2§oBenutze die AutoBuy-Funktion, damit",
+                            "§2§okaufst du das Kit automatisch erneut!"
                     )
                     .create(),
             new HashMap<Integer, ItemStack>() {{
@@ -328,8 +328,8 @@ public class Kit {
                             "§8» §eKetten Rüstung",
                             "",
                             "§7Kosten: §f165 Coins",
-                            "§c§oWenn du mit dem Kit stirbst,",
-                            "§c§okaufst du es automatisch erneut!"
+                            "§2§oBenutze die AutoBuy-Funktion, damit",
+                            "§2§okaufst du das Kit automatisch erneut!"
                     )
                     .create(),
             new HashMap<Integer, ItemStack>() {{
@@ -398,8 +398,8 @@ public class Kit {
                             "§8» §eKetten Rüstung",
                             "",
                             "§7Kosten: §f165 Coins",
-                            "§c§oWenn du mit dem Kit stirbst,",
-                            "§c§okaufst du es automatisch erneut!"
+                            "§2§oBenutze die AutoBuy-Funktion, damit",
+                            "§2§okaufst du das Kit automatisch erneut!"
                     )
                     .create(),
             new HashMap<Integer, ItemStack>() {{
@@ -464,8 +464,8 @@ public class Kit {
                             "§8» §dKetten Rüstung",
                             "",
                             "§7Kosten: §f150 Coins",
-                            "§c§oWenn du mit dem Kit stirbst,",
-                            "§c§okaufst du es automatisch erneut!"
+                            "§2§oBenutze die AutoBuy-Funktion, damit",
+                            "§2§okaufst du das Kit automatisch erneut!"
                     )
                     .create(),
             new HashMap<Integer, ItemStack>() {{

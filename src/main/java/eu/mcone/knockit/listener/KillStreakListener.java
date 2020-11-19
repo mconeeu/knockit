@@ -6,10 +6,10 @@
 package eu.mcone.knockit.listener;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
+import eu.mcone.coresystem.api.bukkit.facades.Sound;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.knockit.KnockIT;
 import org.bukkit.Bukkit;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,7 +27,7 @@ public class KillStreakListener implements Listener {
 
             for (Player player : Bukkit.getOnlinePlayers()) {
                 CoreSystem.getInstance().createActionBar().message("§a" + e.getNewLevel() + "er Killstreak von " + corePlayer.bukkit().getName()).send(player);
-                player.getLocation().getWorld().playSound(p.getLocation(), Sound.WITHER_DEATH, 1.0F, 1.0F);
+                Sound.death(p);
 
                 if (player != p) {
                         KnockIT.getInstance().getMessenger().send(player, "§7Der Spieler §f" + corePlayer.bukkit().getName() + " §7hat einen §e" + e.getNewLevel() + "§7er Killstreak!");

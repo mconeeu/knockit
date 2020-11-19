@@ -5,10 +5,10 @@
 
 package eu.mcone.knockit.gadgets.event;
 
+import eu.mcone.coresystem.api.bukkit.facades.Sound;
 import eu.mcone.knockit.KnockIT;
 import eu.mcone.knockit.gadgets.Gadget;
 import eu.mcone.knockit.listener.PlayerHeightListener;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -46,7 +46,7 @@ public class RocketListener implements Listener {
                         p.getInventory().remove(p.getItemInHand());
 
 
-                        p.playSound(p.getLocation(), Sound.FIREWORK_LAUNCH, 1, 1);
+                        Sound.play(p, org.bukkit.Sound.FIREWORK_LAUNCH);
                         KnockIT.getInstance().getMessenger().send(p, "§2Du wurdest in die Luft geschleudert!");
                     }
                 }

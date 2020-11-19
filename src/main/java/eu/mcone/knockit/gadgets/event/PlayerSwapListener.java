@@ -6,13 +6,13 @@
 package eu.mcone.knockit.gadgets.event;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
+import eu.mcone.coresystem.api.bukkit.facades.Sound;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.knockit.KnockIT;
 import eu.mcone.knockit.gadgets.Gadget;
 import eu.mcone.knockit.listener.PlayerHeightListener;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -56,8 +56,8 @@ public class PlayerSwapListener implements Listener {
 
                             Player t = swapPlayers.get(RANDOM.nextInt(swapPlayers.size()));
                             if (t != null) {
-                                t.playSound(t.getLocation(), Sound.ENDERMAN_TELEPORT, 1, 1);
-                                p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 1, 1);
+                                Sound.teleport(t);
+                                Sound.teleport(p);
 
                                 t.teleport(p.getLocation());
                                 p.teleport(t.getLocation());

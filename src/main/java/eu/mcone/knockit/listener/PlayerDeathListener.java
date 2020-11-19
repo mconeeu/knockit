@@ -6,26 +6,22 @@
 package eu.mcone.knockit.listener;
 
 import eu.mcone.coresystem.api.bukkit.CoreSystem;
+import eu.mcone.coresystem.api.bukkit.facades.Sound;
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
 import eu.mcone.gameapi.api.GameAPI;
-import eu.mcone.gameapi.api.GamePlugin;
 import eu.mcone.gameapi.api.damage.DamageLogger;
 import eu.mcone.gameapi.api.player.GamePlayer;
 import eu.mcone.knockit.KnockIT;
-import eu.mcone.knockit.cmd.KnockITCommand;
 import eu.mcone.knockit.kit.Kit;
 import org.bukkit.Bukkit;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.DisplaySlot;
 
-import javax.swing.*;
 
 public class PlayerDeathListener implements Listener {
 
@@ -33,9 +29,10 @@ public class PlayerDeathListener implements Listener {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent e) {
-        final Player p = e.getEntity();
-        final Player k = p.getKiller() != null ? p.getKiller() : DAMAGE_LOGGER.getKiller(p);
-        final CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
+        Player p = e.getEntity();
+        Player k = p.getKiller() != null ? p.getKiller() : DAMAGE_LOGGER.getKiller(p);
+        CorePlayer cp = CoreSystem.getInstance().getCorePlayer(p);
+        GamePlayer gp = GameAPI.getInstance().getGamePlayer(p);
 
         p.setLevel(0);
 
@@ -44,7 +41,6 @@ public class PlayerDeathListener implements Listener {
         e.getDrops().clear();
 
         KnockIT.getInstance().isInFishingRodCooldown.remove(p);
-
         p.spigot().respawn();
 
         if (k != null && !p.equals(k)) {
@@ -53,7 +49,7 @@ public class PlayerDeathListener implements Listener {
             KnockIT.getInstance().getMessenger().send(k, "§7Du hast §6" + cp.bukkit().getName() + " §7getötet §8[§a+3 Coins§8]");
             GameAPI.getInstance().getGamePlayer(k).addKills(1);
             ck.addCoins(3);
-            k.getWorld().playSound(k.getLocation(), Sound.LEVEL_UP, 1, 1);
+            Sound.done(k);
             k.setLevel(k.getLevel() + 1);
             k.addPotionEffect(PotionEffectType.REGENERATION.createEffect(20 * 20, 3));
 
@@ -62,11 +58,10 @@ public class PlayerDeathListener implements Listener {
             KnockIT.getInstance().getMessenger().send(p, "§7Du wurdest von §c" + ck.bukkit().getName() + " §7getötet §8[§c-1 Coins§8]");
             if (cp.getCoins() > 5) cp.removeCoins(5);
         } else {
-            KnockIT.getInstance().getMessenger().send(p, "§7Du bist gestorben");
+            KnockIT.getInstance().getMessenger().sendInfo(p, "Du bist gestorben." + (gp.isAutoBuyKit() && gp.getCurrentKit() != Kit.DEFAULT ? " Dein letztes Kit wird erneut gekauft! §8[§c-"+gp.getCurrentKit().getCoinsPrice()+" Coins§8]" : ""));
         }
 
-
-        p.playSound(p.getLocation(), Sound.VILLAGER_HIT, 1, 1);
+        Sound.death(p);
         GameAPI.getInstance().getGamePlayer(p).addDeaths(1);
     }
 
@@ -75,9 +70,11 @@ public class PlayerDeathListener implements Listener {
         Player p = e.getPlayer();
 
         Bukkit.getScheduler().runTaskLater(KnockIT.getInstance(), () -> {
-            CorePlayer corePlayer = CoreSystem.getInstance().getCorePlayer(p);
-            corePlayer.getScoreboard().getObjective(DisplaySlot.SIDEBAR).reload();
-        }, 21);
+            if (p.isOnline()) {
+                CorePlayer corePlayer = CoreSystem.getInstance().getCorePlayer(p);
+                corePlayer.getScoreboard().getObjective(DisplaySlot.SIDEBAR).reload();
+            }
+        }, 20);
 
         CoreSystem.getInstance().createActionBar()
                 .message("§c§oDu bist gestorben")

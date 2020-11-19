@@ -5,15 +5,12 @@
 
 package eu.mcone.knockit.listener;
 
+import eu.mcone.coresystem.api.bukkit.facades.Sound;
 import eu.mcone.coresystem.api.bukkit.item.ItemBuilder;
-import eu.mcone.gameapi.api.backpack.defaults.DefaultItem;
 import eu.mcone.knockit.KnockIT;
-import eu.mcone.knockit.kit.Kit;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.FishHook;
 import org.bukkit.entity.Player;
@@ -21,7 +18,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.inventory.ItemFlag;
-import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 
 public class FishingRodListener implements Listener {
@@ -53,7 +49,7 @@ public class FishingRodListener implements Listener {
                     lc.setY(lc.getY() + 0.7D);
                     p.teleport(lc);
 
-                    p.playSound(p.getLocation(), Sound.NOTE_PLING, 3, 3);
+                    Sound.done(p);
                     double g = -0.08D;
                     double t = to.distance(lc);
                     double v_x = (1.0D + 0.07D * t) * (to.getX() - lc.getX()) / t;
@@ -76,7 +72,7 @@ public class FishingRodListener implements Listener {
                             () -> {
                                 if (KnockIT.getInstance().isInFishingRodCooldown.contains(p)) {
                                     KnockIT.getInstance().isInFishingRodCooldown.remove(p);
-                                    p.playSound(p.getLocation(), Sound.ORB_PICKUP, 3, 3);
+                                    Sound.done(p);
 
                                     p.getInventory().setItem(heldItemSlot, new ItemBuilder(Material.FISHING_ROD)
                                             .displayName("§8§ §d§lEnterhaken")
