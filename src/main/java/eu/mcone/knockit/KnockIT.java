@@ -31,7 +31,7 @@ import java.util.UUID;
 public class KnockIT extends GamePlugin {
 
     public KnockIT() {
-        super(Gamemode.KNOCKIT, "knockit.prefix", Option.KIT_MANAGER_CLEAR_INVENTORY_ON_KIT_SET, Option.KIT_MANAGER_ALLOW_AUTO_BUY_KIT);
+        super(Gamemode.KNOCKIT, "knockit.prefix", Option.KIT_MANAGER_CLEAR_INVENTORY_ON_KIT_SET, Option.KIT_MANAGER_ALLOW_AUTO_BUY_KIT, Option.KIT_MANAGER_SET_CURRENT_KIT_ON_JOIN);
     }
 
     @Getter

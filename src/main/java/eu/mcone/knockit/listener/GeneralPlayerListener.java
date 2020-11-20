@@ -5,12 +5,8 @@
 
 package eu.mcone.knockit.listener;
 
-import eu.mcone.coresystem.api.bukkit.CoreSystem;
-import eu.mcone.gameapi.api.GamePlugin;
 import eu.mcone.gameapi.api.event.player.GamePlayerLoadedEvent;
-import eu.mcone.gameapi.api.player.GamePlayer;
 import eu.mcone.knockit.KnockIT;
-import eu.mcone.knockit.kit.Kit;
 import eu.mcone.knockit.player.KnockItPlayer;
 import eu.mcone.knockit.util.SidebarObjective;
 import org.bukkit.GameMode;
@@ -24,8 +20,6 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerItemDamageEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-
-import static com.mongodb.client.model.Filters.eq;
 
 public class GeneralPlayerListener implements Listener {
 
@@ -42,16 +36,6 @@ public class GeneralPlayerListener implements Listener {
 
     @EventHandler
     public void onGamePlayerLoaded(GamePlayerLoadedEvent e) {
-
-        GamePlayer gamePlayer = KnockIT.getInstance().getGamePlayer(e.getBukkitPlayer());
-
-        if (CoreSystem.getInstance().getMongoDB().getCollection("knockit_profile").find(eq("uuid", e.getBukkitPlayer().getUniqueId().toString())).first() == null) {
-            KnockIT.getInstance().getMessenger().send(e.getBukkitPlayer(), "§7Du scheinst neu auf KnockIT zu sein! Du bekommst das Standart-Kit!");
-
-            gamePlayer.setKit(Kit.DEFAULT, true);
-        }
-
-
         new KnockItPlayer(e.getCorePlayer());
         e.getCorePlayer().getScoreboard().setNewObjective(new SidebarObjective());
     }

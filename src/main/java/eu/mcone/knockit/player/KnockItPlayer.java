@@ -1,13 +1,12 @@
 package eu.mcone.knockit.player;
 
 import eu.mcone.coresystem.api.bukkit.player.CorePlayer;
-import eu.mcone.coresystem.api.bukkit.player.plugin.GamePlayerInventory;
+import eu.mcone.coresystem.api.bukkit.player.plugin.GamePlayerData;
 import eu.mcone.coresystem.api.bukkit.player.profile.PlayerDataProfile;
-import eu.mcone.coresystem.api.bukkit.player.profile.PlayerInventoryProfile;
 import eu.mcone.knockit.KnockIT;
 import eu.mcone.knockit.gadgets.Gadget;
 
-public class KnockItPlayer extends GamePlayerInventory<PlayerInventoryProfile> {
+public class KnockItPlayer extends GamePlayerData<PlayerDataProfile> {
 
     static {
         PlayerDataProfile.preventTeleport(true);
@@ -19,13 +18,13 @@ public class KnockItPlayer extends GamePlayerInventory<PlayerInventoryProfile> {
     }
 
     @Override
-    public PlayerInventoryProfile loadData() {
-        return KnockIT.getInstance().loadGameProfile(corePlayer.bukkit(), PlayerInventoryProfile.class);
+    public PlayerDataProfile loadData() {
+        return KnockIT.getInstance().loadGameProfile(corePlayer.bukkit(), PlayerDataProfile.class);
     }
 
     @Override
     public void saveData() {
-        KnockIT.getInstance().saveGameProfile(new PlayerInventoryProfile(corePlayer.bukkit(), enderchest));
+        KnockIT.getInstance().saveGameProfile(new PlayerDataProfile(corePlayer.bukkit()));
     }
 
     public void unregister() {
