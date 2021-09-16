@@ -10,11 +10,7 @@ import eu.mcone.coresystem.api.bukkit.inventory.InventoryOption;
 import eu.mcone.coresystem.api.bukkit.inventory.InventorySlot;
 import eu.mcone.coresystem.api.bukkit.item.ItemBuilder;
 import eu.mcone.coresystem.api.bukkit.item.Skull;
-import eu.mcone.gameapi.api.GamePlugin;
-import eu.mcone.gameapi.api.player.GamePlayer;
 import eu.mcone.knockit.KnockIT;
-import eu.mcone.knockit.cmd.KnockITCommand;
-import eu.mcone.knockit.kit.Kit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 

@@ -10,7 +10,7 @@ import eu.mcone.coresystem.api.bukkit.gamemode.Gamemode;
 import eu.mcone.coresystem.api.bukkit.world.BuildSystem;
 import eu.mcone.gameapi.api.GamePlugin;
 import eu.mcone.gameapi.api.Option;
-import eu.mcone.knockit.cmd.KnockITCommand;
+import eu.mcone.knockit.cmd.KnockITCMD;
 import eu.mcone.knockit.cmd.ShopCMD;
 import eu.mcone.knockit.gadgets.event.GrenadeListener;
 import eu.mcone.knockit.gadgets.event.PlayerSwapListener;
@@ -66,7 +66,7 @@ public class KnockIT extends GamePlugin {
 
         sendConsoleMessage("§aRegistering Commands and Listeners...");
         registerCommands(
-                new KnockITCommand(),
+                new KnockITCMD(),
                 new ShopCMD()
         );
         registerEvents(
